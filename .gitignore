@@ -15,7 +15,6 @@
 .#*
 .*.swp
 .DS_Store
-*.dll
 *.pdb
 bin
 obj
@@ -33,7 +32,6 @@ temppe
 *.vspscc
 *.vssscc
 _ReSharper.*
-*.pdb
 *.vshost.exe
 *.manifest
 *.cache
