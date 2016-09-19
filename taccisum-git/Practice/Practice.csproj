@@ -877,6 +877,7 @@
     <Content Include="Views\Product\ProductInfo.cshtml" />
     <Content Include="Views\Band\Index.cshtml" />
     <Content Include="Views\ToolDemo\Dialog.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
