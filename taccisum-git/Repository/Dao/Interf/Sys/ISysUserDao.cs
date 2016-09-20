@@ -12,5 +12,6 @@ namespace Repository.Dao.Interf.Sys
     public interface ISysUserDao : ICrud<SysUser>
     {
         SysUser LoginVerify(string uid, string psd, EncryptType encryptType);
+        
     }
 }

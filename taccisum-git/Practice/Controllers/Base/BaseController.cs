@@ -67,7 +67,7 @@ namespace Practice.Controllers.Base
             }
             catch (Exception e)
             {
-                return Json(Failure(errMsg, e), behavior);
+                return Json(Failure(errMsg, e.Message), behavior);
             }
 
             return Json(Success(data, succMsg), behavior);
@@ -98,9 +98,7 @@ namespace Practice.Controllers.Base
         protected override void OnException(ExceptionContext filterContext)
         {
             base.OnException(filterContext);
-            //todo:: 感脚下面这句可能会造成奇怪的效果，标记下
-            filterContext.Result = Json(Failure("调用API的过程中发生了未经处理的异常", filterContext.Exception),
-                JsonRequestBehavior.AllowGet);
+
             Log.Error("调用API的过程中发生了未经处理的异常", filterContext.Exception);
         }
     }

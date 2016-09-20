@@ -833,6 +833,7 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RedisDemoController.cs" />
     <Compile Include="Controllers\ToolDemoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDemoController.cs" />
@@ -878,6 +879,7 @@
     <Content Include="Views\Band\Index.cshtml" />
     <Content Include="Views\ToolDemo\Dialog.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\RedisDemo\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -76,5 +76,10 @@ namespace Practice.Controllers
                 return null;
             }, "修改菜单状态失败", "修改菜单状态成功");
         }
+
+        public JsonResult GetRecentlyAdd()
+        {
+            return Try(() => MenuService.GetRecentlyAdd(), "获取最近添加的菜单失败", "获取最近添加的菜单成功");
+        }
     }
 }

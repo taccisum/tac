@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <span class="bold">最近添加的菜单列表：</span><br/>
+    <textarea id="txt-menus" style="width: 900px; height: 200px;"></textarea>
+</div>
+
+@section head{
+    <script>
+        require(["systools"], function(tool) {
+            $.get("/Menu/GetRecentlyAdd", function (result) {
+                if (result.Success) {
+                    var str = "";
+                    $.each(result.Data, function (index, item) {
+                        str += item + "\r\n";
+                    });
+                    $("#txt-menus").val(str);
+                } else {
+                    tool.msgbox("<div class='msgbox-text'><span class='text-left'>" + result.Message + "</span>" +
+                        "<br/><a href='javascript:alert(\"" + result.Data + "\")' color='red pull-right'>查看异常</a>", "n");
+                }
+
+            });
+        })
+    </script>
+}

@@ -31,6 +31,7 @@ namespace Service.Impl.Sys
         public void Insert(Model.Entity.SysMenu menu)
         {
             MenuDao.Create(menu);
+            MenuDao.PushRecentMenuToCache(menu);
         }
 
         public void Update(Model.Entity.SysMenu menu)
@@ -97,6 +98,11 @@ namespace Service.Impl.Sys
                     CreatedOn = m.CreatedOn
                 };
             return list;
+        }
+
+        public List<string> GetRecentlyAdd()
+        {
+            return MenuDao.GetRecentMenuCache();
         }
     }
 }

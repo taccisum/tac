@@ -40,6 +40,9 @@ namespace Service.Interf.Sys
         /// <param name="query">过滤条件</param>
         /// <returns></returns>
         object GetPageList(MenuQuery query);
+
+        List<string> GetRecentlyAdd();
+
         #endregion
     }
 }
