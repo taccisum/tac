@@ -10,7 +10,8 @@
 define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
     var sys = {
         /**
-         * 
+         * @todo:: implement
+         * @desc 对ajax请求进行封装，处理诸如请求失败、异常等事件
          * @returns {} 
          */
         ajax: function() {
@@ -72,7 +73,8 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
             }
 
             return dg.msgbox(config);
-        }
+        },
+
     };
 
     return sys;

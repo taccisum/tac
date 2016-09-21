@@ -33,8 +33,9 @@ define(["artDialog"], function () {
     };
 
     function DefConfig() {
-
-    }; //art dialog 默认配置
+        this.fixed = true;      //是否固定dialog，若使用showModal()进行展示，则背景会加上一层遮罩
+        this.title = "系统窗口";
+    }; //dialog 默认配置
 
     function DefConfig1() {
         this.title = "系统提示";
@@ -44,7 +45,7 @@ define(["artDialog"], function () {
             "<td style='vertical-align:top;'><img style='height:70px; width:70px; margin-right: 20px;' src='@img' class='img-circle'></td>" +
             "<td class='text-center' style='vertical-align: middle; width:100%; font-size:22px;'>@msg</td>" +
             "</tr></table>";
-    }; //art dialog message box默认配置
+    }; //message box默认配置
 
     var isNull = function(obj) {
         return typeof obj == "undefined" || obj == null;

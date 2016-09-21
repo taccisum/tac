@@ -200,7 +200,8 @@
     require(["systools","sidebar"], function (tool, sidebarManager) {
         //menus搜索框
         function bindMenuSearcher(array) {
-            var acArray = new List(array).divide(["ID", "Name", "Description"], ["value", "label", "desc"]).getArray();
+            var acArray = new List(array).divide(["ID", "Name", "Description"],
+                ["value", "label", "desc"]).getArray();
 
             var $input = $("#menu-searcher").find("input");
             var $btn = $("#menu-searcher").find("button");
@@ -222,7 +223,7 @@
                 var targetId = $input.attr("data-val");
                 sidebar.CollapseAll(false);
                 sidebar.Open(targetId, false);
-                sidebar.PointAt(targetId);
+                //sidebar.PointAt(targetId);        //todo:: 未实现
             });
         }
 
@@ -246,6 +247,7 @@
                 }).show(this);
             });
         }
+
 
         //初始化
         $.get("/CommonInfo/Menus", function(result) {

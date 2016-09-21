@@ -5,6 +5,12 @@
 
 define(["jq_ui"], function() {
     function DefConfig() {
+        /**
+         * 此处需注意：
+         * 使用jq_autocomplete插件传入的对象数组必须含有value, label, desc(可选，这个是在原插件的基础上加的)字段
+         */
+        this.source = [];
+
         this.delay = 0;
         this.appendTo = "#jq-ui-autocomplete-1";
         this.height = 300;
@@ -24,6 +30,7 @@ define(["jq_ui"], function() {
                     $this.val(ui.item.label);
                     $this.attr("data-val", ui.item.value);
 
+                    //todo:: 这个地方及下面使用了$.isFunction，依赖了jq_extend.js，考虑去除这些依赖
                     if ($.isFunction(config.focus)) {
                         config.focus();
                     }
@@ -38,7 +45,7 @@ define(["jq_ui"], function() {
                     }
                     return false;
                 },
-                descFormatter: function(item) {
+                descFormatter: function (item) {
                     if ($.isFunction(config.descFormatter))
                         return config.descFormatter(item);
                     return item.desc;

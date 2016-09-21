@@ -2,10 +2,8 @@
  * @file Sidebar.js
  * @see jquery.js Composite.js 
  * @author tac
- * @desc side bar 菜单管理
+ * @desc side bar 菜单管理模块，提供一系列操作左侧菜单的api
  */
-
-
 define(function () {
     var sidebar = null;
 
@@ -15,23 +13,41 @@ define(function () {
         var root = cb.Build(menus);
         var $container = $(appendTo);
 
+        /**
+         * @desc 菜单数据（通过组合模式构建的Component对象）
+         */
         this.tree = root;
 
+        /**
+         * @desc 获取指定菜单的jquery对象
+         * @param {string} id 菜单id
+         * @returns {object} 菜单的jquery对象
+         */
         this.GetById = function(id) {
             return $($container.find("li[data-id=" + id + "]")[0]);
         }
 
+        /**
+         * @desc 获取当前页面对应的菜单id
+         * @returns {string} 菜单id
+         */
         this.CurrentMenuId = function() {
             return $($container.find("li a[data-rpath='" + location.pathname + "']")[0]).parent("li").data("id");
         };
 
-        //清空容器中的菜单内容
+        /**
+         * @desc 清空容器中的菜单内容
+         * @returns {void} 
+         */
         this.Clear = function() {
             $container.children().remove();
             return self;
         }
 
-        //将菜单加载到容器中
+        /**
+         * @desc 将菜单加载到容器中（加载前会先清空容器内容）
+         * @returns {void} 
+         */
         this.Load = function() {
             self.Clear();
             root.ForEach(new Visitor(function(node) {
@@ -73,8 +89,12 @@ define(function () {
             return self;
         };
 
-        //打开指定id的菜单
-        //isActivate: bool 是否要将菜单标识为active
+        /**
+         * @desc 展开指定id的菜单
+         * @param {string} id 菜单id
+         * @param {bool} isActivate 是否要将菜单标识为active
+         * @returns {void} 
+         */
         this.Open = function(id, isActivate) {
             root.ForEach(new Visitor(function(node) {
                 if (node.data.ID == id) {
@@ -104,8 +124,11 @@ define(function () {
             return self;
         };
 
-        //折叠所有菜单
-        //isActive: bool 是否要折叠active的菜单
+        /**
+         * @desc 折叠所有菜单
+         * @param {bool} isActive 是否要折叠active的菜单
+         * @returns {void} 
+         */
         this.CollapseAll = function(isActive) {
             if (isActive) {
                 $container.find("li").removeClass("active open");
@@ -117,7 +140,12 @@ define(function () {
             }
         };
 
-
+        /**
+         * @desc 定位到指定菜单，并加以提示
+         * @todo:: implement，未实现-.- 因为不知道怎么做指向提示
+         * @param {string} id 菜单id
+         * @returns {void} 
+         */
         this.PointAt = function(id) {
             throw Error("function Sidebar.PointAt() is not implement!");
             //sys.dialog({
@@ -130,7 +158,13 @@ define(function () {
     }
 
     return {
-        getInstance: function(munus, appendTo) {
+        /**
+         * @desc 获取sidebar单例
+         * @param {array} munus 
+         * @param {string} appendTo 依附的容器
+         * @returns {object} Sidebar的单例
+         */
+        getInstance: function (munus, appendTo) {
             if (sidebar == null)
                 sidebar = new Sidebar(munus, appendTo);
             return sidebar;

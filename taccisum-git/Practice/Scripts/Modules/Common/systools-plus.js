@@ -7,10 +7,21 @@
  */
 define(["systools"], function (tool) {
     var toolExt = {
-        upload: function() {
+
+        /**
+         * @todo:: implement
+         * @desc 指定一个标签，为其绑定图片裁剪功能
+         * @returns {} 
+         */
+        cropper: function() {
             throw new Error("Method not implement");
         },
 
+        /**
+         * @todo:: implement
+         * @desc 指定一个标签，以其为基础生成html编辑器
+         * @returns {} 
+         */
         htmlEditor: function() {
             throw new Error("Method not implement");
         }

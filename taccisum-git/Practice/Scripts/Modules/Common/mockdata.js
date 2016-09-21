@@ -1,4 +1,8 @@
-﻿define(["mockjs"], function(mock) {
+﻿/**
+ * @author tac
+ * @desc 本模块基于mock.js封装以提供 生成有意义的mock数据（如姓名、手机号等） 的api
+ */
+define(["mockjs"], function (mock) {
     var surname = "赵钱孙李周吴郑王冯陈楮卫蒋沈韩杨朱秦尤许何吕施张孔曹严华金魏陶姜戚谢邹喻柏水窦章云苏潘葛奚范彭郎鲁韦昌马苗凤花方俞" +
         "任袁柳酆鲍史唐费廉岑薛雷贺倪汤滕殷罗毕郝邬安常乐于时傅皮卞齐康伍余元卜顾孟平黄和穆萧尹姚邵湛汪祁毛禹狄米贝明臧计伏成戴谈宋茅庞" +
         "熊纪舒屈项祝董梁杜阮蓝闽席季麻强贾路娄危江童颜郭梅盛林刁锺徐丘骆高夏蔡田樊胡凌霍虞万支柯昝管卢莫经房裘缪干解应宗丁宣贲邓郁单杭" +
@@ -71,6 +75,12 @@
 
     var MockData = function() {
 
+        /**
+         * @desc 随机生成一个中文名字
+         * @param {int} lengthMin 名字最小长度，小于2时默认取2
+         * @param {int} lengthMax 名字最大长度，非必填。为null时以lengthMin为基准生成固定长度的字符串
+         * @returns {string} 生成的字符串
+         */
         this.ChineseName = function (lengthMin, lengthMax) {
             if (lengthMin <= 1 || isNull(lengthMin)) {
                 lengthMin = 2;        //at least 2 words
@@ -96,6 +106,10 @@
             return obj.result;
         };
 
+        /**
+         * @desc 随机生成11位移动电话号码
+         * @returns {string} 生成的字符串
+         */
         this.PhoneNumber = function() {
             var obj = mock.mock({
                 "result": /(13[0-9]|15[7-9]|153|156|18[7-9])[0-9]{8}/,
@@ -103,19 +117,37 @@
             return obj.result;
         };
 
-        this.RandomStr = function (length) {
-            length = parseInt(length);
-            if (isNaN(length)) {
-                return "";
+        /**
+         * @desc 随机生成字符串（\w）
+         * @param {int} lengthMin 生成的字符串最小长度
+         * @param {int} lengthMax 生成的字符串最大长度，非必填。为null时以lengthMin为基准生成固定长度的字符串
+         * @returns {string} 生成的字符串
+         */
+        this.RandomStr = function (lengthMin, lengthMax) {
+            if (lengthMax < lengthMin) {
+                lengthMax = lengthMin;
             }
 
-            var reg = new RegExp("[\\w]{" + length + "}");
+            var expStr = "";
+            if (isNull(lengthMax)) {
+                expStr += lengthMin;
+            } else {
+                expStr += lengthMin + "," + lengthMax;
+            }
+
+            var reg = new RegExp("[\\w]{" + expStr + "}");
             var obj = mock.mock({
                 "result": reg,
             });
             return obj.result;
         };
 
+        /**
+         * @desc 随机生成字符串（简体汉字）
+         * @param {int} lengthMin 生成的字符串最小长度
+         * @param {int} lengthMax 生成的字符串最大长度，非必填。为null时以lengthMin为基准生成固定长度的字符串
+         * @returns {string} 生成的字符串
+         */
         this.RandomZhStr = function(lengthMin, lengthMax) {
             if (lengthMax < lengthMin) {
                 lengthMax = lengthMin;
@@ -134,6 +166,9 @@
             });
             return obj.result;
         };
+
+        //todo:: more mock data
+
     }
 
 
