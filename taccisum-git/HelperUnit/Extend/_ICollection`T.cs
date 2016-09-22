@@ -2,7 +2,7 @@
 
 namespace Common.Tool.Extend
 {
-    public static class ICollection_T
+    public static class _ICollection_T
     {
 
 

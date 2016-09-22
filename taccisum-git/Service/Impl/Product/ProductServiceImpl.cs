@@ -87,7 +87,7 @@ namespace Service.Impl.Product
 
             if (oldProduct.ProductCode == "")
             {
-                oldProduct.ProductCode = _string.GetSequence("P");
+                oldProduct.ProductCode = _String.GetSequence("P");
             }
             ProductDao.Update(oldProduct, false);
             int rows = ProductDao.Submit();
@@ -101,7 +101,7 @@ namespace Service.Impl.Product
             guid = Guid.NewGuid();
             product.ID = guid;
             product.IsSaled = false;
-            product.ProductCode = _string.GetSequence("P");
+            product.ProductCode = _String.GetSequence("P");
             if (product.PictureUrl == null || product.PictureUrl == "")
             {
                 product.PictureUrl = "/uploadfiles/nopic.jpg";

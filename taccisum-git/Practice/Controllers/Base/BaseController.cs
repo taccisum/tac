@@ -22,7 +22,7 @@ namespace Practice.Controllers.Base
         protected IIoC IoC { get { return _ioc ?? (_ioc = IoCManager.GetInstance().Create()); } }
 
         private ILog _log;
-        protected ILog Log { get { return _log ?? (_log = Log4NetHelper.GetLogger("Service." + this.GetType().Name)); } }
+        protected ILog Log { get { return _log ?? (_log = Log4NetHelper.GetLogger("Controller." + this.GetType().Name)); } }
 
         protected SysUser CurrentUser
         {
@@ -34,10 +34,7 @@ namespace Practice.Controllers.Base
         }
 
 
-        protected BaseController()
-        {
-            
-        }
+        protected BaseController() {}
 
         protected ApiResult Success(object data, string msg = "")
         {
@@ -51,7 +48,7 @@ namespace Practice.Controllers.Base
         }
 
         /// <summary>
-        /// 封装TryCatch操作，只适用于JsonResult
+        /// 封装TryCatch操作，返回统一格式内容，只适用于JsonResult
         /// </summary>
         /// <param name="func"></param>
         /// <param name="errMsg"></param>
@@ -98,6 +95,7 @@ namespace Practice.Controllers.Base
         protected override void OnException(ExceptionContext filterContext)
         {
             base.OnException(filterContext);
+            //todo:: 在这里编写语句修改发生异常时返回的内容
 
             Log.Error("调用API的过程中发生了未经处理的异常", filterContext.Exception);
         }

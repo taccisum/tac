@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Global;
 using ServiceStack.Redis;
 
 namespace Common.Tool.Units
 {
 
-    public static class RedisManager
+    public static class RedisHelper
     {
         public static IRedisClient GetClient()
         {
             return new ServicesStackRedis();
         }
-
 
 
         private class ServicesStackRedis : IRedisClient
@@ -24,9 +25,14 @@ namespace Common.Tool.Units
 
             public ServicesStackRedis()
             {
-                //todo 避免反复建立连接，应考虑做到线程内共用一个连接
-                client = new RedisClient(ConfigHelper.GetAppSettings("Redis"),
-                    int.Parse(ConfigHelper.GetAppSettings("RedisPort")));
+                //建立线程内唯一的连接，减少不必要的资源开销
+                var temp = CallContext.GetData(GlobalConfig.DataSink.REDIS_CLIENT) as RedisClient;
+                if (temp == null)
+                {
+                    temp = new RedisClient(ConfigHelper.GetAppSettings("Redis"),int.Parse(ConfigHelper.GetAppSettings("RedisPort")));
+                    CallContext.SetData(GlobalConfig.DataSink.REDIS_CLIENT, temp);
+                }
+                client = temp;
             }
 
 
@@ -86,7 +92,7 @@ namespace Common.Tool.Units
         #endregion
     }
 
-
+    
 
 
 }

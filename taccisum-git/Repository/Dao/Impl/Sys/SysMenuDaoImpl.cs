@@ -11,11 +11,11 @@ using Repository.Repository.Base;
 namespace Repository.Dao.Impl.Sys
 {
     [Export(typeof(ISysMenuDao))]
-    public class SysMenuDaoImpl : RepositorySupport<Model.Entity.SysMenu>, ISysMenuDao
+    public class SysMenuDaoImpl : RepositorySupport<SysMenu>, ISysMenuDao
     {
         private IRedisClient _client;
 
-        private IRedisClient client { get { return _client ?? (_client = RedisManager.GetClient()); } }
+        private IRedisClient client { get { return _client ?? (_client = RedisHelper.GetClient()); } }
 
         public void PushRecentMenuToCache(SysMenu menu)
         {

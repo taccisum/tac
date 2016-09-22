@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Common.Tool.Extend
 {
-    public static class _string
+    public static class _String
     {
         /// <summary>
         /// 字符串格式的Guid 转 Guid对象，转换失败返回Guid.Empty

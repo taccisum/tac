@@ -7,7 +7,7 @@ using Model.Entity;
 using Model.Common;
 using Model.Models;
 using System.IO;
-using String = Common.Tool.Extend._string;
+using String = Common.Tool.Extend._String;
 using System.Collections;
 using System.ComponentModel.Composition;
 using Model.Entities;

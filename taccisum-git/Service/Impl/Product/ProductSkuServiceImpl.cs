@@ -69,7 +69,7 @@ namespace Service.Impl.Product
         public ApiResult Add(Sku sku)
         {
             ApiResult result;
-            sku.SkuNum = _string.GetSequence("SKU");
+            sku.SkuNum = _String.GetSequence("SKU");
 
 
             int affectNum;

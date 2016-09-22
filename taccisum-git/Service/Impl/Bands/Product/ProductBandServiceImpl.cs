@@ -120,7 +120,7 @@ namespace Service.Impl.Bands.Product
         public ApiResult Add(Band band)
         {
             ApiResult result;
-            band.BandNum = _string.GetSequence("B");
+            band.BandNum = _String.GetSequence("B");
 
 
             int affectNum;
