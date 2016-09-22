@@ -834,6 +834,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RedisDemoController.cs" />
+    <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Controllers\ToolDemoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDemoController.cs" />

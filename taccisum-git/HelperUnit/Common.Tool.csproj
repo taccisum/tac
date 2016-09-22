@@ -72,11 +72,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extend\ICollection`T.cs" />
+    <Compile Include="Extend\_ICollection`T.cs" />
     <Compile Include="Extend\_Object.cs" />
     <Compile Include="Units\ConfigHelper .cs" />
     <Compile Include="Units\CookiesHelper.cs" />
-    <Compile Include="Extend\_string.cs" />
+    <Compile Include="Extend\_String.cs" />
     <Compile Include="Units\ExcelHepler.cs" />
     <Compile Include="Units\HttpHelper.cs" />
     <Compile Include="Units\Log4NetHelper.cs" />

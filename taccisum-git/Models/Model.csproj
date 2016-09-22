@@ -82,6 +82,7 @@
     <Compile Include="Models\MenuQuery.cs" />
     <Compile Include="Models\OrderQuery.cs" />
     <Compile Include="Models\ProductQuery.cs" />
+    <Compile Include="Models\ShopCart\ShopCartItem.cs" />
     <Compile Include="Models\SkuQuery.cs" />
     <Compile Include="Models\UserDemoQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

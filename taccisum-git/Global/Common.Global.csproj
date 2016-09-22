@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\Business\PromotionType.cs" />
     <Compile Include="Enum\Common\EncryptType.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

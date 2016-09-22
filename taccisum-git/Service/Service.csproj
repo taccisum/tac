@@ -52,6 +52,14 @@
     <Compile Include="Base\BaseService.cs" />
     <Compile Include="Impl\Bands\Product\ProductBandServiceImpl.cs" />
     <Compile Include="Impl\Orders\Product\ProductOrderItemServiceImpl.cs" />
+    <Compile Include="Impl\ShopCart\BaseShopCartService.cs" />
+    <Compile Include="Impl\ShopCart\ShopCartCreater.cs" />
+    <Compile Include="Impl\ShopCart\ShopCartServiceOfLoginUser.cs" />
+    <Compile Include="Impl\ShopCart\ShopCartServiceOfNotLoginUser.cs" />
+    <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\IPromotionStrategy.cs" />
+    <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\NonePromotionStrategy.cs" />
+    <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\PromotionStrategyCreater.cs" />
+    <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\SinglePromotionStrategy.cs" />
     <Compile Include="Impl\Sys\SysUserDemoServiceImpl.cs" />
     <Compile Include="Interf\Bands\Product\IProductBandService.cs" />
     <Compile Include="Interf\Orders\Product\IProductOrderItemService.cs" />
@@ -63,6 +71,7 @@
     <Compile Include="Interf\Orders\Product\IProductOrderService.cs" />
     <Compile Include="Interf\Product\IProductService.cs" />
     <Compile Include="Interf\Product\IProductSkuService.cs" />
+    <Compile Include="Interf\ShopCart\IShopCartService.cs" />
     <Compile Include="Interf\Sys\ISysMenuService.cs" />
     <Compile Include="Interf\Sys\ISysUserDemoService.cs" />
     <Compile Include="Interf\Sys\ISysUserService.cs" />
@@ -90,7 +99,9 @@
       <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Impl\ShopCart\z_readme.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
