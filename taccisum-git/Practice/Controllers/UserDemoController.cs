@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Common.CustomerException;
 using Common.Tool.Extend;
 using Model.Common;
 using Model.CommonModel;
@@ -83,17 +84,19 @@ namespace Practice.Controllers
 
         public JsonResult InsertUser(SysUserDemo user)
         {
-            user.Password = user.Password.ToMD5();
-
-            var r = SysUserDemoService.Create(user);
-            var result = new ApiResult()
+            return Try(() =>
             {
-                Success = r != null,
-                Data = user,
-                Message = r != null ? "成功" : "失败"
-            };
+                user.Password = user.Password.ToMD5();
 
-            return Json(result, JsonRequestBehavior.DenyGet);
+                var r = SysUserDemoService.Create(user);
+                var result = new ApiResult()
+                {
+                    Success = r != null,
+                    Data = user,
+                    Message = r != null ? "成功" : "失败"
+                };
+                return result;
+            }, "添加用户失败", "添加用户成功", JsonRequestBehavior.DenyGet);
         }
 
 

@@ -74,6 +74,14 @@ namespace Practice.Controllers
         }
         #endregion
 
+        #region JCrop
+
+        public ActionResult JCrop()
+        {
+            return View();
+        }
+
+        #endregion
 
         #region Gridster
 

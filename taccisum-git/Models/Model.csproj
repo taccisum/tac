@@ -54,6 +54,8 @@
     <Compile Include="Entities\DTO.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Entities\Layout\LayoutModel.cs" />
+    <Compile Include="Entities\Layout\WidgetModel.cs" />
     <Compile Include="Entities\Order.cs">
       <SubType>Code</SubType>
     </Compile>

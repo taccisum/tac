@@ -889,6 +889,7 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\RedisDemo\Index.cshtml" />
     <Content Include="Views\ToolDemo\Gridster.cshtml" />
+    <Content Include="Views\ToolDemo\JCrop.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -900,6 +901,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomerException\Common.CustomerException.csproj">
+      <Project>{293dea67-cc7d-4387-ab15-21b4e58e7ec1}</Project>
+      <Name>Common.CustomerException</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Global\Common.Global.csproj">
       <Project>{c2be7b4b-0101-485b-a92d-7acbc42646f8}</Project>
       <Name>Common.Global</Name>

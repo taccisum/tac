@@ -11,6 +11,7 @@ namespace Model.Common
         public bool Success { get; set; }
         public object Data { get; set; }
         public string Message { get; set; }
+        public string Exception { get; set; }
 
 
         /// <summary>
@@ -34,14 +35,16 @@ namespace Model.Common
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="data"></param>
+        /// <param name="exception"></param>
         /// <returns></returns>
-        public static ApiResult FailedResult(string msg, object data = null)
+        public static ApiResult FailedResult(string msg, string exception = "")
         {
             return new ApiResult()
             {
                 Success = false,
-                Data = data,
-                Message = msg
+                Data = null,
+                Message = msg,
+                Exception = exception
             };
         }
     }

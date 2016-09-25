@@ -69,11 +69,12 @@
                                 var params = ko.mapping.toJS(user_vm);
                                 $.post("/UserDemo/InsertUser", params, function (result) {
                                     if (result.Success) {
-                                        tool.msgbox("添加用户成功！","y");
+                                        tool.msgbox(result.Message, "y");
                                         self.remove();
                                         table.ajax.reload();
                                     } else {
-                                        tool.msgbox("添加用户失败！<br /><a class='click' href=\"javascript:alert('这里显示异常信息')\">点击查看详细异常</a>", "n");
+                                        tool.msgbox(result.Message + "<br />" +
+                                            "<a class='click' href=\"javascript:alert('" + result.Exception + "')\">点击查看详细异常</a>", "n");
                                     }
                                 });
 

@@ -4,38 +4,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section tips{
+    <span class="bold">基于gridster.js封装的系统工具tool.layout的使用示例</span>
+    <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+}
+
 @section head{
     <script type="text/javascript">
 
 
         require(["systools-plus"], function(tool) {
 
+            var data = [
+                { id: $.newPseudoGuid(), row: 1, col: 1, color: "#f2e", content: "<span class='blue'>1<span>" },
+                { id: $.newPseudoGuid(), row: 1, col: 2, color: "#b3d", content: "2" },
+                { id: $.newPseudoGuid(), row: 1, col: 3, color: "red" },
+                { id: $.newPseudoGuid(), row: 1, col: 4, color: "blue" },
+                { id: $.newPseudoGuid(), row: 1, col: 5, color: "green" },
+                //{ id: $.newPseudoGuid(), row: 1, col: 6, color: "#ca8" },
+                { id: $.newPseudoGuid(), row: 2, col: 1, color: "#f2e" },
+                { id: $.newPseudoGuid(), row: 2, col: 2, color: "#b3d" },
+                { id: $.newPseudoGuid(), row: 2, col: 3, color: "red" },
+                { id: $.newPseudoGuid(), row: 2, col: 4, sizex: 1, sizey: 1 },
+                { id: $.newPseudoGuid(), row: 2, col: 5, color: "green" },
+                //{ id: $.newPseudoGuid(), row: 2, col: 6, color: "#ca8" },
+            ];
+
             $("#btn-gridster").on("click", function() {
                 var id = $.newPseudoGuid();
 
-                var gridster = tool.gridster({
+                var gridster = tool.layout({
                     id: id,
-                    cols: 6,
-                    rows: 5,
+                    width: 6,
+                    height: 5,
                     cursor: "default",
-                    onSubmit: function (data) {
+                    onSubmit: function(data) {
                         alert(JSON.stringify(data[0]));
                         return true;
                     }
-                }, [
-                    { id: $.newPseudoGuid(), row: 1, col: 1, color: "#f2e", content: "1" },
-                    { id: $.newPseudoGuid(), row: 1, col: 2, color: "#b3d", content: "2" },
-                    { id: $.newPseudoGuid(), row: 1, col: 3, color: "red" },
-                    { id: $.newPseudoGuid(), row: 1, col: 4, color: "blue" },
-                    { id: $.newPseudoGuid(), row: 1, col: 5, color: "green" },
-                    { id: $.newPseudoGuid(), row: 1, col: 6, color: "#ca8" },
-                    { id: $.newPseudoGuid(), row: 2, col: 1, color: "#f2e" },
-                    { id: $.newPseudoGuid(), row: 2, col: 2, color: "#b3d" },
-                    { id: $.newPseudoGuid(), row: 2, col: 3, color: "red" },
-                    { id: $.newPseudoGuid(), row: 2, col: 4, sizex: 1, sizey: 1 },
-                    { id: $.newPseudoGuid(), row: 2, col: 5, color: "green" },
-                    { id: $.newPseudoGuid(), row: 2, col: 6, color: "#ca8" },
-                ]);
+                }, data);
 
                 gridster.resize_widget($("#" + id + " ul li").eq(1), 2, 1, function() {
                     //alert("resize finished");
@@ -44,7 +51,7 @@
                     //alert("silently remove 10st widget finished");
                 });
 
-                gridster.add_widget('<li class="new" style="background-color: red;">The HTML of the widget...</li>', 2, 1); //增加一个
+                gridster.add_widget('<li class="new" style="background-color: red;">The HTML of the widget...</li>', 2, 1); //增加一个widget
                 //alert(JSON.stringify(gridster.serialize()));
             });
 

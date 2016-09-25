@@ -12,13 +12,13 @@ define(["systools", "w_gridster"], function (tool, gridster) {
          * @param {object} conf 详细见w_gridster模块，除了插件自带的配置参数外，还封装了以下自定义参数：
          * {string} conf.id 容器的id，默认为一个随机的guid。
          * {string} conf.cursor widget的cursor样式，默认为pointer
-         * {int} conf.cols dialog宽度所能容纳的列数，以一个widget的宽度为单位，超过这个宽度将出现滚动条。
-         * {int} conf.rows dialog高度所能容纳的行数，以一个widget的高度为单位，超过这个高度将出现滚动条。
+         * {int} conf.width dialog宽度所能容纳的列数，以一个widget的宽度为单位，超过这个宽度将出现滚动条。
+         * {int} conf.height dialog高度所能容纳的行数，以一个widget的高度为单位，超过这个高度将出现滚动条。
          * {function} conf.onSubmit(data) 点击dialog的提交按钮时触发的回调事件，data为widgets序列化对象
-         * @param {array} widgets数据 item必须要有3个属性：id, row, col
+         * @param {array} widgets数据 item必须要有3个属性：id, row, col，非必需属性sizex, sizey, color, content
          * @returns {object} Gridster实例
          */
-        gridster: function (conf, widgets) {
+        layout: function (conf, widgets) {
             var _outInstance;
 
             //private method
@@ -58,7 +58,7 @@ define(["systools", "w_gridster"], function (tool, gridster) {
                         "background-color": item.color || "gray",
                         "cursor": conf.cursor || "pointer"
                     });
-                    $widget.text(item.content || "widget");
+                    $widget.html(item.content || "widget");
                     $el.append($widget);
                 });
                 _$content.append($el);
@@ -67,16 +67,16 @@ define(["systools", "w_gridster"], function (tool, gridster) {
             }
             /**
              * @desc 根据参数计算弹窗尺寸
-             * @param {} cols 列数
-             * @param {} rows 行数
+             * @param {} width 列数
+             * @param {} height 行数
              * @param {} widget_margins widget的边距
              * @param {} widget_base_dimensions widget的尺寸
              * @returns {object} 计算得出的弹窗宽和高
              */
-            var calc_dialog_size = function(cols, rows, widget_margins, widget_base_dimensions) {
+            var calc_dialog_size = function(width, height, widget_margins, widget_base_dimensions) {
                 var _width;
                 var _height;
-                if (cols) {
+                if (width) {
                     var _w = 0;
                     if (widget_margins) {
                         _w += (widget_margins[0] || 5) * 2;
@@ -88,10 +88,10 @@ define(["systools", "w_gridster"], function (tool, gridster) {
                     } else {
                         _w += 80;
                     }
-                    _width = _w * cols + 40; //因为设置的是dialog的宽度，所以要留出一部分padding
+                    _width = _w * width + 40; //因为设置的是dialog的宽度，所以要留出一部分padding
                 }
 
-                if (rows) {
+                if (height) {
                     var _h = 0;
                     if (widget_margins) {
                         _h += (widget_margins[1] || 5) * 2;
@@ -103,7 +103,7 @@ define(["systools", "w_gridster"], function (tool, gridster) {
                     } else {
                         _h += 80;
                     }
-                    _height = _h * rows;
+                    _height = _h * height;
                 }
 
                 return {
@@ -118,8 +118,9 @@ define(["systools", "w_gridster"], function (tool, gridster) {
              */
             var preset = function(conf) {
                 if (!conf.serialize_params) {
-                    conf.serialize_params = function ($w, wgd) {
+                    conf.serialize_params = function($w, wgd) {
                         return {
+                            id: $w.attr("id"),
                             col: wgd.col,
                             row: wgd.row,
                             size_x: wgd.size_x,
@@ -140,7 +141,7 @@ define(["systools", "w_gridster"], function (tool, gridster) {
             }
 
             checkArgs();
-            var d_size = calc_dialog_size(conf.cols, conf.rows, conf.widget_margins, conf.widget_base_dimensions);
+            var d_size = calc_dialog_size(conf.width, conf.height, conf.widget_margins, conf.widget_base_dimensions);
             var $content = render(widgets);
             $content.css("max-height", d_size.height); //超过此高度将出现滚动条
             preset(conf);

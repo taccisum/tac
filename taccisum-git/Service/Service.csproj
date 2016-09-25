@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseService.cs" />
     <Compile Include="Impl\Bands\Product\ProductBandServiceImpl.cs" />
+    <Compile Include="Impl\Layout\LayoutServiceImpl.cs" />
     <Compile Include="Impl\Orders\Product\ProductOrderItemServiceImpl.cs" />
     <Compile Include="Impl\ShopCart\BaseShopCartService.cs" />
     <Compile Include="Impl\ShopCart\ShopCartCreater.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\SinglePromotionStrategy.cs" />
     <Compile Include="Impl\Sys\SysUserDemoServiceImpl.cs" />
     <Compile Include="Interf\Bands\Product\IProductBandService.cs" />
+    <Compile Include="Interf\Layout\ILayoutManager.cs" />
+    <Compile Include="Interf\Layout\ILayoutService.cs" />
     <Compile Include="Interf\Orders\Product\IProductOrderItemService.cs" />
     <Compile Include="Impl\Orders\Product\ProductOrderServiceImpl.cs" />
     <Compile Include="Impl\Product\ProductServiceImpl.cs" />

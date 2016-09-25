@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="Context\TacContext.cs" />
     <Compile Include="Dao\Impl\Bands\Product\ProductBandsDaoImpl.cs" />
+    <Compile Include="Dao\Impl\Layout\LayoutModelDaoImpl.cs" />
+    <Compile Include="Dao\Impl\Layout\WidgetModelDaoImpl.cs" />
     <Compile Include="Dao\Impl\Orders\Product\ProductOrderDaoImpl.cs" />
     <Compile Include="Dao\Impl\Orders\Product\ProductOrderItemDaoImpl.cs" />
     <Compile Include="Dao\Impl\Product\ProductDaoImpl.cs" />
@@ -57,6 +59,8 @@
     <Compile Include="Dao\Impl\Sys\SysUserDaoImpl.cs" />
     <Compile Include="Dao\Impl\Sys\SysUserDemoDaoImpl.cs" />
     <Compile Include="Dao\Interf\Bands\Product\IProductBandsDao.cs" />
+    <Compile Include="Dao\Interf\Layout\ILayoutModelDao.cs" />
+    <Compile Include="Dao\Interf\Layout\IWidgetModelDao.cs" />
     <Compile Include="Dao\Interf\Orders\Product\IProductOrderDao.cs" />
     <Compile Include="Dao\Interf\Orders\Product\IProductOrderItemDao.cs" />
     <Compile Include="Dao\Interf\Product\IProductDao.cs" />

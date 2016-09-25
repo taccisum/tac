@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Common.CustomerException;
 using Common.Global;
 using Common.Tool.Extend;
 using Common.Tool.Units;
@@ -42,9 +44,9 @@ namespace Practice.Controllers.Base
         }
 
 
-        protected ApiResult Failure(string msg, object data = null)
+        protected ApiResult Failure(string msg, string exception)
         {
-            return ApiResult.FailedResult(msg, data);
+            return ApiResult.FailedResult(msg, exception);
         }
 
         /// <summary>
@@ -55,21 +57,34 @@ namespace Practice.Controllers.Base
         /// <param name="succMsg"></param>
         /// <param name="behavior"></param>
         /// <returns></returns>
-        protected JsonResult Try(Func<object> func, string errMsg, string succMsg, JsonRequestBehavior behavior = JsonRequestBehavior.AllowGet)
+        protected JsonResult Try(Func<object> func, string errMsg, string succMsg,
+            JsonRequestBehavior behavior = JsonRequestBehavior.AllowGet)
         {
             object data;
             try
             {
                 data = func();
             }
+            catch (CommonException ce)
+            {
+                //业务异常，直接返回给前端
+                //只返回异常描述，不返回堆栈track
+                return Json(Failure(errMsg, ce.Message), behavior);
+            }
             catch (Exception e)
             {
-                return Json(Failure(errMsg, e.Message), behavior);
+#if DEBUG
+                //如果是debug模式，则将系统异常信息打印到输出窗口并直接返回给前端展示
+                Debug.Write(this.GetType().Name + "在执行的过程中发生了异常: " + e.ToString());
+                return Json(Failure(errMsg, e.ToString()), behavior);
+#else
+                Log.Error(e.ToString());        //如果是release，则只记录异常log。
+                return Json(Failure(errMsg, "系统内部异常，详情请查看日志"), behavior);
+#endif
             }
 
             return Json(Success(data, succMsg), behavior);
         }
-
 
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
