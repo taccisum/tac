@@ -490,6 +490,12 @@
     <None Include="Properties\PublishProfiles\test1.pubxml" />
     <None Include="Scripts\jQuery\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\CommonClass\composite.js" />
+    <Content Include="Scripts\jQueryPlugins\gridster\jquery.gridster.css" />
+    <Content Include="Scripts\jQueryPlugins\gridster\jquery.gridster.js" />
+    <Content Include="Scripts\jQueryPlugins\gridster\jquery.gridster.min.css" />
+    <Content Include="Scripts\jQueryPlugins\gridster\jquery.gridster.min.js" />
+    <Content Include="Scripts\jQueryPlugins\gridster\jquery.gridster.with-extras.js" />
+    <Content Include="Scripts\jQueryPlugins\gridster\jquery.gridster.with-extras.min.js" />
     <Content Include="Scripts\MockJS\mock-min.js" />
     <Content Include="Scripts\MockJS\mock.js" />
     <Content Include="Scripts\Modules\Common\js_extend.js" />
@@ -524,6 +530,7 @@
     <Content Include="Scripts\Knockout\knockout-3.4.0.debug.js" />
     <Content Include="Scripts\Knockout\knockout-3.4.0.js" />
     <Content Include="Scripts\Knockout\plugin\knockout.mapping-latest.js" />
+    <Content Include="Scripts\Modules\Common\Wrapper\gridster.js" />
     <Content Include="Scripts\Modules\ViewJs\Layout\Sidebar.js" />
     <Content Include="Scripts\Modules\ViewJs\UserDemo\UserDemoList.js" />
     <Content Include="Scripts\requireJS\require.js" />
@@ -881,6 +888,7 @@
     <Content Include="Views\ToolDemo\Dialog.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\RedisDemo\Index.cshtml" />
+    <Content Include="Views\ToolDemo\Gridster.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-xs-6 col-md-3">
                 <div class="input-group input-group-sm">
-                    <span class="input-group-addon bold">Name</span><input class="form-control" type="text" />
+                    <span class="input-group-addon bold">Name</span><input id="txt-name" class="form-control" type="text" />
                 </div>
             </div>
             <div class="col-xs-6 col-md-3">
@@ -99,6 +99,7 @@
         <div class="row">
             <div class="col-md-12">
                 <button id="btn_mock_menu" class="btn btn-info btn-sm"><i class="icon-pencil"></i>Mock</button>
+                <button id="btn_tool_menu" class="btn btn-success btn-sm"><i class="icon-magic"></i>Tool</button>
             </div>
         </div>
         <div class="emptyRow"></div>
@@ -112,8 +113,8 @@
             </div>
             <div class="col-md-6">
                 <div class="input-group input-group-sm">
-                    <span class="input-group-addon bold">父节点ID</span>
-                    <input class="form-control" data-bind="value: ParentId"/>
+                    <span class="input-group-addon bold">父节点</span>
+                    <input id="txt-parent_id" class="form-control" />
                 </div>
             </div>
         </div>

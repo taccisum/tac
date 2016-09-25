@@ -27,7 +27,8 @@ namespace Practice
 
             //jquery插件css
             bundles.Add(new StyleBundle("~/bundles/css/jquery/plugins")
-                .Include("~/Scripts/jQueryPlugins/Datatables/jquery.dataTables.css"));
+                .Include("~/Scripts/jQueryPlugins/Datatables/jquery.dataTables.css",
+                "~/Scripts/jQueryPlugins/gridster/jquery.gridster.css"));
 
 
             //ace模板的css(必须放在其他样式之后，以ace的样式覆盖原有样式)

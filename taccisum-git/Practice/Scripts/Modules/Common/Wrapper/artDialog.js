@@ -7,7 +7,7 @@ define(["artDialog"], function () {
     var btn = {
         "cancel": {
             id: "cancel",
-            value: "<i class='icon-remove'></i>取消",
+            value: "<i class='icon-remove'></i>&nbsp;取消",
             callback: function() {
                 return true;
             },
@@ -15,7 +15,7 @@ define(["artDialog"], function () {
         },
         "ok": {
             id: "ok",
-            value: "<i class='icon-ok'></i>确认",
+            value: "<i class='icon-ok'></i>&nbsp;确认",
             callback: function() {
                 return true;
             },

@@ -14,6 +14,11 @@ define(function () {
         var $container = $(appendTo);
 
         /**
+         * @desc 菜单数据（数组）
+         */
+        this.menus = menus;
+
+        /**
          * @desc 菜单数据（通过组合模式构建的Component对象）
          */
         this.tree = root;

@@ -22,7 +22,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
          * @author tac
          * @desc 指定一个table标签，为其为基础生成datatables
          * @param {string} target 目标元素，格式为jquery-selector
-         * @param {} config 参数jquery-datatables开发文档——http://datatables.club/reference/  16/09/08
+         * @param {} config 参考jquery-datatables开发文档——http://datatables.club/reference/  16/09/08
          * @returns {object} datatables实例
          */
         table: function(target, config) {

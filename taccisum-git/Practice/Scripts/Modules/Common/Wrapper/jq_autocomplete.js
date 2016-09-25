@@ -1,21 +1,26 @@
 ﻿/**
  * @author tac
  * @desc 封装jquery自动补全插件，使用缺省参数将其封装成模板
+ * @see jquery.js jquery-ui.js jq_extend.js
  */
 
-define(["jq_ui"], function() {
+define(["jq_ui"], function () {
     function DefConfig() {
         /**
          * 此处需注意：
          * 使用jq_autocomplete插件传入的对象数组必须含有value, label, desc(可选，这个是在原插件的基础上加的)字段
          */
-        this.source = [];
+        this.source = [];       //数据源
+        this.delay = 0;     //输入内容后autocomplete提示出现的时间间隔
+        this.height = 300;      //容器高度，内容超过该高度时将出现滚动条
+        this.width = 150;       //容器宽度，至少为目标input框的宽度，小于该宽度时填写width无效
+        this.zindex = 9999; //设置为9999使autocomplete框总显示在最上层
 
-        this.delay = 0;
-        this.appendTo = "#jq-ui-autocomplete-1";
-        this.height = 300;
-        this.width = 150;
-        this.zindex = 1000; //设置为1000使autocomplete框总显示在最上层
+        //已失效参数
+        this.appendTo = "";     //封装后该配置填写无效，容器会自动创建，可通过id属性配置自动创建的窗器id
+
+        //自定义配置参数
+        this.id = null;     //autocomplete容器的id，若不填写，则默认为一串随机生成的guid
     }; //默认配置
 
     return {
@@ -30,7 +35,6 @@ define(["jq_ui"], function() {
                     $this.val(ui.item.label);
                     $this.attr("data-val", ui.item.value);
 
-                    //todo:: 这个地方及下面使用了$.isFunction，依赖了jq_extend.js，考虑去除这些依赖
                     if ($.isFunction(config.focus)) {
                         config.focus();
                     }
@@ -52,6 +56,14 @@ define(["jq_ui"], function() {
                 }
             });
 
+            if (conf.id == null) {
+                conf.id = $.newPseudoGuid();
+            }
+            if ($("#" + conf.id).length <= 0) {
+                $("#jq-ui-autocomplete-container").append($("<div id='" + conf.id + "' class='ui-front'></div>"));
+            }
+
+            conf.appendTo = "#" + conf.id;
 
             var $r = $this.autocomplete(conf);
 
@@ -70,7 +82,7 @@ define(["jq_ui"], function() {
                 return $html.append("<hr style='height:5px; margin:0;' />").appendTo(ul);
             };
 
-            $(conf.appendTo + " .ui-autocomplete").css({
+            $("#" + conf.id + " .ui-autocomplete").css({
                 "max-height": conf.height + "px",
                 "min-width": conf.width + "px",
                 "overflow-y": "auto",

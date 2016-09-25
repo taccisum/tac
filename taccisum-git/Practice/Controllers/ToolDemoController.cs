@@ -73,5 +73,15 @@ namespace Practice.Controllers
             return View();
         }
         #endregion
+
+
+        #region Gridster
+
+        public ActionResult Gridster()
+        {
+            return View();
+        }
+
+        #endregion
     }
 }

@@ -29,6 +29,7 @@
             "w_datatables": wrapper + "datatables",
             "w_art_dialog": wrapper + "artDialog",
             "w_jq_ac": wrapper + "jq_autocomplete",
+            "w_gridster": wrapper + "gridster",
             "mockjs": scripts + "MockJS/mock",
             "composite": scripts + "CommonClass/composite",
             "list": scripts + "CommonClass/list",
@@ -37,6 +38,7 @@
             "jq_ui": "../../css/ace/js/jquery-ui-1.10.3.full.min",
             "datatables": scripts + "jQueryPlugins/Datatables/jquery.dataTables",
             "artDialog": scripts + "jQueryPlugins/artDialog/dist/dialog-plus",
+            "gridster": scripts + "jQueryPlugins/gridster/jquery.gridster",
         },
         shim: {
             //为一些非amd规范的js提供依赖
