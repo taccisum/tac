@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "LayoutList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+    <script>
+        require(["ViewJs/Layout/LayoutList"], function (module) {
+            module.init();
+        });
+    </script>
+}
+
+<table id="table_layout" class="table table-hover">
+    <thead>
+        <tr>
+            <th>布局名称</th>
+            <th>创建时候</th>
+            <th>修改时间</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- ko foreach: layout_list -->
+        <tr>
+            <td><span data-bind="text: Name"></span></td>
+            <td><span data-bind="text: CreatedOn"></span></td>
+            <td><span data-bind="text: ModifiedOn"></span></td>
+            <td><a class="click" data-bind="click: $parent.adjust">调整布局</a>&nbsp;<a class="click" data-bind="click: $parent.alter">修改参数</a></td>
+        </tr>
+        <!-- /ko -->
+    </tbody>
+</table>

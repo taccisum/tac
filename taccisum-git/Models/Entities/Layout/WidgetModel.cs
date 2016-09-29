@@ -1,9 +1,17 @@
-﻿using Model.Entity;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using Model.Entity;
 
 namespace Model.Entities.Layout
 {
+    [Table("dbo.LayoutWidget")]
     public class WidgetModel : DTO
     {
+        /// <summary>
+        /// Widgets关联的LayoutId
+        /// </summary>
+        public Guid LayoutId { get; set; }
+
         /// <summary>
         /// todo:: widget名称，保留字段，未使用
         /// </summary>
@@ -42,6 +50,21 @@ namespace Model.Entities.Layout
         /// <summary>
         /// widget显示内容
         /// </summary>
-        public string Content { get; set; }
+        public string Body { get; set; }
+
+
+        public WidgetModel UpdateTo(WidgetModel model)
+        {
+            this.Name = model.Name;
+            this.Code = model.Code;
+            this.ExtData = model.ExtData;
+            this.CoordX = model.CoordX;
+            this.CoordY = model.CoordY;
+            this.SizeCol = model.SizeCol;
+            this.SizeRow = model.SizeRow;
+            this.Color = model.Color;
+            this.Body = model.Body;
+            return this;
+        }
     }
 }

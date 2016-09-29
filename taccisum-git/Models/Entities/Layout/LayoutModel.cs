@@ -8,6 +8,7 @@ using Model.Entity;
 
 namespace Model.Entities.Layout
 {
+    [Table("dbo.Layout")]
     public class LayoutModel : DTO
     {
         /// <summary>
@@ -39,10 +40,16 @@ namespace Model.Entities.Layout
         /// </summary>
         public int VerticalMargin { get; set; }
 
-        /// <summary>
-        /// todo:: 
-        /// </summary>
-        [ForeignKey("ID")]
-        public ICollection<WidgetModel> Widgets { get; set; }
+        public LayoutModel UpdateTo(LayoutModel model)
+        {
+            this.Name = model.Name;
+            this.Cols = model.Cols;
+            this.Rows = model.Rows;
+            this.WidgetWidth = model.WidgetWidth;
+            this.WidgetHeight = model.WidgetHeight;
+            this.HorizontalMargin = model.HorizontalMargin;
+            this.VerticalMargin = model.VerticalMargin;
+            return this;
+        }
     }
 }

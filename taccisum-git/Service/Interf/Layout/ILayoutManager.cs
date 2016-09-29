@@ -20,6 +20,26 @@ namespace Service.Interf.Layout
         /// </summary>
         /// <returns></returns>
         IQueryable<WidgetModel> GetWidgets();
+
+        /// <summary>
+        /// 新增一个widget
+        /// </summary>
+        /// <param name="widget"></param>
+        /// <returns></returns>
+        WidgetModel AddWidget(WidgetModel widget);
+        /// <summary>
+        /// 删除widget
+        /// </summary>
+        /// <param name="id"></param>
+        void DeleteWidget(Guid id);
+
+        /// <summary>
+        /// 更新Widget
+        /// </summary>
+        /// <param name="widget"></param>
+        /// <returns></returns>
+        void UpdateWidget(WidgetModel widget);
+
         /// <summary>
         /// 更新变更过的widgets
         /// </summary>

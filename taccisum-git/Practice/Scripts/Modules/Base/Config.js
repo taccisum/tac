@@ -17,7 +17,7 @@
             //public
             "base": base + "BaseModule",
             "mockdata": common + "mockdata",
-            "sidebar": "ViewJs/Layout/Sidebar",
+            "sidebar": "ViewJs/Shared/Sidebar",
 
 
             //private

@@ -531,7 +531,9 @@
     <Content Include="Scripts\Knockout\knockout-3.4.0.js" />
     <Content Include="Scripts\Knockout\plugin\knockout.mapping-latest.js" />
     <Content Include="Scripts\Modules\Common\Wrapper\gridster.js" />
-    <Content Include="Scripts\Modules\ViewJs\Layout\Sidebar.js" />
+    <Content Include="Scripts\Modules\ViewJs\Layout\LayoutList.js" />
+    <Content Include="Scripts\Modules\ViewJs\Layout\LayoutManager\LayoutManagerCreater.js" />
+    <Content Include="Scripts\Modules\ViewJs\Shared\Sidebar.js" />
     <Content Include="Scripts\Modules\ViewJs\UserDemo\UserDemoList.js" />
     <Content Include="Scripts\requireJS\require.js" />
     <Content Include="Scripts\Modules\Common\Wrapper\artDialog.js" />
@@ -811,15 +813,6 @@
     <Content Include="Scripts\ueditor\ueditor.config.js" />
     <Content Include="Scripts\ueditor\ueditor.parse.js" />
     <Content Include="Scripts\ueditor\ueditor.parse.min.js" />
-    <Content Include="uploadfiles\14659ae5-f86e-408c-92dc-d64a2290eecc.jpg" />
-    <Content Include="uploadfiles\4906975e-d094-4bc5-9b3f-dc39d0ae4d73.png" />
-    <Content Include="uploadfiles\53cc1acc-b2e6-41f8-be22-402781ac13b8.png" />
-    <Content Include="uploadfiles\73b9b670-f6a8-4855-98a1-0504556af94f.jpg" />
-    <Content Include="uploadfiles\7615efa1-178f-437f-a6fe-45a06d0f23e3.jpg" />
-    <Content Include="uploadfiles\a3dc5f2a-6a91-4995-a823-6e5240a73376.png" />
-    <Content Include="uploadfiles\b650aaac-8129-4f3e-b532-cc015e5cfcd8.png" />
-    <Content Include="uploadfiles\cbcd4eae-3322-4348-8a8b-4fb044b44cf7.jpg" />
-    <Content Include="uploadfiles\efd4d39e-c12e-4735-988b-33f44be37d34.jpg" />
     <Content Include="Scripts\Modules\Base\BaseModule.js" />
     <Content Include="Scripts\Modules\Base\Config.js" />
     <Content Include="Scripts\Modules\ViewJs\Menu\MenuList.js" />
@@ -837,6 +830,7 @@
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\CommonInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -890,6 +884,7 @@
     <Content Include="Views\RedisDemo\Index.cshtml" />
     <Content Include="Views\ToolDemo\Gridster.cshtml" />
     <Content Include="Views\ToolDemo\JCrop.cshtml" />
+    <Content Include="Views\Layout\LayoutList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -899,6 +894,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="uploadfiles\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomerException\Common.CustomerException.csproj">

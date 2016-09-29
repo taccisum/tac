@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using Model.Entities;
+using Model.Entities.Layout;
 using Model.Entity;
 
 namespace Repository.Context
@@ -22,6 +23,9 @@ namespace Repository.Context
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Sku> Skus { get; set; }
         public DbSet<Band> Bands { get; set; }
+
+        public DbSet<LayoutModel> LayoutModel { get; set; }
+        public DbSet<WidgetModel> WidgetModel { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Entities.Layout;
+using Repository.Dao.Interf.Layout;
 using Service.Base;
 using Service.Interf.Layout;
 
@@ -13,10 +14,13 @@ namespace Service.Impl.Layout
     [Export(typeof(ILayoutService))]
     public class LayoutServiceImpl: BaseService, ILayoutService
     {
+        [Import]
+        protected ILayoutModelDao LayoutModelDao { get; set; }
 
+        
         public IQueryable<LayoutModel> GetAllLayout()
         {
-            throw new NotImplementedException();
+            return LayoutModelDao.Query();
         }
 
         public ILayoutManager GetLayoutManager(Guid layoutId)
@@ -46,6 +50,21 @@ namespace Service.Impl.Layout
             }
 
             public virtual IQueryable<WidgetModel> GetWidgets()
+            {
+                throw new NotImplementedException();
+            }
+
+            public WidgetModel AddWidget(WidgetModel widget)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void DeleteWidget(Guid id)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void UpdateWidget(WidgetModel widget)
             {
                 throw new NotImplementedException();
             }
