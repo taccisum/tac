@@ -24,19 +24,19 @@ namespace Practice
             //字体图标
             bundles.Add(new StyleBundle("~/bundles/css/icon-font")
                 .Include("~/css/ace/css/font-awesome.min.css", new CssRewriteUrlTransform()));      //在font-awesome中使用了相对路径引用（.woff文件），这里必须使用CssRewriteUrlTransform将css文件中的路径都转换为绝对路径，否则会导致404
-
-            //jquery插件css
-            bundles.Add(new StyleBundle("~/bundles/css/jquery/plugins")
-                .Include("~/Scripts/jQueryPlugins/Datatables/jquery.dataTables.css",
-                "~/Scripts/jQueryPlugins/gridster/jquery.gridster.css"));
-
-
+            
             //ace模板的css(必须放在其他样式之后，以ace的样式覆盖原有样式)
             bundles.Add(new StyleBundle("~/bundles/css/ace")
                 .Include("~/css/ace/css/ace.min.css",
                     "~/css/ace/css/ace-skins.min.css",
-                    "~/css/ace/css/jquery-ui-1.10.3.full.min.css",
-                    "~/css/ace/css/datepicker.css"));
+                    "~/css/ace/css/jquery-ui-1.10.3.full.min.css",      //todo::
+                    "~/css/ace/css/datepicker.css"));       //todo::
+
+            //jquery插件css
+            bundles.Add(new StyleBundle("~/bundles/css/jquery/plugins")
+                .Include("~/Scripts/jQueryPlugins/Datatables/jquery.dataTables.css",
+                "~/Scripts/jQueryPlugins/artDialog/css/ui-dialog.css",
+                "~/Scripts/jQueryPlugins/gridster/jquery.gridster.css"));
 
             //系统通用的css
             bundles.Add(new StyleBundle("~/bundles/css/common")

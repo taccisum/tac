@@ -10,6 +10,16 @@ namespace Model.Entities.Layout
         public string Name { get; set; }
 
         /// <summary>
+        /// 模块编码
+        /// </summary>
+        public string Code { get; set; }
+
+        /// <summary>
+        /// 扩展数据
+        /// </summary>
+        public string ExtData { get; set; }
+
+        /// <summary>
         /// x坐标（即第CoordX列）
         /// </summary>
         public int CoordX { get; set; }

@@ -794,7 +794,7 @@ if (css) {
             $('base').before(css);
         } else {
             $('head').append(css);
-        } 
+        }
     }
 }
 
