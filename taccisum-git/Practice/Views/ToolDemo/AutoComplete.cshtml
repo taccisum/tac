@@ -1,6 +1,12 @@
-﻿
+﻿@using Practice.Models
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "systools - AutoComplete";
+    ViewBag.Crumbs = new Crumbs(new List<CrumbPath>()
+    {
+        new CrumbPath("前端工具演示"),
+        new CrumbPath("AutoComplete"),
+    });
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

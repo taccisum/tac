@@ -826,12 +826,14 @@
     <Compile Include="App_Start\Mef\MefDependencySolver.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Attributes\RequireAuthorizeAttribute.cs" />
+    <Compile Include="Controllers\Attributes\LogAttribute.cs" />
     <Compile Include="Controllers\BandController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\CommonInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\MvcTestController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RedisDemoController.cs" />
@@ -842,6 +844,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Crumbs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Scripts\ueditor\net\App_Code\ConfigHandler.cs" />
@@ -863,7 +866,6 @@
     <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.woff" />
     <Content Include="Views\ToolDemo\DataTables.cshtml" />
-    <Content Include="Views\Shared\Quote.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
@@ -885,6 +887,8 @@
     <Content Include="Views\ToolDemo\Gridster.cshtml" />
     <Content Include="Views\ToolDemo\JCrop.cshtml" />
     <Content Include="Views\Layout\LayoutList.cshtml" />
+    <Content Include="Views\MvcTest\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialNavbar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

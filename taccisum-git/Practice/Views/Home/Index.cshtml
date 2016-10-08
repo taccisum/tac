@@ -1,13 +1,18 @@
-﻿
+﻿@using Practice.Models
+
 @{
     ViewBag.Title = "tac - 首页";
+    ViewBag.Crumbs = new Crumbs(new List<CrumbPath>()
+    {
+        new CrumbPath("首页"),
+        new CrumbPath("Index"),
+    });
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section head{
     <script>
-
-        $(function() {
+        require(["systools"], function (tool) {
             $("#btn-add_btn").on("click", function() {
                 $("#div1").append($("<button class='btn btn-success btn-sm btn-test' style='margin-left: 5px; margin-right: 5px;'><i class='icon-apple'></i>alert</button>"));
             });
@@ -16,9 +21,24 @@
                 alert("aasd");
             });
 
+            $.post("/MvcTest/Aop?tac=1&dd=2&none=3", {
+                a: "1",
+                b: "2",
+                c: "3",
+                d: {
+                    da: "11",
+                    db: "22",
+                    dc: "33",
+                    dd: {
+                        dda: "11"
+                    }
+                }
+
+
+            }, function(r) {
+
+            });
         });
-
-
     </script>
 }
 

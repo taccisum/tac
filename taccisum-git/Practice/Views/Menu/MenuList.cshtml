@@ -1,6 +1,12 @@
-﻿
+﻿@using Practice.Models
+
 @{
     ViewBag.Title = "Tac - 菜单管理";
+    ViewBag.Crumbs = new Crumbs(new List<CrumbPath>()
+    {
+        new CrumbPath("系统管理"),
+        new CrumbPath("菜单管理"),
+    });
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

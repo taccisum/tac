@@ -79,3 +79,7 @@ table.dataTable tbody tr.selected {
 .input-group.input-group-merge > span.input-group-btn.right > button   {
     border-left: none;
 }
+
+.breadcrumb {
+    font-size: 12px;
+}

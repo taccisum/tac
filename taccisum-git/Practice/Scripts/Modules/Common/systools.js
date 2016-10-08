@@ -40,6 +40,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
             ac.selector = target;
             return ac.load(config);
         },
+
         /**
          * @author tac
          * @desc 弹出一个dialog（需使用返回值手动调用show()或showModal()显示dialog实例），显示指定内容
@@ -49,6 +50,46 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
         dialog: function (config) {
             return dg.dialog(config);
         },
+
+        /**
+         * @author tac
+         * @desc 弹出一个dialog，通过selector指定页面上的html作为content（该html会从页面上被移除并缓存为字符串）
+         * @todo::
+         * @param {} selector jQuery选择器
+         * @param {} callback 
+         * @returns {} 
+         */
+        easydialog: function (selector, title, callback) {
+            if (!window.easydialog_cache) {
+                window.easydialog_cache = {};
+            }
+
+            var html = "";
+            if (!window.easydialog_cache[selector]) {
+                if ($(selector)[0]) {
+                    html = $(selector)[0].outerHTML;
+                    window.easydialog_cache[selector] = html;
+                    $(selector).remove();
+                }
+            } else {
+                html = window.easydialog_cache[selector];
+            }
+
+            var $target = $(html);
+
+
+            var d = dg.dialog({
+                id: selector,
+                title: $target.data("title") || "系统窗口",
+                content: $target,
+                width: $target.data("width"),
+                height: $target.data("height"),
+
+            });
+            d.showModal();
+            return d;
+        },
+
         /**
          * @author tac
          * @desc 弹出一个message box（排版固定），显示指定内容

@@ -1,5 +1,10 @@
-﻿@{
+﻿@using Practice.Models
+@{
     ViewBag.Title = "Beacher-品牌管理";
+    ViewBag.Crumbs = new Crumbs(new List<CrumbPath>()
+    {
+        new CrumbPath("品牌管理"),
+    });
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }

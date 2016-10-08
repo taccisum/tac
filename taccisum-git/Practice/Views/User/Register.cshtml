@@ -1,5 +1,11 @@
-﻿@{
+﻿@using Practice.Models
+@{
     ViewBag.Title = "Register";
+    ViewBag.Crumbs = new Crumbs(new List<CrumbPath>()
+    {
+        new CrumbPath("系统管理"),
+        new CrumbPath("注册"),
+    });
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
