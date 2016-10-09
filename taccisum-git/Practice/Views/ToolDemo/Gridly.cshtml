@@ -1,0 +1,62 @@
+﻿@using Practice.Models
+
+@{
+    ViewBag.Title = "Gridly";
+    ViewBag.Crumbs = new Crumbs(new List<CrumbPath>()
+    {
+        new CrumbPath("前端工具演示"),
+        new CrumbPath("Gridly"),
+    });
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+@section head{
+    <script src="/Scripts/jQueryPlugins/gridly/javascripts/jquery.gridly.js"></script>
+    <link href="/Scripts/jQueryPlugins/gridly/stylesheets/jquery.gridly.css" rel="stylesheet"/>
+
+    <style type="text/css">
+        .gridly {
+            position: relative;
+            width: 960px;
+        }
+
+        .brick.small {
+            width: 140px;
+            height: 140px;
+        }
+
+        .brick.large {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+
+    <script>
+        $(function() {
+            $('.gridly').gridly({
+                base: 60, // px 
+                gutter: 20, // px
+                columns: 12
+            });
+        })
+        
+    </script>
+
+}
+
+@section tips{
+    <span class="bold">基于jquery.gridly.js封装的系统工具tool.gridly的使用示例</span>
+    <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+}
+
+
+<div class="gridly">
+    <div class="brick small"></div>
+    <div class="brick small"></div>
+    <div class="brick large"></div>
+    <div class="brick small"></div>
+    <div class="brick small"></div>
+    <div class="brick large"></div>
+</div>
+

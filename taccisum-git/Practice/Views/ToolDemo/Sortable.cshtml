@@ -1,0 +1,17 @@
+﻿@using Practice.Models
+
+@{
+    ViewBag.Title = "Sortable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Crumbs = new Crumbs(new List<CrumbPath>()
+    {
+        new CrumbPath("前端工具演示"),
+        new CrumbPath("Sortable"),
+    });
+}
+
+@section head{
+    <script src="/Scripts/jQueryPlugins/sortable/jquery.sortable.js"></script>
+}
+

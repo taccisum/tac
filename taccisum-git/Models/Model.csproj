@@ -98,6 +98,10 @@
       <Project>{c2be7b4b-0101-485b-a92d-7acbc42646f8}</Project>
       <Name>Common.Global</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HelperUnit\Common.Tool.csproj">
+      <Project>{8142b85f-b0c3-49ca-a3f7-fd4e7dae410d}</Project>
+      <Name>Common.Tool</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,6 +10,7 @@ using Common.Tool.Units;
 using IoC.Manager;
 using log4net;
 using Model.Common;
+using Practice.Controllers.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Sys;
 
@@ -18,11 +19,13 @@ namespace Practice.Controllers
     [Export]
     public class UserController : BaseController
     {
+        [LogRequestFilter(false)]
         public ActionResult Login()
         {
             return View();
         }
 
+        [LogRequestFilter(false)]
         public ActionResult Register()
         {
             return View();
@@ -31,8 +34,6 @@ namespace Practice.Controllers
 
         public ActionResult Verify(string uid, string psd, bool remeber)
         {
-            Log.Info("用户\"" + uid + "\"尝试验证登录");
-
             var user = SysUserService.LoginVerify(uid, psd);
             var valid = user.ID != Guid.Empty;
 
@@ -45,12 +46,16 @@ namespace Practice.Controllers
                 }
                 CookiesHelper.Add(GlobalConfig.CURRENT_USER.ToMD5(), user.ID.ToString(), DateTime.Now.AddHours(2));
             }
+            else
+            {
+                Log.Info("用户\"" + uid + "\"登录失败");
+            }
 
-            Log.Info("用户\"" + uid + "\"登录" + (valid ? "成功" : "失败"));
 
             return Json(valid, JsonRequestBehavior.DenyGet);
         }
 
+        [LogRequestFilter(false)]
         public ActionResult RegisterAccount(string uid, string psd, string rePsd)
         {
             if (psd != rePsd)
@@ -73,6 +78,7 @@ namespace Practice.Controllers
             }
         }
 
+        [LogRequestFilter(false)]
         public ActionResult Logout()
         {
             CookiesHelper.Remove(GlobalConfig.CURRENT_USER);

@@ -56,7 +56,8 @@ define(["systools", "w_gridster"], function (tool, gridster) {
                     });
                     $widget.css({
                         "background-color": item.color || "gray",
-                        "cursor": conf.cursor || "pointer"
+                        "cursor": conf.cursor || "pointer",
+                        "opacity": 0.8
                     });
                     $widget.html(item.content || "widget");
                     $el.append($widget);

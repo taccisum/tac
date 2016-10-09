@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Model.Common;
 using Model.Entity;
 using Model.Models;
+using Practice.Controllers.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Bands.Product;
 
@@ -18,7 +19,7 @@ namespace Practice.Controllers
         [Import]
         protected IProductBandService ProductBandService { get; set; }
 
-        // GET: /Band/
+        [LogRequestFilter(false)]
         public ActionResult Index()
         {
             return View();

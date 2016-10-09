@@ -47,8 +47,7 @@ namespace Practice.Controllers
                 bb = "b"
             };
         }
-
-        [LogAttribute]
+        
         public JsonResult Aop()
         {
             return Json(new

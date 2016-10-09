@@ -15,7 +15,7 @@ namespace Service.Base
         private ILog _log;
         protected ILog Log
         {
-            get { return _log ?? (_log = Log4NetHelper.GetLogger("Service." + this.GetType().Name)); }
+            get { return _log ?? (_log = LogManager.GetLogger("Service." + this.GetType().Name)); }
         }
 
         private Stopwatch _watch;

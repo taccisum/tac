@@ -24,7 +24,7 @@ namespace Practice.Controllers.Base
         protected IIoC IoC { get { return _ioc ?? (_ioc = IoCManager.GetInstance().Create()); } }
 
         private ILog _log;
-        protected ILog Log { get { return _log ?? (_log = Log4NetHelper.GetLogger("Controller." + this.GetType().Name)); } }
+        protected ILog Log { get { return _log ?? (_log = LogManager.GetLogger("Controller." + this.GetType().Name)); } }
 
         protected SysUser CurrentUser
         {
@@ -74,11 +74,9 @@ namespace Practice.Controllers.Base
             catch (Exception e)
             {
 #if DEBUG
-                //如果是debug模式，则将系统异常信息打印到输出窗口并直接返回给前端展示
                 Debug.Write(this.GetType().Name + "在执行的过程中发生了异常: " + e.ToString());
                 return Json(Failure(errMsg, e.ToString()), behavior);
 #else
-                Log.Error(e.ToString());        //如果是release，则只记录异常log。
                 return Json(Failure(errMsg, "系统内部异常，详情请查看日志"), behavior);
 #endif
             }
@@ -109,10 +107,14 @@ namespace Practice.Controllers.Base
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            base.OnException(filterContext);
-            //todo:: 在这里编写语句修改发生异常时返回的内容
-
             Log.Error("调用API的过程中发生了未经处理的异常", filterContext.Exception);
+#if DEBUG
+            filterContext.Result = Json(ApiResult.FailedResult("调用API的过程中发生了未经处理的异常", filterContext.Exception.Message));
+#else
+            filterContext.Result = Json(ApiResult.FailedResult("调用API的过程中发生了未经处理的异常", "详情请查看日志"));
+#endif
+
+            base.OnException(filterContext);
         }
     }
 }

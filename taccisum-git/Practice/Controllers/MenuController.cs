@@ -7,6 +7,7 @@ using Model.Entity;
 using Model.Models;
 using System.ComponentModel.Composition;
 using Model.CommonModel;
+using Practice.Controllers.Attributes;
 using Practice.Controllers.Base;
 using Service;
 using Service.Interf.Sys;
@@ -19,12 +20,13 @@ namespace Practice.Controllers
         [Import]
         protected ISysMenuService MenuService { get; set; }
 
+        [LogRequestFilter(false)]
         public ActionResult Test1()
         {
             return View();
         }
 
-        // GET: Menu
+        [LogRequestFilter(false)]
         public ActionResult MenuList()
         {
             return View();

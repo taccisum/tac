@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Tool.Extend;
 
 namespace Model.Common
 {
@@ -34,7 +35,6 @@ namespace Model.Common
         /// 生成一个失败的Result，返回数据默认为null
         /// </summary>
         /// <param name="msg"></param>
-        /// <param name="data"></param>
         /// <param name="exception"></param>
         /// <returns></returns>
         public static ApiResult FailedResult(string msg, string exception = "")
@@ -46,6 +46,26 @@ namespace Model.Common
                 Message = msg,
                 Exception = exception
             };
+        }
+
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            if (Success)
+            {
+                sb.Append("succeed in execute action. ");
+                sb.Append("msg: " + Message + " ");
+                sb.Append("result data: " + Data.ToJson());
+            }
+            else
+            {
+                sb.Append("fail to execute action. ");
+                sb.Append("msg: " + Message + " ");
+                sb.Append("exception: " + Exception);
+            }
+
+            return sb.ToString();
         }
     }
 }

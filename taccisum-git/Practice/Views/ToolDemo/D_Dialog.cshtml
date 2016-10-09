@@ -1,0 +1,88 @@
+﻿@using Practice.Models
+
+@{
+    ViewBag.Title = "Msgbox";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Crumbs = new Crumbs(new List<CrumbPath>()
+    {
+        new CrumbPath("前端工具演示"),
+        new CrumbPath("artDialog", "/ToolDemo/Dialog"),
+        new CrumbPath("dialog"),
+    });
+}
+
+@section head{
+    <script>
+        require(["systools"], function (tool) {
+            var dialogHtml = {};
+
+            $("#div_dialog").on("click", ".dialog", function () {
+                var btn = $(this);
+                var divId = btn.data("html");
+
+                if ($.isNull(dialogHtml[divId])) {
+                    var $div = $("#" + divId);
+                    dialogHtml[divId] = $div.html();
+                    $div.remove();
+                }
+
+                tool.dialog({
+                    id: btn.data("id"),
+                    title: btn.data("title"),
+                    content: dialogHtml[divId],
+                    width: btn.data("width"),
+                    button: [
+                        { preset: "cancel" },
+                        {
+                            preset: "ok",
+                            callback: function () {
+                                alert("预置的ok按钮回调，预置按钮不写回调默认操作关闭对话框");
+                                return false;
+                            }
+                        },
+                        {
+                            id: "ok1",
+                            value: "<i class='icon-ok'></i>确认",
+                            callback: function () {
+                                alert("也可以自己定制，这里写按钮回调事件");
+                                return true;
+                            },
+                            cls: "btn btn-info btn-sm",
+                        },
+                    ],
+                    onshow: function () {
+                        alert("这里写加载完成事件");
+                    }
+                }).showModal();
+            });
+        })
+    </script>
+
+}
+
+@section tips{
+    <span class="bold">基于artDialog.js封装的系统工具tool.dialog的使用示例</span>
+    <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+}
+
+<div id="div_dialog">
+    <span class="bold">Dialog</span><br />
+    <button data-id="dialog-basic" data-html="div_basic" data-title="dialog-basic" data-width="400px" class="btn btn-success btn-sm dialog">basic</button>
+    <button data-id="dialog-basic1" data-html="div_basic1" data-title="dialog-basic1" data-width="700px" class="btn btn-success btn-sm dialog">basic1</button>
+</div>
+
+<div id="div_dialog_html" class="hidden">
+    <div id="div_basic">
+        <div>
+            <span class="icon-lightbulb"></span>&nbsp;
+            <span class="bold">在这里写您的Dialog内容~</span>
+        </div>
+    </div>
+    <div id="div_basic1">
+        <div>
+            <span class="icon-lightbulb"></span>&nbsp;
+            <span class="bold">这是另一个dialog，跟上一个只有长度不一样-..-</span>
+        </div>
+    </div>
+</div>
+

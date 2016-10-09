@@ -7,6 +7,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Practice.Controllers.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Orders.Product;
 
@@ -21,7 +22,8 @@ namespace Practice.Controllers
         protected IProductOrderItemService ProductOrderItemService { get; set; }
         private Order order ;
         private OrderItem orderItem;
-        
+
+        [LogRequestFilter(false)]
         public ActionResult OrderList()
         {
             return View();
@@ -45,6 +47,8 @@ namespace Practice.Controllers
             return Json(item,JsonRequestBehavior.AllowGet);
 
         }
+
+        [LogRequestFilter(false)]
         public ActionResult addOrder()
         {
             return View();

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Model.Common;
 using Model.Entity;
+using Practice.Controllers.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Sys;
 
@@ -47,6 +48,7 @@ namespace Practice.Controllers
             return Json(ApiResult.FailedResult("获取菜单信息失败"), JsonRequestBehavior.AllowGet);
         }
 
+        [LogRequestFilter(false)]
         public ActionResult NonAuthority()
         {
             return View();

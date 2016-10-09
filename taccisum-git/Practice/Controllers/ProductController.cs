@@ -11,6 +11,7 @@ using String = Common.Tool.Extend._String;
 using System.Collections;
 using System.ComponentModel.Composition;
 using Model.Entities;
+using Practice.Controllers.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Product;
 
@@ -23,13 +24,13 @@ namespace Practice.Controllers
         [Import]
         protected IProductService ProductService { get; set; }
 
-
-        // GET: /Product/
+        [LogRequestFilter(false)]
         public ActionResult Index()
         {
             return View();
         }
 
+        [LogRequestFilter(false)]
         public ActionResult ProductInfo()
         {
             return View();
@@ -43,7 +44,6 @@ namespace Practice.Controllers
             return Json(result, JsonRequestBehavior.DenyGet);
         }
 
-        [HttpPost]
         public ActionResult Upload(HttpPostedFileBase fileData)
         {
             ApiResult result;

@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Practice.Controllers.Attributes;
 using Practice.Controllers.Base;
 
 namespace Practice.Controllers
@@ -15,11 +16,13 @@ namespace Practice.Controllers
     public class ToolDemoController : BaseController
     {
         #region DataTables
+        [LogRequestFilter(false)]
         public ActionResult DataTables()
         {
             return View();
         }
 
+        [LogRequestFilter(false)]
         public ActionResult GetUserList(int pageindex)
         {
             if (Log.IsInfoEnabled)
@@ -61,6 +64,7 @@ namespace Practice.Controllers
         #endregion
 
         #region AutoComplete
+        [LogRequestFilter(false)]
         public ActionResult AutoComplete()
         {
             return View();
@@ -68,14 +72,27 @@ namespace Practice.Controllers
         #endregion
 
         #region Dialog
+        [LogRequestFilter(false)]
         public ActionResult Dialog()
+        {
+            return View();
+        }
+
+        [LogRequestFilter(false)]
+        public ActionResult D_Msgbox()
+        {
+            return View();
+        }
+
+        [LogRequestFilter(false)]
+        public ActionResult D_Dialog()
         {
             return View();
         }
         #endregion
 
         #region JCrop
-
+        [LogRequestFilter(false)]
         public ActionResult JCrop()
         {
             return View();
@@ -84,8 +101,26 @@ namespace Practice.Controllers
         #endregion
 
         #region Gridster
-
+        [LogRequestFilter(false)]
         public ActionResult Gridster()
+        {
+            return View();
+        }
+
+        #endregion
+
+        #region Sortable
+        [LogRequestFilter(false)]
+        public ActionResult Sortable()
+        {
+            return View();
+        }
+
+        #endregion
+
+        #region Gridly
+
+        public ActionResult Gridly()
         {
             return View();
         }
