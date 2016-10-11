@@ -32,11 +32,13 @@ namespace Practice.Controllers.Attributes
 
             if (isLogEnabled)
             {
-                var log = LogManager.GetLogger(filterContext.ActionDescriptor.ControllerDescriptor.ControllerName);
+                var log = LogManager.GetLogger("Filter." + typeof (LogRequestFilterAttribute).Name);
                 var request = filterContext.HttpContext.Request;
                 var sb = new StringBuilder();
 
-                sb.Append("\r\naction: " + filterContext.ActionDescriptor.ActionName + " will be invoked\r\n");
+                sb.Append("action will be invoked. \r\n");
+                sb.Append("controller: " + filterContext.ActionDescriptor.ControllerDescriptor.ControllerName + "\r\n");
+                sb.Append("action: " + filterContext.ActionDescriptor.ActionName + "\r\n");
                 sb.Append("type: " + request.HttpMethod + "\r\n");
                 if (!string.IsNullOrWhiteSpace(request.QueryString.ToString()))
                 {
@@ -52,7 +54,7 @@ namespace Practice.Controllers.Attributes
                     sb.Append("post data(ContentType: " + request.ContentType + "): \r\n　　" + temp);
                     sr.Close();
                 }
-                log.Info(sb.ToString());
+                log.Debug(sb.ToString());
             }
         }
 
@@ -60,10 +62,12 @@ namespace Practice.Controllers.Attributes
         {
             if (isLogEnabled)
             {
-                var log = LogManager.GetLogger(filterContext.ActionDescriptor.ControllerDescriptor.ControllerName);
+                var log = LogManager.GetLogger("Filter." + typeof(LogRequestFilterAttribute).Name);
                 var sb = new StringBuilder();
 
-                sb.Append("\r\naction: " + filterContext.ActionDescriptor.ActionName + " has been invoked\r\n");
+                sb.Append("action has been invoked. \r\n");
+                sb.Append("controller: " + filterContext.ActionDescriptor.ControllerDescriptor.ControllerName + "\r\n");
+                sb.Append("action: " + filterContext.ActionDescriptor.ActionName + "\r\n");
                 sb.Append("result type: " + filterContext.Result.GetType().Name + "\r\n");
 
                 if (filterContext.Result is JsonResult)
@@ -71,7 +75,7 @@ namespace Practice.Controllers.Attributes
                     sb.Append("result value: " + ((JsonResult) filterContext.Result).Data.ToString());
                 }
 
-                log.Info(sb.ToString());
+                log.Debug(sb.ToString());
             }
 
             base.OnActionExecuted(filterContext);

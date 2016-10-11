@@ -837,7 +837,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\Mef\MefDependencySolver.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Attributes\RequireAuthorizeAttribute.cs" />
+    <Compile Include="Controllers\Attributes\RequireAuthorizeFilterAttribute.cs" />
     <Compile Include="Controllers\Attributes\LogRequestFilterAttribute.cs" />
     <Compile Include="Controllers\BandController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
@@ -915,6 +915,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="uploadfiles\" />
+    <Folder Include="Views\PhotoUpload\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomerException\Common.CustomerException.csproj">
