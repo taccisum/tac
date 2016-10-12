@@ -29,7 +29,7 @@ namespace Common.Tool.Units
                 var temp = CallContext.GetData(GlobalConfig.DataSink.REDIS_CLIENT) as RedisClient;
                 if (temp == null)
                 {
-                    temp = new RedisClient(ConfigHelper.GetAppSettings("Redis"),int.Parse(ConfigHelper.GetAppSettings("RedisPort")));
+                    temp = new RedisClient(ConfigHelper.GetAppSetting("Redis"),int.Parse(ConfigHelper.GetAppSetting("RedisPort")));
                     CallContext.SetData(GlobalConfig.DataSink.REDIS_CLIENT, temp);
                 }
                 client = temp;

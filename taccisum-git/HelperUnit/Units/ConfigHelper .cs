@@ -14,7 +14,7 @@ namespace Common.Tool.Units
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string GetAppSettings(string key)
+        public static string GetAppSetting(string key)
         {
             return ConfigurationManager.AppSettings[key] ?? "";
         }
