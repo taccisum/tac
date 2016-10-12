@@ -50,5 +50,11 @@ namespace Practice
             log.Info("注册Mef依赖解析完成");
             #endregion
         }
+
+        protected void Application_End()
+        {
+            var log = LogManager.GetLogger("System.AppEnd");
+            log.Info("应用程序开始运行");
+        }
     }
 }
