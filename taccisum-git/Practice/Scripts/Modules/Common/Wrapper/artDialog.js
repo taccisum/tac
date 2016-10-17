@@ -41,9 +41,9 @@ define(["artDialog"], function () {
         this.title = "系统提示";
         this.quickClose = true;     //快速关闭（可通过esc或点击dialog以外的区域关闭）
         this.timer = 3000;      //存在时间
-        this.content = "<table style='width:100%; min-width: 220px; max-width:500px;'><tr>" +
+        this.content = "<table style='width:100%; min-width: 220px; max-width:600px;'><tr>" +
             "<td style='vertical-align:top;'><img style='height:70px; width:70px; margin-right: 20px;' src='@img' class='img-circle'></td>" +
-            "<td class='text-center' style='vertical-align: middle; width:100%; font-size:22px;'>@msg</td>" +
+            "<td class='text-center' style='vertical-align: middle; width:100%; font-size:22px; word-break:break-all'>@msg</td>" +
             "</tr></table>";
     }; //message box默认配置
 

@@ -16,13 +16,10 @@ namespace Practice.Controllers.Attributes
     /// todo::not implement
     /// 验证用户登陆filter
     /// </summary>
-
-    [Export]
     public class RequireAuthorizeFilterAttribute : AuthorizeAttribute
     {
         private bool isRequireAuthorize;
 
-        [Import]
         private SysUserAuthorizationService authorizationService = new SysUserAuthorizationService(); 
 
         public RequireAuthorizeFilterAttribute(bool isRequireAuthorize)
