@@ -14,10 +14,12 @@ namespace Common.Tool.Units
             return HttpContext.Current.Session[key];
         }
 
-        public static object Set(string key, object value)
+        public static void Set(string key, object value, int timeout)
         {
-            return HttpContext.Current.Session[key] = value;
+            HttpContext.Current.Session[key] = value;
+            HttpContext.Current.Session.Timeout = timeout > 0 ? timeout : 1;
         }
+
 
         public static void Remove(string key)
         {

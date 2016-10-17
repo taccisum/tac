@@ -64,7 +64,7 @@ namespace Service.Impl.Sys
         #region Private Methods
         private void SaveSession(CurrentUserInfo info)
         {
-            SessionHelper.Set(GlobalConfig.CURRENT_USER, info);
+            SessionHelper.Set(GlobalConfig.CURRENT_USER, info, 60);
         }
         #endregion
     }
