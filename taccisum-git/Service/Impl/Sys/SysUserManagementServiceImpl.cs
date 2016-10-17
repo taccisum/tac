@@ -13,21 +13,11 @@ using Service.Interf.Sys;
 
 namespace Service.Impl.Sys
 {
-    [Export(typeof(ISysUserService))]
-    public class SysUserServiceImpl : BaseService, ISysUserService
+    [Export(typeof(ISysUserManagementService))]
+    public class SysUserManagementServiceImpl : BaseService, ISysUserManagementService
     {
         [Import]
         protected ISysUserDao SysUserDao { get; set; }
-
-        public SysUser LoginVerify(SysUser info)
-        {
-             return SysUserDao.LoginVerify(info.Uid, info.Psd, EncryptType.MD5_32);
-        }
-
-        public SysUser LoginVerify(string uid, string psd)
-        {
-            return SysUserDao.LoginVerify(uid, psd, EncryptType.MD5_32);
-        }
 
         public SysUser Register(SysUser user)
         {

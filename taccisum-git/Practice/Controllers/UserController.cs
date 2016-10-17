@@ -19,6 +19,10 @@ namespace Practice.Controllers
     [Export]
     public class UserController : BaseController
     {
+        [Import]
+        protected ISysUserManagementService SysUserManagerService { get; set; }
+
+
         [LogRequestFilter(false)]
         public ActionResult Login()
         {
@@ -34,8 +38,8 @@ namespace Practice.Controllers
 
         public ActionResult Verify(string uid, string psd, bool remeber)
         {
-            var user = SysUserService.LoginVerify(uid, psd);
-            var valid = user.ID != Guid.Empty;
+            //todo::
+            var valid = AuthorizationService.LoginVerify(uid, psd);
 
             if (valid)
             {
@@ -44,7 +48,6 @@ namespace Practice.Controllers
                     //var token = _userBusiness.GenerateAutoLoginToken();
                     //CookiesHelper.Add(GlobalConfig.AUTOLOGIN.ToMD5(), token.ToString(), DateTime.Now.AddHours(2));
                 }
-                CookiesHelper.Add(GlobalConfig.CURRENT_USER.ToMD5(), user.ID.ToString(), DateTime.Now.AddHours(2));
             }
             else
             {
@@ -72,7 +75,7 @@ namespace Practice.Controllers
                 return Json(new ApiResult()
                 {
                     Success = true,
-                    Data = SysUserService.Register(uid, psd),
+                    Data = SysUserManagerService.Register(uid, psd),
                     Message = "注册成功"
                 }, JsonRequestBehavior.DenyGet);
             }

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Practice.Controllers.Attributes;
 using Practice.Controllers.Base;
+using Service.Interf.Sys;
 
 namespace Practice.Controllers
 {
@@ -15,6 +16,10 @@ namespace Practice.Controllers
     [Export]
     public class ToolDemoController : BaseController
     {
+        [Import]
+        protected Lazy<ISysUserManagementService> LazySysUserManagerService { get; set; }
+
+
         #region DataTables
         [LogRequestFilter(false)]
         public ActionResult DataTables()
@@ -29,7 +34,7 @@ namespace Practice.Controllers
                 Log.Info("获取用户列表", new ApplicationException("hahaha"));
 
 
-            var users = SysUserService.GetAll();
+            var users = LazySysUserManagerService.Value.GetAll();
             var list = users.Select(u => new
             {
                 u.ID,

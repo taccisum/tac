@@ -913,6 +913,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Api\" />
     <Folder Include="App_Data\" />
     <Folder Include="uploadfiles\" />
   </ItemGroup>

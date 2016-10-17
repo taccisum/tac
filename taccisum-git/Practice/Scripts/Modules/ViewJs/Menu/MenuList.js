@@ -71,16 +71,12 @@
                                 } else {
                                     params.ParentId = $("#txt-parent_id").data("val");
                                 }
-                                
 
-                                $.post("/Menu/Add", params, function (result) {
-                                    var icon = "n";
-                                    if (result.Success) {
-                                        icon = "y";
-                                        self.remove();
-                                        table.ajax.reload();
-                                    }
-                                    tool.msgbox(result.Message, icon);
+
+                                tool.post("/Menu/Add", params, function(result) {
+                                    self.remove();
+                                    table.ajax.reload();
+                                    tool.msgbox("添加成功", "y");
                                 });
 
                                 return false;
@@ -147,13 +143,9 @@
                 });
 
                 idList = idList.substr(0, idList.length - 1);
-                $.get("/Menu/Remove?idList=" + idList, function (result) {
-                    var icon = "n";
-                    if (result.Success) {
-                        icon = "y";
-                        table.ajax.reload();
-                    }
-                    tool.msgbox(result.Message, icon);
+                tool.get("/Menu/Remove?idList=" + idList, function(result) {
+                    table.ajax.reload();
+                    tool.msgbox("删除成功", "y");
                 });
             });
             $("#btn-disable").on("click", function () {
@@ -165,13 +157,9 @@
                 });
 
                 idList = idList.substr(0, idList.length - 1);
-                $.get("/Menu/Disable?idList=" + idList, function (result) {
-                    var icon = "n";
-                    if (result.Success) {
-                        icon = "y";
-                        table.ajax.reload();
-                    }
-                    tool.msgbox(result.Message, icon);
+                tool.get("/Menu/Disable?idList=" + idList, function(result) {
+                    table.ajax.reload();
+                    tool.msgbox("失能成功", "y");
                 });
             });
         }

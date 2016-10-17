@@ -8,6 +8,7 @@ using Common.CustomerException;
 using Common.Global;
 using Common.Tool.Extend;
 using Common.Tool.Units;
+using Model.Common;
 using Model.Entity;
 using Repository.Context;
 
@@ -104,11 +105,15 @@ namespace Repository.Generic
 
         private SysUser CheckCurrentUser()
         {
-            var userId = CookiesHelper.Get(GlobalConfig.CURRENT_USER).ToGuid();
+            var userInfo = SessionHelper.Get(GlobalConfig.CURRENT_USER) as CurrentUserInfo;
+            if (userInfo == null)
+                throw new CommonException("用户未登陆");
 
+            var userId = userInfo.UserID;
             var currentUser = db.SysUsers.FirstOrDefault(u => u.ID == userId);
             if (currentUser == null)
                 throw new CommonException("当前登陆用户不存在");
+
             return currentUser;
         }
 

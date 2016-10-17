@@ -13,7 +13,7 @@ namespace Practice.App_Start
         {
             filters.Add(new LogRequestFilterAttribute(true));
             filters.Add(new RequireAuthorizeFilterAttribute(true));
-            //filters.Add(new OnExceptionFilterAttribute());
+            filters.Add(new OnExceptionFilterAttribute());
         }
     }
 }

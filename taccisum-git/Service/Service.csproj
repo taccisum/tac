@@ -33,6 +33,10 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net-1.2.15\bin\net\4.5\release\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -42,6 +46,31 @@
     <Reference Include="System.ComponentModel.Composition.Registration" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +90,7 @@
     <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\NonePromotionStrategy.cs" />
     <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\PromotionStrategyCreater.cs" />
     <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\SinglePromotionStrategy.cs" />
+    <Compile Include="Impl\Sys\SysUserAuthorizationService.cs" />
     <Compile Include="Impl\Sys\SysUserDemoServiceImpl.cs" />
     <Compile Include="Interf\Bands\Product\IProductBandService.cs" />
     <Compile Include="Interf\Layout\ILayoutManager.cs" />
@@ -70,14 +100,16 @@
     <Compile Include="Impl\Product\ProductServiceImpl.cs" />
     <Compile Include="Impl\Product\ProductSkuServiceImpl.cs" />
     <Compile Include="Impl\Sys\SysMenuServiceImpl.cs" />
-    <Compile Include="Impl\Sys\SysUserServiceImpl.cs" />
+    <Compile Include="Impl\Sys\SysUserManagementServiceImpl.cs" />
     <Compile Include="Interf\Orders\Product\IProductOrderService.cs" />
     <Compile Include="Interf\Product\IProductService.cs" />
     <Compile Include="Interf\Product\IProductSkuService.cs" />
     <Compile Include="Interf\ShopCart\IShopCartService.cs" />
     <Compile Include="Interf\Sys\ISysMenuService.cs" />
     <Compile Include="Interf\Sys\ISysUserDemoService.cs" />
-    <Compile Include="Interf\Sys\ISysUserService.cs" />
+    <Compile Include="Interf\Sys\ISysUserManagementService.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Impl\ShopCart\z_readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

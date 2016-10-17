@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using Common.CustomerException;
 using Common.Global;
 using ServiceStack.Redis;
 
@@ -29,7 +30,7 @@ namespace Common.Tool.Units
                 var temp = CallContext.GetData(GlobalConfig.DataSink.REDIS_CLIENT) as RedisClient;
                 if (temp == null)
                 {
-                    temp = new RedisClient(ConfigHelper.GetAppSetting("Redis"),int.Parse(ConfigHelper.GetAppSetting("RedisPort")));
+                    temp = new RedisClient(ConfigHelper.GetAppSetting("Redis"), int.Parse(ConfigHelper.GetAppSetting("RedisPort")));
                     CallContext.SetData(GlobalConfig.DataSink.REDIS_CLIENT, temp);
                 }
                 client = temp;

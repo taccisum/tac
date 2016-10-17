@@ -15,10 +15,15 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
          * @param {object} config 配置参数，详细参考ajax请求参数
          * @returns {void} 
          */
-        ajax: function(config) {
+        ajax: function (config) {
             var conf = $.extend({
-                timeout: 5000,
+                timeout: 15000,     //请求超时默认时间
             }, config);
+
+            if (window.debug) {
+                conf.timeout = null;
+            }
+
 
             conf.success = function(result, textStatus) {
                 if (result.Success) {
@@ -169,9 +174,9 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
             if (!msg) {
                 throw new Error("excpbox(): msg is required");
             }
-            var content = "<div class='msgbox-text'><span class='text-left'>" + msg + "</span>";
+            var content = "<div class='msgbox-text text-left'><span>" + msg + "</span>";
             if (exception) {
-                content += "<br/><a href='javascript:alert(\"" + exception + "\")' color='red pull-right'>查看异常</a>";
+                content += "<br/><a href='javascript:alert(\"" + exception + "\")' class='red text-right'>查看异常</a>";
             }
             return sys.msgbox(content, "n", timer || 5000, title || "系统异常");
         }

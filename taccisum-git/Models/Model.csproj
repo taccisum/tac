@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ApiResult.cs" />
+    <Compile Include="Common\CurrentUserInfo.cs" />
     <Compile Include="Entities\Band.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -9,21 +9,8 @@ using Model.Models;
 
 namespace Service.Interf.Sys
 {
-    public interface ISysUserService
+    public interface ISysUserManagementService
     {
-        /// <summary>
-        /// 验证用户登陆
-        /// </summary>
-        /// <param name="info"></param>
-        /// <returns></returns>
-        SysUser LoginVerify(SysUser info);
-        /// <summary>
-        /// 验证用户登陆
-        /// </summary>
-        /// <param name="uid"></param>
-        /// <param name="psd"></param>
-        /// <returns></returns>
-        SysUser LoginVerify(string uid, string psd);
         /// <summary>
         /// 用户注册
         /// </summary>
@@ -45,6 +32,7 @@ namespace Service.Interf.Sys
         /// </summary>
         /// <returns></returns>
         IQueryable<SysUser> GetAll();
+
     }
 
 }
