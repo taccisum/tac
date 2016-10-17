@@ -84,19 +84,14 @@
                 });
             }
 
-
             //初始化
-            $.get("/CommonInfo/Menus", function (result) {
-                if (result.Success) {
-                    sidebar = sidebarManager.getInstance(result.Data, "#nav-list");
-                    sidebar.Load();
-                    sidebar.Open(sidebar.CurrentMenuId(), true);
+            tool.get("/CommonInfo/Menus", function(result) {
+                sidebar = sidebarManager.getInstance(result, "#nav-list");
+                sidebar.Load();
+                sidebar.Open(sidebar.CurrentMenuId(), true);
 
-                    bindMenuSearcher(result.Data);
-                    bindShortCuts();
-                } else {
-                    alert(result.Message);
-                }
+                bindMenuSearcher(result);
+                bindShortCuts();
             });
         });
     </script>

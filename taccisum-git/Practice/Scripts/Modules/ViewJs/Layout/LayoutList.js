@@ -12,7 +12,7 @@ define(["systools-plus", "ViewJs/Layout/LayoutManager/LayoutManagerCreater"], fu
                         layout_list: result.Data,
                         adjust: function (vm, event) {
                             //todo::
-                            alert(vm.Id());
+                            alert(vm.ID());
                         },
                         alter: function (vm, event) {
                             var manager = mc.factory(ko.mapping.toJS(vm));

@@ -20,13 +20,13 @@ namespace Practice.Controllers
 
         public ActionResult Menus()
         {
-            try
+            return Try(() =>
             {
                 var menuService = LazyMenuService.Value;
                 var menus =
                     menuService.Query(m => m.EnabledState)
                         .OrderByDescending(m => m.SortNo)
-                        .ThenByDescending(m => m.CreatedOn).ToList().Select(m => new 
+                        .ThenByDescending(m => m.CreatedOn).ToList().Select(m => new
                         {
                             ID = m.ID,
                             Name = m.Name,
@@ -38,14 +38,8 @@ namespace Practice.Controllers
                             Description = m.Description,
                             CreatedOn = m.CreatedOn
                         });
-                return Json(ApiResult.SuccessResult(menus), JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                Log.Error("获取菜单信息失败", e);
-            }
-
-            return Json(ApiResult.FailedResult("获取菜单信息失败"), JsonRequestBehavior.AllowGet);
+                return menus;
+            },"获取菜单信息失败", "获取菜单信息成功");
         }
 
         [LogRequestFilter(false)]

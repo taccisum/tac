@@ -10,12 +10,53 @@
 define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
     var sys = {
         /**
-         * @todo:: implement
+         * @author tac
          * @desc 对ajax请求进行封装，处理诸如请求失败、异常等事件
-         * @returns {} 
+         * @param {object} config 配置参数，详细参考ajax请求参数
+         * @returns {void} 
          */
-        ajax: function() {
-            
+        ajax: function(config) {
+            var conf = $.extend({
+                timeout: 5000,
+            }, config);
+
+            conf.success = function(result, textStatus) {
+                if (result.Success) {
+                    if (typeof config.success == "function") {
+                        config.success(result.Data, textStatus);
+                    }
+                } else {
+                    sys.excpbox(result.Message, result.Exception);
+                }
+            };
+
+            conf.error = function (XMLHttpRequest, textStatus, errorThrown) {
+                if (typeof config.error == "function") {
+                    config.error(XMLHttpRequest, textStatus, errorThrown);
+                } else {
+                    sys.excpbox("请求失败", textStatus + ": " + XMLHttpRequest.status + " " + errorThrown);
+                }
+            };
+
+            $.ajax(conf);
+        },
+
+
+        get: function(url, callback) {
+            sys.ajax({
+                url: url,
+                type: "get",
+                success: callback
+            });
+        },
+
+        post: function (url, data, callback) {
+            sys.ajax({
+                url: url,
+                data: data,
+                type: "post",
+                success: callback
+            });
         },
 
         /**
@@ -77,7 +118,6 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
 
             var $target = $(html);
 
-
             var d = dg.dialog({
                 id: selector,
                 title: $target.data("title") || "系统窗口",
@@ -116,6 +156,25 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
             return dg.msgbox(config);
         },
 
+        /**
+         * @author tac
+         * @desc 弹出一个专用于展示异常信息的消息框
+         * @param {string} msg 要展示的信息，支持html
+         * @param {string} exception 要显示的异常信息
+         * @param {number} timer box自动关闭时间，单位ms，小于等于0时不自动关闭
+         * @param {string} title 标题，不支持html
+         * @returns {object} artDialog实例
+         */
+        excpbox: function (msg, exception, timer, title) {
+            if (!msg) {
+                throw new Error("excpbox(): msg is required");
+            }
+            var content = "<div class='msgbox-text'><span class='text-left'>" + msg + "</span>";
+            if (exception) {
+                content += "<br/><a href='javascript:alert(\"" + exception + "\")' color='red pull-right'>查看异常</a>";
+            }
+            return sys.msgbox(content, "n", timer || 5000, title || "系统异常");
+        }
     };
 
     return sys;

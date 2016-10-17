@@ -35,7 +35,7 @@
         factory: function(layout) {
             //todo:: 这里是通过id的string来创建manager的，字符串比较可能会出问题（可能是同一个guid比较出来却不相等）
             var instance;
-            switch (layout.Id.toUpperCase()) {
+            switch (layout.ID.toUpperCase()) {
             case appHomePageLayoutId:
                 instance = new AppHomePageLayoutManager(layout);
                 break;

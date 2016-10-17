@@ -17,13 +17,17 @@ namespace Practice.Controllers.Base
 {
     public abstract class BaseController : Controller
     {
+        #region Private Fields
+        private IIoC _ioc;
+        private ILog _log;
+        #endregion
+
+        #region Protected Fields
         [Import]
         protected ISysUserService SysUserService { get; set; }
 
-        private IIoC _ioc;
         protected IIoC IoC { get { return _ioc ?? (_ioc = IoCManager.GetInstance().Create()); } }
 
-        private ILog _log;
         protected ILog Log { get { return _log ?? (_log = LogManager.GetLogger("Controller." + this.GetType().Name)); } }
 
         protected SysUser CurrentUser
@@ -34,10 +38,13 @@ namespace Practice.Controllers.Base
                 return SysUserService.GetById(userId);
             }
         }
+        #endregion
 
+        #region Protected Constructor
+        protected BaseController() { }
+        #endregion
 
-        protected BaseController() {}
-
+        #region Protected Methods
         protected ApiResult Success(object data, string msg = "")
         {
             return ApiResult.SuccessResult(data, msg);
@@ -83,8 +90,9 @@ namespace Practice.Controllers.Base
 
             return Json(Success(data, succMsg), behavior);
         }
+        #endregion
 
-
+        #region Protected Override Methods
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
@@ -100,8 +108,17 @@ namespace Practice.Controllers.Base
                 (filterContext.ActionDescriptor.ActionName == "Verify" || filterContext.ActionDescriptor.ActionName == "Login")
                 ))
             {
-                filterContext.Result = new RedirectToRouteResult("Default",
-                    new RouteValueDictionary(new {controller = "User", action = "Login"}));
+                if (Request.IsAjaxRequest())
+                {
+                    filterContext.Result = Json(Failure("登陆超时，请重新登陆", "登陆超时，请重新登陆"), JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    filterContext.Result = new RedirectToRouteResult("Default",
+                        new RouteValueDictionary(new { controller = "User", action = "Login" }));
+                }
+
+
             }
         }
 
@@ -116,5 +133,8 @@ namespace Practice.Controllers.Base
 
             base.OnException(filterContext);
         }
+        #endregion
+
+
     }
 }

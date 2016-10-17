@@ -18,17 +18,12 @@
 @section head{
     <script>
         require(["systools"], function(tool) {
-            $.get("/Menu/GetRecentlyAdd", function (result) {
-                if (result.Success) {
+            tool.get("/Menu/GetRecentlyAdd", function (result) {
                     var str = "";
-                    $.each(result.Data, function (index, item) {
+                    $.each(result, function (index, item) {
                         str += item + "\r\n";
                     });
                     $("#txt-menus").val(str);
-                } else {
-                    tool.msgbox("<div class='msgbox-text'><span class='text-left'>" + result.Message + "</span>" +
-                        "<br/><a href='javascript:alert(\"" + result.Exception + "\")' color='red pull-right'>查看异常</a>", "n");
-                }
             });
 
             $("#btn-easydialog").on("click", function () {
@@ -43,7 +38,7 @@
 <button id="btn-easydialog" type="button" class="btn btn-success btn-sm">popup</button>
 
 <div class="hidden">
-    <div id="tac" data-title="hhh" data-width="600px" data-height="400px" class="container" style="width: 600px;">
+    <div id="tac" data-title="hhh" data-width="600px" data-height="400px" class="container" style="width: 100%;">
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group">
