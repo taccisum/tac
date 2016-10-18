@@ -35,6 +35,15 @@
 
         require(["base"]);
         require(["systools", "sidebar"], function (tool, sidebarManager) {
+            var utility = {
+                loadMenusFromServer: function(callback) {
+                    tool.get("/CommonInfo/Menus", function (result) {
+                        callback(result);
+                    });
+                },            //从服务器加载菜单数据
+
+            }
+
             //menus搜索框
             function bindMenuSearcher(array) {
                 var acArray = new List(array).divide(["ID", "Name", "Description"],
@@ -62,16 +71,31 @@
                     //sidebar.PointAt(targetId);        //todo:: 未实现
                 });
             }
+            
+            function init(menus) {
+                sidebar = sidebarManager.getInstance(menus, "#nav-list");
+                sidebar.Load();
+                sidebar.Open(sidebar.CurrentMenuId(), true);
+                bindMenuSearcher(menus);
+            }
+
+            function reload(menus) {
+                if (sidebar && typeof sidebar.Clear == "function") {
+                    sidebar.Clear();
+                }
+                sidebar = sidebarManager.newInstance(menus, "#nav-list");
+                sidebar.Load();
+                sidebar.Open(sidebar.CurrentMenuId(), true);
+                bindMenuSearcher(menus);
+                localStorage[SYS_MENUS] = JSON.stringify(menus);
+            }
 
             //short cuts buttons事件
             function bindShortCuts() {
                 $("#sidebar-shortcuts .btn-success").bind("click", function () {
-                    tool.dialog({
-                        id: "dialog-lemon",
-                        title: "lemon",
-                        content: "<input autofocus />",
-                        fixed: true,
-                    }).showModal();
+                    utility.loadMenusFromServer(function (result) {
+                        reload(result);
+                    });
                 });
 
                 $("#sidebar-shortcuts .btn-info").bind("click", function () {
@@ -84,15 +108,27 @@
                 });
             }
 
-            //初始化
-            tool.get("/CommonInfo/Menus", function(result) {
-                sidebar = sidebarManager.getInstance(result, "#nav-list");
-                sidebar.Load();
-                sidebar.Open(sidebar.CurrentMenuId(), true);
+            (function() {
+                //初始化菜单
+                var menusStr = localStorage[SYS_MENUS];
+                var hasCache = false;
+                if (menusStr) {
+                    try {
+                        var menus = JSON.parse(menusStr);
+                        init(menus);
+                        hasCache = true;
+                    } catch (e) { }
+                }
 
-                bindMenuSearcher(result);
+                if (!hasCache) {
+                    utility.loadMenusFromServer(function(result) {
+                        init(result);
+                        localStorage[SYS_MENUS] = JSON.stringify(result);
+                    });
+                }
+
                 bindShortCuts();
-            });
+            })();
         });
     </script>
 
@@ -118,7 +154,7 @@
             @* short cuts *@
             <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                 <div class="sidebar-shortcuts-large">
-                    <button class="btn btn-success"><i class="icon-lemon"></i></button>
+                    <button class="btn btn-success" title="重新加载菜单数据"><i class="icon-refresh"></i></button>
                     <button class="btn btn-info"><i class="icon-comments"></i></button>
                     <button class="btn btn-warning"><i class="icon-globe"></i></button>
                     <button class="btn btn-danger"><i class="icon-home"></i></button>

@@ -36,7 +36,8 @@ namespace Practice
             bundles.Add(new StyleBundle("~/bundles/css/jquery/plugins")
                 .Include("~/Scripts/jQueryPlugins/Datatables/jquery.dataTables.css",
                 "~/Scripts/jQueryPlugins/artDialog/css/ui-dialog.css",
-                "~/Scripts/jQueryPlugins/gridster/jquery.gridster.css"));
+                "~/Scripts/jQueryPlugins/gridster/jquery.gridster.css",
+                "~/Scripts/jQueryPlugins/Jcrop/css/jquery.Jcrop.css"));
 
             //系统通用的css
             bundles.Add(new StyleBundle("~/bundles/css/common")

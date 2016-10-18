@@ -504,11 +504,16 @@
     <Content Include="Scripts\jQueryPlugins\gridster\jquery.gridster.min.js" />
     <Content Include="Scripts\jQueryPlugins\gridster\jquery.gridster.with-extras.js" />
     <Content Include="Scripts\jQueryPlugins\gridster\jquery.gridster.with-extras.min.js" />
-    <Content Include="Scripts\jQueryPlugins\sortable\demo.html" />
-    <Content Include="Scripts\jQueryPlugins\sortable\jquery.sortable.js" />
-    <Content Include="Scripts\jQueryPlugins\sortable\jquery.sortable.min.js" />
+    <Content Include="Scripts\jQueryPlugins\Jcrop\css\Jcrop.gif" />
+    <Content Include="Scripts\jQueryPlugins\Jcrop\css\jquery.Jcrop.css" />
+    <Content Include="Scripts\jQueryPlugins\Jcrop\css\jquery.Jcrop.min.css" />
+    <Content Include="Scripts\jQueryPlugins\Jcrop\js\jquery.color.js" />
+    <Content Include="Scripts\jQueryPlugins\Jcrop\js\jquery.Jcrop.js" />
+    <Content Include="Scripts\jQueryPlugins\Jcrop\js\jquery.Jcrop.min.js" />
+    <Content Include="Scripts\jQueryPlugins\Jcrop\js\jquery.min.js" />
     <Content Include="Scripts\MockJS\mock-min.js" />
     <Content Include="Scripts\MockJS\mock.js" />
+    <Content Include="Scripts\Modules\Common\global.js" />
     <Content Include="Scripts\Modules\Common\js_extend.js" />
     <Content Include="Scripts\Modules\Common\jq_extend.js" />
     <Content Include="Scripts\Modules\Common\mockdata.js" />
@@ -542,6 +547,7 @@
     <Content Include="Scripts\Knockout\knockout-3.4.0.js" />
     <Content Include="Scripts\Knockout\plugin\knockout.mapping-latest.js" />
     <Content Include="Scripts\Modules\Common\Wrapper\gridster.js" />
+    <Content Include="Scripts\Modules\Common\Wrapper\jcrop.js" />
     <Content Include="Scripts\Modules\ViewJs\Layout\LayoutList.js" />
     <Content Include="Scripts\Modules\ViewJs\Layout\LayoutManager\LayoutManagerCreater.js" />
     <Content Include="Scripts\Modules\ViewJs\Shared\Sidebar.js" />

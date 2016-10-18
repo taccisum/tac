@@ -13,7 +13,7 @@
       <publishTime>07/11/2016 12:19:03</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>10/17/2016 10:21:21</publishTime>
+      <publishTime>10/17/2016 17:44:00</publishTime>
     </File>
     <File Include="bin/BLL.dll">
       <publishTime>07/21/2016 09:34:50</publishTime>
@@ -28,7 +28,7 @@
       <publishTime>10/09/2016 16:26:31</publishTime>
     </File>
     <File Include="bin/Common.Tool.dll">
-      <publishTime>10/11/2016 17:41:45</publishTime>
+      <publishTime>10/17/2016 17:43:48</publishTime>
     </File>
     <File Include="bin/CustomerException.dll">
       <publishTime>07/21/2016 09:34:45</publishTime>
@@ -58,7 +58,7 @@
       <publishTime>10/09/2016 16:26:32</publishTime>
     </File>
     <File Include="bin/log4net-release.config">
-      <publishTime>10/12/2016 10:56:36</publishTime>
+      <publishTime>10/17/2016 10:36:00</publishTime>
     </File>
     <File Include="bin/log4net.config">
       <publishTime>10/11/2016 16:16:55</publishTime>
@@ -76,7 +76,7 @@
       <publishTime>09/08/2016 19:21:11</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>10/11/2016 17:41:46</publishTime>
+      <publishTime>10/17/2016 17:43:48</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>09/08/2016 19:21:11</publishTime>
@@ -94,13 +94,13 @@
       <publishTime>09/08/2016 19:21:11</publishTime>
     </File>
     <File Include="bin/Practice.dll">
-      <publishTime>10/17/2016 10:21:10</publishTime>
+      <publishTime>10/17/2016 17:43:50</publishTime>
     </File>
     <File Include="bin/Repository.dll">
-      <publishTime>10/11/2016 17:41:46</publishTime>
+      <publishTime>10/17/2016 17:43:48</publishTime>
     </File>
     <File Include="bin/Service.dll">
-      <publishTime>10/11/2016 17:41:46</publishTime>
+      <publishTime>10/17/2016 17:43:49</publishTime>
     </File>
     <File Include="bin/ServiceStack.Interfaces.dll">
       <publishTime>09/21/2016 08:45:27</publishTime>
@@ -133,7 +133,7 @@
       <publishTime>07/11/2016 12:19:03</publishTime>
     </File>
     <File Include="bin/test.dll">
-      <publishTime>10/17/2016 10:21:21</publishTime>
+      <publishTime>10/17/2016 17:44:00</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>07/11/2016 12:19:03</publishTime>
@@ -1534,7 +1534,7 @@
       <publishTime>09/08/2016 10:07:13</publishTime>
     </File>
     <File Include="log4net-release.config">
-      <publishTime>10/12/2016 10:56:36</publishTime>
+      <publishTime>10/17/2016 10:36:00</publishTime>
     </File>
     <File Include="log4net.config">
       <publishTime>10/11/2016 16:16:55</publishTime>
@@ -1561,7 +1561,7 @@
       <publishTime>07/01/2016 18:35:51</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>10/17/2016 10:21:12</publishTime>
+      <publishTime>10/17/2016 17:43:51</publishTime>
     </File>
     <File Include="Scripts/angular-ui/ui-bootstrap-tpls.js">
       <publishTime>07/20/2016 18:33:10</publishTime>
@@ -1846,7 +1846,7 @@
       <publishTime>10/09/2016 10:39:11</publishTime>
     </File>
     <File Include="Scripts/Modules/Common/systools.js">
-      <publishTime>10/08/2016 09:09:51</publishTime>
+      <publishTime>10/17/2016 16:41:59</publishTime>
     </File>
     <File Include="Scripts/Modules/Common/Wrapper/artDialog.js">
       <publishTime>09/26/2016 08:43:33</publishTime>
@@ -1864,13 +1864,13 @@
       <publishTime>07/20/2016 18:33:10</publishTime>
     </File>
     <File Include="Scripts/Modules/ViewJs/Layout/LayoutList.js">
-      <publishTime>10/08/2016 09:09:51</publishTime>
+      <publishTime>10/17/2016 14:23:46</publishTime>
     </File>
     <File Include="Scripts/Modules/ViewJs/Layout/LayoutManager/LayoutManagerCreater.js">
-      <publishTime>10/08/2016 09:09:51</publishTime>
+      <publishTime>10/17/2016 14:23:46</publishTime>
     </File>
     <File Include="Scripts/Modules/ViewJs/Menu/MenuList.js">
-      <publishTime>09/26/2016 08:43:33</publishTime>
+      <publishTime>10/17/2016 16:39:03</publishTime>
     </File>
     <File Include="Scripts/Modules/ViewJs/Shared/Sidebar.js">
       <publishTime>10/08/2016 09:09:51</publishTime>
@@ -2794,7 +2794,7 @@
       <publishTime>07/28/2016 18:37:03</publishTime>
     </File>
     <File Include="Views/RedisDemo/Index.cshtml">
-      <publishTime>10/08/2016 09:09:51</publishTime>
+      <publishTime>10/17/2016 14:23:46</publishTime>
     </File>
     <File Include="Views/Shared/CommonClass.js">
       <publishTime>06/24/2016 15:19:36</publishTime>
@@ -2806,7 +2806,7 @@
       <publishTime>07/20/2016 18:33:19</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/08/2016 09:09:51</publishTime>
+      <publishTime>10/17/2016 16:27:30</publishTime>
     </File>
     <File Include="Views/Shared/_Layout1.cshtml">
       <publishTime>06/23/2016 15:50:21</publishTime>
@@ -2860,7 +2860,7 @@
       <publishTime>07/11/2016 12:18:50</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/17/2016 10:21:11</publishTime>
+      <publishTime>10/17/2016 17:43:50</publishTime>
     </File>
   </ItemGroup>
 </Project>

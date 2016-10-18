@@ -10,5 +10,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>JCrop</h2>
+@section head{
+    <script>
+        require(["systools-plus"], function (tool) {
+            tool.cropper("#btn1", {
+                onCut: function(file, args) {
+                    alert(args.x + " " + args.y + " " + args.width + " " + args.height);
+                    return true;
+                },
+                showCoord: true
+            });
+        });
+    </script>
+}
 
+
+<button id="btn1" class="btn btn-sm btn-success">jcrop</button>

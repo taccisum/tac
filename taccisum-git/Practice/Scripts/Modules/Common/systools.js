@@ -176,7 +176,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
             }
             var content = "<div class='msgbox-text text-left'><span>" + msg + "</span>";
             if (exception) {
-                content += "<br/><a href='javascript:alert(\"" + exception + "\")' class='red pull-right'>查看异常</a>";
+                content += "<br/><br/><a href='javascript:alert(\"" + exception + "\")' class='red pull-right'>查看异常</a>";
             }
             return sys.msgbox(content, "n", timer || 5000, title || "系统异常");
         }

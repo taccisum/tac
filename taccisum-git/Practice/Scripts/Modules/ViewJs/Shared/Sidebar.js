@@ -163,16 +163,14 @@ define(function () {
     }
 
     return {
-        /**
-         * @desc 获取sidebar单例
-         * @param {array} munus 
-         * @param {string} appendTo 依附的容器
-         * @returns {object} Sidebar的单例
-         */
         getInstance: function (munus, appendTo) {
             if (sidebar == null)
                 sidebar = new Sidebar(munus, appendTo);
             return sidebar;
-        }
+        },
+        newInstance: function (munus, appendTo) {
+            sidebar = new Sidebar(munus, appendTo);
+            return sidebar;
+        },
     }
 })
