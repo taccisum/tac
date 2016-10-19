@@ -1,0 +1,14 @@
+﻿@using Practice.Models
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Crumbs = new Crumbs(new List<CrumbPath>()
+    {
+        new CrumbPath("Tac"),
+        new CrumbPath("Index"),
+    });
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+

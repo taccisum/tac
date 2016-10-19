@@ -11,7 +11,7 @@ using String = Common.Tool.Extend._String;
 using System.Collections;
 using System.ComponentModel.Composition;
 using Model.Entities;
-using Practice.Controllers.Attributes;
+using Practice.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Product;
 
@@ -24,13 +24,13 @@ namespace Practice.Controllers
         [Import]
         protected IProductService ProductService { get; set; }
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult Index()
         {
             return View();
         }
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult ProductInfo()
         {
             return View();

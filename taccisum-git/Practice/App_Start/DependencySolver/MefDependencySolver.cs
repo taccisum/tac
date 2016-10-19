@@ -6,7 +6,7 @@ using System.ComponentModel.Composition.Primitives;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Practice.Mef
+namespace Practice.DependencySolver
 {
     /// <summary>
     /// MEF依赖关系解析类

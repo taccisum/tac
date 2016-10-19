@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Practice.Controllers.Attributes;
+using Practice.Attributes;
 
 namespace Practice.App_Start
 {
@@ -11,9 +11,9 @@ namespace Practice.App_Start
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new LogRequestFilterAttribute(true));
-            filters.Add(new RequireAuthorizeFilterAttribute(true));
-            filters.Add(new OnExceptionFilterAttribute());
+            filters.Add(new LogRequestInfoFilterAttribute(true));
+            filters.Add(new AuthenticationFilterAttribute());
+            filters.Add(new HandleExceptionFilterAttribute());
         }
     }
 }

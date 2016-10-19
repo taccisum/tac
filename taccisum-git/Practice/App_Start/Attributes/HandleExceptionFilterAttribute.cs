@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Helpers;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using log4net;
 using Model.Common;
 
-namespace Practice.Controllers.Attributes
+namespace Practice.Attributes
 {
-    public sealed class OnExceptionFilterAttribute : HandleErrorAttribute
+    public sealed class HandleExceptionFilterAttribute : HandleErrorAttribute
     {
         public override void OnException(ExceptionContext filterContext)
         {
-            var log = LogManager.GetLogger("Filter." + typeof(OnExceptionFilterAttribute).Name);
+            var log = LogManager.GetLogger("Filter." + typeof(HandleExceptionFilterAttribute).Name);
 
             log.Error("执行请求的过程中发生了未经处理的异常", filterContext.Exception);
 #if DEBUG

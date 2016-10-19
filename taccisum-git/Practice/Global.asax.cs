@@ -9,7 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using log4net;
 using Practice.App_Start;
-using Practice.Mef;
+using Practice.DependencySolver;
 
 namespace Practice
 {

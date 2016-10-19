@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Common.Tool.Extend;
 using Model.Entities.Layout;
-using Practice.Controllers.Attributes;
+using Practice.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Layout;
 
@@ -18,7 +18,7 @@ namespace Practice.Controllers
         [Import]
         protected ILayoutService LayoutService;
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult LayoutList()
         {
             return View();

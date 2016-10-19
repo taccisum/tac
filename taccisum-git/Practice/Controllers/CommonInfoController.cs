@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Model.Common;
 using Model.Entity;
-using Practice.Controllers.Attributes;
+using Practice.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Sys;
 
@@ -42,7 +42,7 @@ namespace Practice.Controllers
             },"获取菜单信息失败", "获取菜单信息成功");
         }
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult NonAuthority()
         {
             return View();

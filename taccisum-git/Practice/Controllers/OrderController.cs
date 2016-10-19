@@ -7,7 +7,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Practice.Controllers.Attributes;
+using Practice.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Orders.Product;
 
@@ -23,7 +23,7 @@ namespace Practice.Controllers
         private Order order ;
         private OrderItem orderItem;
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult OrderList()
         {
             return View();
@@ -48,7 +48,7 @@ namespace Practice.Controllers
 
         }
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult addOrder()
         {
             return View();

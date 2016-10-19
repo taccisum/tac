@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using Common.Tool.Units;
 using log4net;
 
-namespace Practice.Controllers.Attributes
+namespace Practice.Attributes
 {
     /// <summary>
     /// 记录请求信息filter
     /// </summary>
-    public sealed class LogRequestFilterAttribute : ActionFilterAttribute
+    public sealed class LogRequestInfoFilterAttribute : ActionFilterAttribute
     {
         private bool isLogEnabled = true;
 
@@ -21,7 +17,7 @@ namespace Practice.Controllers.Attributes
         /// 
         /// </summary>
         /// <param name="isLogEnabled">是否允许对Action的请求信息进行记录</param>
-        public LogRequestFilterAttribute(bool isLogEnabled)
+        public LogRequestInfoFilterAttribute(bool isLogEnabled)
         {
             this.isLogEnabled = isLogEnabled;
         }
@@ -32,7 +28,7 @@ namespace Practice.Controllers.Attributes
 
             if (isLogEnabled)
             {
-                var log = LogManager.GetLogger("Filter." + typeof (LogRequestFilterAttribute).Name);
+                var log = LogManager.GetLogger("Filter." + typeof (LogRequestInfoFilterAttribute).Name);
                 var request = filterContext.HttpContext.Request;
                 var sb = new StringBuilder();
 
@@ -62,7 +58,7 @@ namespace Practice.Controllers.Attributes
         {
             if (isLogEnabled)
             {
-                var log = LogManager.GetLogger("Filter." + typeof(LogRequestFilterAttribute).Name);
+                var log = LogManager.GetLogger("Filter." + typeof(LogRequestInfoFilterAttribute).Name);
                 var sb = new StringBuilder();
 
                 sb.Append("action has been invoked. \r\n");

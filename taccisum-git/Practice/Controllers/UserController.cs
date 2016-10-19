@@ -10,7 +10,7 @@ using Common.Tool.Units;
 using IoC.Manager;
 using log4net;
 using Model.Common;
-using Practice.Controllers.Attributes;
+using Practice.Attributes;
 using Practice.Controllers.Base;
 using Service.Interf.Sys;
 
@@ -23,13 +23,13 @@ namespace Practice.Controllers
         protected ISysUserManagementService SysUserManagerService { get; set; }
 
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult Login()
         {
             return View();
         }
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult Register()
         {
             return View();
@@ -58,7 +58,7 @@ namespace Practice.Controllers
             return Json(valid, JsonRequestBehavior.DenyGet);
         }
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult RegisterAccount(string uid, string psd, string rePsd)
         {
             if (psd != rePsd)
@@ -81,12 +81,11 @@ namespace Practice.Controllers
             }
         }
 
-        [LogRequestFilter(false)]
+        [LogRequestInfoFilter(false)]
         public ActionResult Logout()
         {
-            CookiesHelper.Remove(GlobalConfig.CURRENT_USER);
-            CookiesHelper.Remove(GlobalConfig.AUTOLOGIN);
-            return View("Login");
+            AuthorizationService.ClearSession();
+            return Redirect("Login");
         }
     }
 }

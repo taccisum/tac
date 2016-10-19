@@ -489,6 +489,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="hh.tac" />
     <None Include="Properties\PublishProfiles\MyProject.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Properties\PublishProfiles\test1.pubxml" />
@@ -841,13 +842,14 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\Mef\MefDependencySolver.cs" />
+    <Compile Include="App_Start\DependencySolver\MefDependencySolver.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Attributes\LogRequestFilterAttribute.cs" />
-    <Compile Include="Controllers\Attributes\OnExceptionFilterAttribute.cs" />
-    <Compile Include="Controllers\Attributes\RequireAuthorizeFilterAttribute.cs" />
+    <Compile Include="App_Start\Attributes\LogRequestInfoFilterAttribute.cs" />
+    <Compile Include="App_Start\Attributes\HandleExceptionFilterAttribute.cs" />
+    <Compile Include="App_Start\Attributes\AuthenticationFilterAttribute.cs" />
     <Compile Include="Controllers\BandController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\TacController.cs" />
     <Compile Include="Controllers\CommonInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
@@ -863,7 +865,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HttpHandler\TacHttpHandler.cs" />
+    <Compile Include="HttpModules\TacHttpModule.cs" />
     <Compile Include="Models\Crumbs.cs" />
+    <Compile Include="Models\DatatablesResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Scripts\ueditor\net\App_Code\ConfigHandler.cs" />
@@ -912,6 +917,7 @@
     <Content Include="Views\ToolDemo\Gridly.cshtml" />
     <Content Include="Views\ToolDemo\D_Msgbox.cshtml" />
     <Content Include="Views\ToolDemo\D_Dialog.cshtml" />
+    <Content Include="Views\Tac\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
