@@ -4,7 +4,10 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Common.CustomerException;
+using Model.Models;
 using Practice.Controllers.Base;
+using Practice.ViewModels;
 
 namespace Practice.Controllers
 {
@@ -53,6 +56,19 @@ namespace Practice.Controllers
             {
                 tac = "hh"
             }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult CheckModel(TestModel test)
+        {
+            return Try(() =>
+            {
+                return new
+                {
+                    aa = "",
+                    bb = ""
+                };
+            }, "failure", "success");
         }
     }
 }

@@ -8,6 +8,7 @@ using Model.Common;
 using Model.Entity;
 using Model.Models;
 using Practice.Attributes;
+using Practice.Attributes.Filter;
 using Practice.Controllers.Base;
 using Service.Interf.Bands.Product;
 

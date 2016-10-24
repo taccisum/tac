@@ -2,7 +2,7 @@
 using log4net;
 using Model.Common;
 
-namespace Practice.Attributes
+namespace Practice.Attributes.Filter
 {
     public sealed class HandleExceptionFilterAttribute : HandleErrorAttribute
     {

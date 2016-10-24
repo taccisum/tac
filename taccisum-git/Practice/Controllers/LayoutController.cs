@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Common.Tool.Extend;
 using Model.Entities.Layout;
 using Practice.Attributes;
+using Practice.Attributes.Filter;
 using Practice.Controllers.Base;
 using Service.Interf.Layout;
 

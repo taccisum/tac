@@ -840,13 +840,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Attributes\Validation\MobilePhoneNumberAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\DependencySolver\MefDependencySolver.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Attributes\LogRequestInfoFilterAttribute.cs" />
-    <Compile Include="App_Start\Attributes\HandleExceptionFilterAttribute.cs" />
-    <Compile Include="App_Start\Attributes\AuthenticationFilterAttribute.cs" />
+    <Compile Include="App_Start\Attributes\Filter\LogRequestInfoFilterAttribute.cs" />
+    <Compile Include="App_Start\Attributes\Filter\HandleExceptionFilterAttribute.cs" />
+    <Compile Include="App_Start\Attributes\Filter\AuthenticationFilterAttribute.cs" />
     <Compile Include="Controllers\BandController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\TacController.cs" />
@@ -867,8 +868,8 @@
     </Compile>
     <Compile Include="HttpHandler\TacHttpHandler.cs" />
     <Compile Include="HttpModules\TacHttpModule.cs" />
-    <Compile Include="Models\Crumbs.cs" />
-    <Compile Include="Models\DatatablesResult.cs" />
+    <Compile Include="ViewModels\Common\Crumbs.cs" />
+    <Compile Include="ViewModels\Common\DatatablesResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Scripts\ueditor\net\App_Code\ConfigHandler.cs" />
@@ -878,6 +879,8 @@
     <Compile Include="Scripts\ueditor\net\App_Code\NotSupportedHandler.cs" />
     <Compile Include="Scripts\ueditor\net\App_Code\PathFormater.cs" />
     <Compile Include="Scripts\ueditor\net\App_Code\UploadHandler.cs" />
+    <Compile Include="ViewModels\SystemMenu\SysMenuModel_Add.cs" />
+    <Compile Include="ViewModels\TestModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

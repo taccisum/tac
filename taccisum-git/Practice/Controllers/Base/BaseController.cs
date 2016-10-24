@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Common.CustomerException;
@@ -13,6 +15,7 @@ using Model.Common;
 using Model.Entity;
 using Service.Impl.Sys;
 using Service.Interf.Sys;
+using WebGrease.Css.Extensions;
 
 namespace Practice.Controllers.Base
 {
@@ -63,6 +66,7 @@ namespace Practice.Controllers.Base
             object data;
             try
             {
+                CheckModelState();
                 data = func();
             }
             catch (CommonException ce)
@@ -82,6 +86,20 @@ namespace Practice.Controllers.Base
             }
 
             return Json(Success(data, succMsg), behavior);
+        }
+
+
+        private void CheckModelState()
+        {
+            if (!ModelState.IsValid)
+            {
+                throw new CommonException(GetModelVerifyErrorMessage());
+            }
+        }
+
+        private string GetModelVerifyErrorMessage()
+        {
+            return ModelState.Values.First(msv => msv.Errors.Count > 0).Errors.First().ErrorMessage;
         }
         #endregion
     }

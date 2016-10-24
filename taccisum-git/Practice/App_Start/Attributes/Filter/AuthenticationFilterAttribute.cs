@@ -5,7 +5,7 @@ using System.Web.Routing;
 using Model.Common;
 using Service.Impl.Sys;
 
-namespace Practice.Attributes
+namespace Practice.Attributes.Filter
 {
     /// <summary>
     /// 验证用户登陆filter

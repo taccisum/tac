@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using log4net;
 
-namespace Practice.Attributes
+namespace Practice.Attributes.Filter
 {
     /// <summary>
     /// 记录请求信息filter
@@ -24,8 +24,6 @@ namespace Practice.Attributes
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            base.OnActionExecuting(filterContext);
-
             if (isLogEnabled)
             {
                 var log = LogManager.GetLogger("Filter." + typeof (LogRequestInfoFilterAttribute).Name);
