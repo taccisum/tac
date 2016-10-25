@@ -40,6 +40,7 @@
             "w_gridster": wrapper + "gridster",
             "w_jcrop": wrapper + "jcrop",
             "w_tipsy": wrapper + "tipsy_wrapper",
+            "w_shade": wrapper + "myshade",
             //plugins
             "jq_ui": "../../css/ace/js/jquery-ui-1.10.3.full.min",
             "datatables": scripts + "jQueryPlugins/Datatables/jquery.dataTables",
@@ -51,6 +52,7 @@
         shim: {
             //为一些非amd规范的js提供依赖
             "jq_ui": "jquery",
+            "tipsy": "jquery",
             "w_jq_ac": "jq_ui",
             "w_jcrop": "jcrop",
             "w_tipsy": "tipsy"

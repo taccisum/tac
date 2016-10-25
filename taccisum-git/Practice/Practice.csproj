@@ -552,6 +552,7 @@
     <Content Include="Scripts\Modules\Common\auto_tips.js" />
     <Content Include="Scripts\Modules\Common\Wrapper\gridster.js" />
     <Content Include="Scripts\Modules\Common\Wrapper\jcrop.js" />
+    <Content Include="Scripts\Modules\Common\Wrapper\myshade.js" />
     <Content Include="Scripts\Modules\Common\Wrapper\tipsy_wrapper.js" />
     <Content Include="Scripts\Modules\ViewJs\Layout\LayoutList.js" />
     <Content Include="Scripts\Modules\ViewJs\Layout\LayoutManager\LayoutManagerCreater.js" />

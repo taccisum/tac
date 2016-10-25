@@ -13,6 +13,7 @@
 @section head{
     <script>
         require(["systools-plus"], function (tool) {
+            window.tool = tool;
             tool.cropper("#btn1", {
                 onCut: function(file, args) {
                     alert(args.x + " " + args.y + " " + args.width + " " + args.height);

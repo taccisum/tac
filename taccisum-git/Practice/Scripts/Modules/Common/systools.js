@@ -7,7 +7,7 @@
  * 2、非特殊情况下不能直接调用本模块中引入的插件，必须通过本模块提供的方法来使用这些插件；
  * 3、如果在系统中引入了新的插件，需对其进行适当的封装，然后在本模块添加新的调用入口，同时在ToolDemoController新增相应的使用演示demo页；
  */
-define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac, dg, tp) {
+define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy", "w_shade"], function (dt, ac, dg, tp, shd) {
     var sys = {
         /**
          * @author tac
@@ -15,9 +15,9 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac,
          * @param {object} config 配置参数，详细参考ajax请求参数
          * @returns {void} 
          */
-        ajax: function (config) {
+        ajax: function(config) {
             var conf = $.extend({
-                timeout: 15000,     //请求超时默认时间
+                timeout: 15000, //请求超时默认时间
             }, config);
 
             if (window.debug) {
@@ -35,7 +35,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac,
                 }
             };
 
-            conf.error = function (XMLHttpRequest, textStatus, errorThrown) {
+            conf.error = function(XMLHttpRequest, textStatus, errorThrown) {
                 if (typeof config.error == "function") {
                     config.error(XMLHttpRequest, textStatus, errorThrown);
                 } else {
@@ -52,7 +52,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac,
                 success: callback
             });
         },
-        post: function (url, data, callback) {
+        post: function(url, data, callback) {
             sys.ajax({
                 url: url,
                 data: data,
@@ -79,7 +79,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac,
          * @param {config} config 参考jquery-Autocomplete开发文档——http://api.jqueryui.com/autocomplete/  16/09/08
          * @returns {object} 
          */
-        autocomplete: function (target, config) {
+        autocomplete: function(target, config) {
             ac.selector = target;
             return ac.load(config);
         },
@@ -90,7 +90,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac,
          * @param {object} config 参考artDialog.js开发文档——http://lab.seaning.com/_doc/API.html#show 16/09/08
          * @returns {object} artDialog实例
          */
-        dialog: function (config) {
+        dialog: function(config) {
             return dg.dialog(config);
         },
 
@@ -102,7 +102,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac,
          * @param {} callback 
          * @returns {} 
          */
-        easydialog: function (selector, title, callback) {
+        easydialog: function(selector, title, callback) {
             if (!window.easydialog_cache) {
                 window.easydialog_cache = {};
             }
@@ -141,7 +141,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac,
          * @param {string} title 标题，不支持html
          * @returns {object} artDialog实例
          */
-        msgbox: function (msg, icon, timer, title) {
+        msgbox: function(msg, icon, timer, title) {
             var config = {
                 content: msg,
                 icon: icon,
@@ -167,7 +167,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac,
          * @param {string} title 标题，不支持html
          * @returns {object} artDialog实例
          */
-        excpbox: function (msg, exception, timer, title) {
+        excpbox: function(msg, exception, timer, title) {
             if (!msg) {
                 throw new Error("excpbox(): msg is required");
             }
@@ -178,9 +178,45 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac,
             return sys.msgbox(content, "n", timer || 5000, title || "系统异常");
         },
 
+        /**
+         * 
+         * @param {} selector 
+         * @param {} config
+         * @returns {} 
+         */
         tip: function(selector, config) {
             return tp.tip(selector, config);
-        }
+        },
+
+        /**
+         * 创建一个全屏遮罩层
+         * @param {} config 
+         * @returns {} 
+         */
+        shade: function (config) {
+            if (typeof config == "string") {
+                switch (config) {
+                case "loading":
+                {
+                    return shd.shade({
+                        content: "<i style='font-size: 45px;' class='icon-spinner icon-spin'></i>"
+                    });
+                }
+                case "blank":
+                {
+                    return shd.shade({
+                        opacity: 0
+                    });
+                }
+                default:
+                {
+                    return shd.shade({});
+                }
+                }
+            }
+
+            return shd.shade(config || {});
+        },
     };
 
     return sys;

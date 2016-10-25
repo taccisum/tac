@@ -20,7 +20,7 @@
 
 
         require(["systools-plus"], function(tool) {
-
+            window.tool = tool;
             var data = [
                 { id: $.newPseudoGuid(), row: 1, col: 1, color: "#f2e", content: "<span class='blue'>1<span>" },
                 { id: $.newPseudoGuid(), row: 1, col: 2, color: "#b3d", content: "2" },

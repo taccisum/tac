@@ -14,6 +14,7 @@
 @section head{
     <script>
         require(["systools"], function (tool) {
+            window.tool = tool;
             var dialogHtml = {};
 
             $("#div_dialog").on("click", ".dialog", function () {
