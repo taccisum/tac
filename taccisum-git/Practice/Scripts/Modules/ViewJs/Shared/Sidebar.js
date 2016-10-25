@@ -4,7 +4,7 @@
  * @author tac
  * @desc side bar 菜单管理模块，提供一系列操作左侧菜单的api
  */
-define(function () {
+define(["systools"], function (tool) {
     var sidebar = null;
 
     var Sidebar = function(menus, appendTo) {
@@ -151,15 +151,23 @@ define(function () {
          * @param {string} id 菜单id
          * @returns {void} 
          */
-        this.PointAt = function(id) {
-            throw Error("function Sidebar.PointAt() is not implement!");
-            //sys.dialog({
-            //    id: "dialog-tips",
-            //    content: "here you find~",
-            //    quickClose: true,
-            //}).show(self.GetById(id).find("a")[0]);
-        };
+        this.PointAt = function (id) {
+            var $menu = self.GetById(id).find("a");
+            var api = tool.tip($menu, {
+                gravity: "w",
+                content: "<span style='color: #92f1ff'><i class='icon-map-marker'></i>&nbsp;&nbsp;i'm here</span>",
+                trigger: "manual",
+                opacity: 0.9,
+                offset: 5
+            });
+            api.show();
 
+            setTimeout(function () {
+                $("body").one("click", function () {
+                    api.hide();
+                });
+            }, 50);        //这里设置微量延时是为了防止button的点击事件冒泡到body触发事件使tip隐藏
+        };
     }
 
     return {

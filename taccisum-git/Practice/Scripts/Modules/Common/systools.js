@@ -7,7 +7,7 @@
  * 2、非特殊情况下不能直接调用本模块中引入的插件，必须通过本模块提供的方法来使用这些插件；
  * 3、如果在系统中引入了新的插件，需对其进行适当的封装，然后在本模块添加新的调用入口，同时在ToolDemoController新增相应的使用演示demo页；
  */
-define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
+define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy"], function (dt, ac, dg, tp) {
     var sys = {
         /**
          * @author tac
@@ -45,8 +45,6 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
 
             $.ajax(conf);
         },
-
-
         get: function(url, callback) {
             sys.ajax({
                 url: url,
@@ -54,7 +52,6 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
                 success: callback
             });
         },
-
         post: function (url, data, callback) {
             sys.ajax({
                 url: url,
@@ -179,6 +176,10 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog"], function (dt, ac, dg) {
                 content += "<br/><br/><a href='javascript:alert(\"" + exception + "\")' class='red pull-right'>查看异常</a>";
             }
             return sys.msgbox(content, "n", timer || 5000, title || "系统异常");
+        },
+
+        tip: function(selector, config) {
+            return tp.tip(selector, config);
         }
     };
 

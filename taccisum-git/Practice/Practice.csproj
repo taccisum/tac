@@ -512,6 +512,8 @@
     <Content Include="Scripts\jQueryPlugins\Jcrop\js\jquery.Jcrop.js" />
     <Content Include="Scripts\jQueryPlugins\Jcrop\js\jquery.Jcrop.min.js" />
     <Content Include="Scripts\jQueryPlugins\Jcrop\js\jquery.min.js" />
+    <Content Include="Scripts\jQueryPlugins\tipsy\javascripts\jquery.tipsy.js" />
+    <Content Include="Scripts\jQueryPlugins\tipsy\stylesheets\tipsy.css" />
     <Content Include="Scripts\MockJS\mock-min.js" />
     <Content Include="Scripts\MockJS\mock.js" />
     <Content Include="Scripts\Modules\Common\global.js" />
@@ -547,8 +549,10 @@
     <Content Include="Scripts\Knockout\knockout-3.4.0.debug.js" />
     <Content Include="Scripts\Knockout\knockout-3.4.0.js" />
     <Content Include="Scripts\Knockout\plugin\knockout.mapping-latest.js" />
+    <Content Include="Scripts\Modules\Common\auto_tips.js" />
     <Content Include="Scripts\Modules\Common\Wrapper\gridster.js" />
     <Content Include="Scripts\Modules\Common\Wrapper\jcrop.js" />
+    <Content Include="Scripts\Modules\Common\Wrapper\tipsy_wrapper.js" />
     <Content Include="Scripts\Modules\ViewJs\Layout\LayoutList.js" />
     <Content Include="Scripts\Modules\ViewJs\Layout\LayoutManager\LayoutManagerCreater.js" />
     <Content Include="Scripts\Modules\ViewJs\Shared\Sidebar.js" />
@@ -921,6 +925,7 @@
     <Content Include="Views\ToolDemo\D_Msgbox.cshtml" />
     <Content Include="Views\ToolDemo\D_Dialog.cshtml" />
     <Content Include="Views\Tac\Index.cshtml" />
+    <Content Include="Views\ToolDemo\Tip.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

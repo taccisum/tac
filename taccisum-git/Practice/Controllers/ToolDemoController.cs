@@ -132,5 +132,14 @@ namespace Practice.Controllers
         }
 
         #endregion
+
+        #region Tip
+
+        public ActionResult Tip()
+        {
+            return View();
+        }
+
+        #endregion
     }
 }

@@ -34,7 +34,7 @@
         var sidebar;
 
         require(["base"]);
-        require(["systools", "sidebar"], function (tool, sidebarManager) {
+        require(["systools", "sidebar", "auto_tips"], function (tool, sbm, at) {
             var utility = {
                 loadMenusFromServer: function(callback) {
                     tool.get("/CommonInfo/Menus", function (result) {
@@ -68,12 +68,12 @@
                     var targetId = $input.attr("data-val");
                     sidebar.CollapseAll(false);
                     sidebar.Open(targetId, false);
-                    //sidebar.PointAt(targetId);        //todo:: 未实现
+                    sidebar.PointAt(targetId);        //todo:: 未实现
                 });
             }
             
             function init(menus) {
-                sidebar = sidebarManager.getInstance(menus, "#nav-list");
+                sidebar = sbm.getInstance(menus, "#nav-list");
                 sidebar.Load();
                 sidebar.Open(sidebar.CurrentMenuId(), true);
                 bindMenuSearcher(menus);
@@ -83,7 +83,7 @@
                 if (sidebar && typeof sidebar.Clear == "function") {
                     sidebar.Clear();
                 }
-                sidebar = sidebarManager.newInstance(menus, "#nav-list");
+                sidebar = sbm.newInstance(menus, "#nav-list");
                 sidebar.Load();
                 sidebar.Open(sidebar.CurrentMenuId(), true);
                 bindMenuSearcher(menus);
@@ -128,6 +128,7 @@
                 }
 
                 bindShortCuts();
+                at.initAutoTips();
             })();
         });
     </script>
@@ -154,7 +155,7 @@
             @* short cuts *@
             <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                 <div class="sidebar-shortcuts-large">
-                    <button class="btn btn-success" title="重新加载菜单数据"><i class="icon-refresh"></i></button>
+                    <button class="btn btn-success auto-tip" title="重新加载菜单数据" data-tip-gravity="nw"><i class="icon-refresh"></i></button>
                     <button class="btn btn-info"><i class="icon-comments"></i></button>
                     <button class="btn btn-warning"><i class="icon-globe"></i></button>
                     <button class="btn btn-danger"><i class="icon-home"></i></button>
@@ -172,7 +173,7 @@
                     @* menu searcher *@
                     <div id="menu-searcher" class="input-group input-group-merge" style="padding: 3px 6px;">
                         <input class="form-control input-md left" type="text"/>
-                        <span class="input-group-btn right" style="margin: 0"><button class="btn btn-white btn-md">&nbsp;<i class="icon-map-marker"></i></button></span>
+                        <span class="input-group-btn right" style="margin: 0"><button class="btn btn-white btn-md auto-tip" title="定位菜单" data-tip-gravity="w">&nbsp;<i class="icon-map-marker"></i></button></span>
                     </div>
                 </div>
                 <div class="sidebar-shortcuts-mini">
