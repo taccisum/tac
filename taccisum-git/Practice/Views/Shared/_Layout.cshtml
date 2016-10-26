@@ -12,8 +12,6 @@
     @Styles.Render("~/bundles/css/ace")
     @Styles.Render("~/bundles/css/jquery/plugins")
     @Styles.Render("~/bundles/css/common")
-    @Scripts.Render("~/bundles/js/core")
-    @Scripts.Render("~/bundles/js/ace")
 
     @* knockout *@
     <script src="/Scripts/Knockout/knockout-3.4.0.debug.js"></script>
@@ -34,24 +32,19 @@
         var sidebar;
 
         require(["base"]);
-        require(["systools", "sidebar", "auto_tips"], function (tool, sbm, at) {
+        require(["systools", "sidebar", "auto_tips", "layout-init"], function (tool, sbm, at) {
             var utility = {
                 loadMenusFromServer: function(callback) {
                     tool.get("/CommonInfo/Menus", function (result) {
                         callback(result);
                     });
                 },            //从服务器加载菜单数据
-
             }
 
             //menus搜索框
-            function bindMenuSearcher(array) {
+            function bindSearchInput(array) {
                 var acArray = new List(array).divide(["ID", "Name", "Description"],
                 ["value", "label", "desc"]).getArray();
-
-                var $input = $("#menu-searcher").find("input");
-                var $btn = $("#menu-searcher").find("button");
-
                 tool.autocomplete("#menu-searcher input", {
                     source: acArray,
                     width: 168,
@@ -63,39 +56,69 @@
                         }
                     },
                 });
+            }
 
+            function bindSearchBtn() {
+                var $input = $("#menu-searcher").find("input");
+                var $btn = $("#menu-searcher").find("button");
                 $btn.bind("click", function () {
                     var targetId = $input.attr("data-val");
                     sidebar.CollapseAll(false);
                     sidebar.Open(targetId, false);
-                    sidebar.PointAt(targetId);        //todo:: 未实现
+                    sidebar.PointAt(targetId);
                 });
             }
             
-            function init(menus) {
-                sidebar = sbm.getInstance(menus, "#nav-list");
-                sidebar.Load();
-                sidebar.Open(sidebar.CurrentMenuId(), true);
-                bindMenuSearcher(menus);
+            function initSidebar() {
+                function render(_menus) {
+                    sidebar = sbm.getInstance(_menus, "#nav-list");
+                    sidebar.Load();
+                    sidebar.Open(sidebar.CurrentMenuId(), true);
+                    bindSearchInput(_menus);
+                    bindSearchBtn();
+                }
+
+                var menusStr = localStorage[SYS_MENUS];
+                var hasCache = false;
+                if (menusStr) {
+                    try {
+                        var menus = JSON.parse(menusStr);
+                        render(menus);
+                        hasCache = true;
+                    } catch (e) { }
+                }
+
+                if (!hasCache) {
+                    utility.loadMenusFromServer(function (result) {
+                        render(result);
+                        localStorage[SYS_MENUS] = JSON.stringify(result);
+                    });
+                }
             }
 
-            function reload(menus) {
-                if (sidebar && typeof sidebar.Clear == "function") {
-                    sidebar.Clear();
+            function reloadSidebar() {
+                function render(menus) {
+                    if (sidebar && typeof sidebar.Clear == "function") {
+                        sidebar.Clear();
+                    }
+                    sidebar = sbm.newInstance(menus, "#nav-list");
+                    sidebar.Load();
+                    sidebar.Open(sidebar.CurrentMenuId(), true);
+                    bindSearchInput(menus);
+                    localStorage[SYS_MENUS] = JSON.stringify(menus);
                 }
-                sidebar = sbm.newInstance(menus, "#nav-list");
-                sidebar.Load();
-                sidebar.Open(sidebar.CurrentMenuId(), true);
-                bindMenuSearcher(menus);
-                localStorage[SYS_MENUS] = JSON.stringify(menus);
+
+                var $shade = tool.shade("loading");
+                utility.loadMenusFromServer(function (result) {
+                    render(result);
+                    $shade.data("api").destroy();
+                });
             }
 
             //short cuts buttons事件
             function bindShortCuts() {
                 $("#sidebar-shortcuts .btn-success").bind("click", function () {
-                    utility.loadMenusFromServer(function (result) {
-                        reload(result);
-                    });
+                    reloadSidebar();
                 });
 
                 $("#sidebar-shortcuts .btn-info").bind("click", function () {
@@ -109,26 +132,9 @@
             }
 
             (function() {
-                //初始化菜单
-                var menusStr = localStorage[SYS_MENUS];
-                var hasCache = false;
-                if (menusStr) {
-                    try {
-                        var menus = JSON.parse(menusStr);
-                        init(menus);
-                        hasCache = true;
-                    } catch (e) { }
-                }
-
-                if (!hasCache) {
-                    utility.loadMenusFromServer(function(result) {
-                        init(result);
-                        localStorage[SYS_MENUS] = JSON.stringify(result);
-                    });
-                }
-
+                initSidebar();
                 bindShortCuts();
-                at.initAutoTips();
+                at.loadAutoTip();
             })();
         });
     </script>
@@ -155,7 +161,7 @@
             @* short cuts *@
             <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                 <div class="sidebar-shortcuts-large">
-                    <button class="btn btn-success auto-tip" title="重新加载菜单数据" data-tip-gravity="nw"><i class="icon-refresh"></i></button>
+                    <button class="btn btn-success auto-tip" title="重新加载菜单数据" data-tip-gravity="nw" data-tip-delayin="500"><i class="icon-refresh"></i></button>
                     <button class="btn btn-info"><i class="icon-comments"></i></button>
                     <button class="btn btn-warning"><i class="icon-globe"></i></button>
                     <button class="btn btn-danger"><i class="icon-home"></i></button>
@@ -173,7 +179,7 @@
                     @* menu searcher *@
                     <div id="menu-searcher" class="input-group input-group-merge" style="padding: 3px 6px;">
                         <input class="form-control input-md left" type="text"/>
-                        <span class="input-group-btn right" style="margin: 0"><button class="btn btn-white btn-md auto-tip" title="定位菜单" data-tip-gravity="w">&nbsp;<i class="icon-map-marker"></i></button></span>
+                        <span class="input-group-btn right" style="margin: 0"><button class="btn btn-white btn-md auto-tip" title="定位到菜单" data-tip-gravity="w" data-tip-delayin="500">&nbsp;<i class="icon-map-marker"></i></button></span>
                     </div>
                 </div>
                 <div class="sidebar-shortcuts-mini">

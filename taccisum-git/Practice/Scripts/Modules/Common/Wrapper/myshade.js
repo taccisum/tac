@@ -22,7 +22,7 @@
                 "overflow": "hidden",
                 "background-color": config.color || "#000000",
                 "opacity": config.opacity || (config.opacity == 0 ? "0" : "0.3"),
-                "z-index": config.z_index || "999"
+                "z-index": config.z_index || "1099"
             });
 
             _api = {

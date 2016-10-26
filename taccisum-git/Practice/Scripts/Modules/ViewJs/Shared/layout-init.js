@@ -1,8 +1,6 @@
-﻿//layout init
-
-$(function () {
+﻿define(["jquery"], function() {
     function showIfHasChild(selectorArray) {
-        $.each(selectorArray, function(index, item) {
+        $.each(selectorArray, function (index, item) {
             var $target = $(item);
             if ($target.children().length == 0) {
                 $target.remove();
@@ -19,7 +17,4 @@ $(function () {
     ];
 
     showIfHasChild(targets);
-
-
-});
- 
+})

@@ -21,6 +21,13 @@
                 });
             });
 
+            //auto-tip
+            $("#btn-new").on("click", function() {
+                $("#div-new").append($('<span class="click tip auto-tip" title="this is a new tip" data-tip-gravity="nw" data-tip-offset="20" data-tip-fade="true" >new auto tip</span>'));
+                var at = require("auto_tips");
+                at.loadAutoTip();
+            });
+
             //html
             tool.tip("#html", {
                 content: "<span class='bold' style='color:red;'>happy</span> birthday"
@@ -102,7 +109,9 @@
 
 <h6>通过.auto-tip初始化</h6>
 <span class="click tip auto-tip" title="this tip init in layout page" data-tip-gravity="nw" data-tip-offset="20" data-tip-fade="true" data-tip-delayin="500" data-tip-delayout="500">auto tip</span>
-<input class="auto-tip" title="this tip init in layout page" data-tip-trigger="focus" data-tip-delayin="1" />
+<input class="auto-tip" title="this tip init in layout page" data-tip-trigger="focus" data-tip-delayin="1"/><br/><br/>
+<button id="btn-new" type="button" class="btn btn-success btn-sm">new</button><br/><br/>
+<div id="div-new"></div>
 <br /><br />
 
 <h6>使用html作为内容</h6>

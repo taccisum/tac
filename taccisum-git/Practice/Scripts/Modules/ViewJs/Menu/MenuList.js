@@ -34,9 +34,7 @@
             });
 
             //todo:: date-picker要封装
-            $(".date-picker").datepicker({ autoclose: true }).next().on(ace.click_event, function () {
-                $(this).prev().focus();
-            });
+            $(".date-picker").datepicker({ autoclose: true });
 
             var dialog_add_menu_html = $("#dialog-add_menu").html();
             $("#dialog-add_menu").remove();
@@ -77,7 +75,7 @@
                                     self.remove();
                                     table.ajax.reload();
                                     tool.msgbox("添加成功", "y");
-                                });
+                                }, true);
 
                                 return false;
                             },
@@ -146,7 +144,7 @@
                 tool.get("/Menu/Remove?idList=" + idList, function(result) {
                     table.ajax.reload();
                     tool.msgbox("删除成功", "y");
-                });
+                }, true);
             });
             $("#btn-disable").on("click", function () {
                 var rows = table.rows('.selected').data();
@@ -160,7 +158,7 @@
                 tool.get("/Menu/Disable?idList=" + idList, function(result) {
                     table.ajax.reload();
                     tool.msgbox("失能成功", "y");
-                });
+                }, true);
             });
         }
     };

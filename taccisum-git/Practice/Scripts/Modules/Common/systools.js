@@ -13,9 +13,30 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy", "w_shade"], functi
          * @author tac
          * @desc 对ajax请求进行封装，处理诸如请求失败、异常等事件
          * @param {object} config 配置参数，详细参考ajax请求参数
+         * @param {boolean} lock 在执行ajax请求时是否锁屏
          * @returns {void} 
          */
-        ajax: function(config) {
+        ajax: function (config, lock) {
+            function ScreenLocker(_lock) {
+                var __lock = _lock;
+                var $shade;
+
+                this.lock = function() {
+                    if (__lock && !$shade) {
+                        $shade = sys.shade("loading");
+                    }
+                };
+                this.unlock = function () {
+                    if (__lock && $shade) {
+                        $shade.data("api").destroy();
+                        delete $shade;
+                    }
+                }
+            }
+
+            var locker = new ScreenLocker(lock);
+
+            locker.lock();
             var conf = $.extend({
                 timeout: 15000, //请求超时默认时间
             }, config);
@@ -24,8 +45,8 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy", "w_shade"], functi
                 conf.timeout = null;
             }
 
-
-            conf.success = function(result, textStatus) {
+            conf.success = function (result, textStatus) {
+                locker.unlock();
                 if (result.Success) {
                     if (typeof config.success == "function") {
                         config.success(result.Data, textStatus);
@@ -35,7 +56,8 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy", "w_shade"], functi
                 }
             };
 
-            conf.error = function(XMLHttpRequest, textStatus, errorThrown) {
+            conf.error = function (XMLHttpRequest, textStatus, errorThrown) {
+                locker.unlock();
                 if (typeof config.error == "function") {
                     config.error(XMLHttpRequest, textStatus, errorThrown);
                 } else {
@@ -45,20 +67,20 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy", "w_shade"], functi
 
             $.ajax(conf);
         },
-        get: function(url, callback) {
+        get: function (url, callback, lock) {
             sys.ajax({
                 url: url,
                 type: "get",
                 success: callback
-            });
+            }, lock);
         },
-        post: function(url, data, callback) {
+        post: function (url, data, callback, lock) {
             sys.ajax({
                 url: url,
                 data: data,
                 type: "post",
                 success: callback
-            });
+            }, lock);
         },
 
         /**
@@ -175,7 +197,7 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy", "w_shade"], functi
             if (exception) {
                 content += "<br/><br/><a href='javascript:alert(\"" + exception + "\")' class='red pull-right'>查看异常</a>";
             }
-            return sys.msgbox(content, "n", timer || 5000, title || "系统异常");
+            return sys.msgbox(content, "n", timer || 0, title || "系统异常");
         },
 
         /**

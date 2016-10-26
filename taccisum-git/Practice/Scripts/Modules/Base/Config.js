@@ -10,6 +10,7 @@
     var common = "Common/";
     var wrapper = "Common/Wrapper/";
     var scripts = "../";
+    var css = "../../css/";
 
     require.config({
         baseUrl: "/Scripts/Modules",
@@ -21,11 +22,15 @@
             "systools": common + "systools",
             "systools-plus": common + "systools-plus",
             "auto_tips": common + "auto_tips",
-
-
+            "layout-init": "ViewJs/Shared/layout-init",
 
             //private
-            "jquery": scripts + "jQuery/jquery-2.2.3", //这里定义jquery是为了给其它jquery插件的amd加载提供依赖，jquery.js不通过requirejs而是直接通过标签加载
+            "jquery": scripts + "jQuery/jquery-2.2.3",
+            "bootstrap": css + "bootstrap-3.3.5-dist/js/bootstrap",
+            "ace-init": css + "ace/js/ace-init",
+            "ace": css + "ace/js/ace",
+            "ace-extra": css + "ace/js/ace-extra.min",
+            "ace-element": css + "ace/js/ace-elements.min",
             "jq_ext": common + "jq_extend",
             "js_ext": common + "js_extend",
             "global": common + "global",
@@ -41,6 +46,7 @@
             "w_jcrop": wrapper + "jcrop",
             "w_tipsy": wrapper + "tipsy_wrapper",
             "w_shade": wrapper + "myshade",
+
             //plugins
             "jq_ui": "../../css/ace/js/jquery-ui-1.10.3.full.min",
             "datatables": scripts + "jQueryPlugins/Datatables/jquery.dataTables",
@@ -51,11 +57,13 @@
         },
         shim: {
             //为一些非amd规范的js提供依赖
-            "jq_ui": "jquery",
-            "tipsy": "jquery",
-            "w_jq_ac": "jq_ui",
-            "w_jcrop": "jcrop",
-            "w_tipsy": "tipsy"
+            "bootstrap": ["jquery"],
+            "tipsy": ["jquery"],
+            "ace-init": ["jquery", "ace"],
+            "ace": ["jquery", "ace-extra"],
+            "ace-extra": ["jquery"],
+            "jq_ui": ["jquery"],
+            "artDialog": "jquery"
         }
     });
 })();
