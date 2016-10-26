@@ -48,6 +48,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "com.tac", "com.tac", "{ED8C
 		Version.txt = Version.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "com.tac.job", "com.tac.job", "{FDC72AC3-2E32-49C2-A34E-2E83D15CB502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job", "com.tac.job\Job\Job.csproj", "{74B7210E-B269-45A6-A22E-7C193A674B2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +102,10 @@ Global
 		{3925CECF-B7D4-4515-BE76-2F34B189ACEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3925CECF-B7D4-4515-BE76-2F34B189ACEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3925CECF-B7D4-4515-BE76-2F34B189ACEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B7210E-B269-45A6-A22E-7C193A674B2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B7210E-B269-45A6-A22E-7C193A674B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B7210E-B269-45A6-A22E-7C193A674B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B7210E-B269-45A6-A22E-7C193A674B2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,5 +123,6 @@ Global
 		{02124D89-87AE-4C17-B0DD-7630A5624449} = {93CE2D8F-21D6-448C-962A-4ADFB8A8F9CA}
 		{BF356003-F5DA-4DE4-AFE6-B222E8604324} = {B6A1C68D-DD1E-4741-937A-269A597A76CE}
 		{3925CECF-B7D4-4515-BE76-2F34B189ACEB} = {BF356003-F5DA-4DE4-AFE6-B222E8604324}
+		{74B7210E-B269-45A6-A22E-7C193A674B2D} = {FDC72AC3-2E32-49C2-A34E-2E83D15CB502}
 	EndGlobalSection
 EndGlobal

@@ -32,7 +32,7 @@
         var sidebar;
 
         require(["base"]);
-        require(["systools", "sidebar", "auto_tips", "layout-init"], function (tool, sbm, at) {
+        require(["systools", "sidebar", "auto_tips", "layout-init", "list"], function (tool, sbm, at, _, __) {
             var utility = {
                 loadMenusFromServer: function(callback) {
                     tool.get("/CommonInfo/Menus", function (result) {

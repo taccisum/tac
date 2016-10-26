@@ -4,7 +4,7 @@
  * @author tac
  * @desc side bar 菜单管理模块，提供一系列操作左侧菜单的api
  */
-define(["systools"], function (tool) {
+define(["systools", "composite"], function (tool) {
     var sidebar = null;
 
     var Sidebar = function(menus, appendTo) {

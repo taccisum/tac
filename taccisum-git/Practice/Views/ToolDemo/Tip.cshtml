@@ -14,7 +14,7 @@
         require(["systools"], function (tool) {
             window.tool = tool;
             //normal
-            $.each($("#div-normal span.tip"), function(index, item) {
+            $.each($("#div-normal span"), function(index, item) {
                 var $item = $(item);
                 tool.tip($item, {
                     gravity: $item.attr("gravity"),
@@ -22,8 +22,8 @@
             });
 
             //auto-tip
-            $("#btn-new").on("click", function() {
-                $("#div-new").append($('<span class="click tip auto-tip" title="this is a new tip" data-tip-gravity="nw" data-tip-offset="20" data-tip-fade="true" >new auto tip</span>'));
+            $("#btn-new").on("click label label-default", function() {
+                $("#div-new").append($('<span class="click label label-default auto-tip" title="this is a new tip" data-tip-gravity="nw" data-tip-offset="20" data-tip-fade="true" >new auto tip</span>'));
                 var at = require("auto_tips");
                 at.loadAutoTip();
             });
@@ -62,30 +62,29 @@
             var api1 = tool.tip("#manual", {
                 trigger: 'manual'
             });
-            $("#btn-show").on("click", function() {
+            $("#btn-show").on("click label label-default", function() {
                 api1.show();
             });
-            $("#btn-hide").on("click", function() {
+            $("#btn-hide").on("click label label-default", function() {
                 api1.hide();
             });
             var api2 = tool.tip("#content", {
                 content: "<span class='bold' style='color:red;'>happy</span> birthday"
             });
-            $("#btn-update").on("click", function() {
+            $("#btn-update").on("click label label-default", function() {
                 api2.content($("#txt-update").val());
             });
         })
     </script>
 
     <style>
-        span.tip {
-            border: 1px solid gray;
-            padding: 3px;
-            margin: 0 2px;
-            border-radius: 2px;
-        }
         h6 {
             font-weight: bold;
+        }
+
+        .label {
+            margin: 0 2px;
+            /*border-radius: 3px;*/
         }
     </style>
 }
@@ -97,36 +96,36 @@
 
 <h6>基本应用</h6>
 <div id="div-normal">
-    <span class="click tip" title="这个箭头指向西北" gravity="nw">nw</span>
-    <span class="click tip" title="这个箭头指向北" gravity="n">n</span>
-    <span class="click tip" title="这个箭头指向东北" gravity="ne">ne</span>
-    <span class="click tip" title="这个箭头指向西" gravity="w">w</span>
-    <span class="click tip" title="这个箭头指向东" gravity="e">e</span>
-    <span class="click tip" title="这个箭头指向西南" gravity="sw">sw</span>
-    <span class="click tip" title="这个箭头指向南" gravity="s">s</span>
-    <span class="click tip" title="这个箭头指向东南" gravity="se">se</span>
+    <span class="click label label-default" title="这个箭头指向西北" gravity="nw">nw</span>
+    <span class="click label label-default" title="这个箭头指向北" gravity="n">n</span>
+    <span class="click label label-default" title="这个箭头指向东北" gravity="ne">ne</span>
+    <span class="click label label-default" title="这个箭头指向西" gravity="w">w</span>
+    <span class="click label label-default" title="这个箭头指向东" gravity="e">e</span>
+    <span class="click label label-default" title="这个箭头指向西南" gravity="sw">sw</span>
+    <span class="click label label-default" title="这个箭头指向南" gravity="s">s</span>
+    <span class="click label label-default" title="这个箭头指向东南" gravity="se">se</span>
 </div><br/>
 
 <h6>通过.auto-tip初始化</h6>
-<span class="click tip auto-tip" title="this tip init in layout page" data-tip-gravity="nw" data-tip-offset="20" data-tip-fade="true" data-tip-delayin="500" data-tip-delayout="500">auto tip</span>
+<span class="click label label-default auto-tip" title="this tip init in layout page" data-tip-gravity="nw" data-tip-offset="20" data-tip-fade="true" data-tip-delayin="500" data-tip-delayout="500">auto tip</span>
 <input class="auto-tip" title="this tip init in layout page" data-tip-trigger="focus" data-tip-delayin="1"/><br/><br/>
 <button id="btn-new" type="button" class="btn btn-success btn-sm">new</button><br/><br/>
 <div id="div-new"></div>
 <br /><br />
 
 <h6>使用html作为内容</h6>
-<span id="html" class="click tip" title="html">html</span><br /><br />
+<span id="html" class="click label label-default" title="html">html</span><br /><br />
 
 <h6>淡入淡出</h6>
-<span id="fade" class="click tip" title="fade">fade</span><br /><br />
+<span id="fade" class="click label label-default" title="fade">fade</span><br /><br />
 
 <h6>延迟展示</h6>
-<span id="delayin" class="click tip" title="delayin">delayin</span>
-<span id="delayout" class="click tip" title="delayout">delayout</span>
+<span id="delayin" class="click label label-default" title="delayin">delayin</span>
+<span id="delayout" class="click label label-default" title="delayout">delayout</span>
 <br /><br />
 
 <h6>设置偏移量</h6>
-<span id="offset" class="click tip" title="offset 10px">offset</span><br /><br />
+<span id="offset" class="click label label-default" title="offset 10px">offset</span><br /><br />
 
 <h6>获得焦点时显示</h6>
 <select class="foucs" title="display on focus">
@@ -137,14 +136,14 @@
 <input class="foucs" title="display on focus" placeholder="display tip on focus" /><br /><br />
 
 <h6>通过api控制显示隐藏</h6>
-<span id="manual" class="click tip" title="show or hide by call api">switch</span>
+<span id="manual" class="click label label-default" title="show or hide by call api">switch</span>
 &nbsp;&nbsp;&nbsp;
 <button id="btn-show" type="button" class="btn btn-success btn-sm">show</button>
 <button id="btn-hide" type="button" class="btn btn-danger btn-sm">hide</button>
 <br/><br />
 
 <h6>通过api修改tip内容</h6>
-<span id="content" class="click tip" title="string for update tip">update content</span>
+<span id="content" class="click label label-default" title="string for update tip">update content</span>
 &nbsp;&nbsp;&nbsp;
 <input id="txt-update" placeholder="html string for update tip" value="&lt;img hidefocus=&quot;true&quot; src=&quot;//www.baidu.com/img/bd_logo1.png&quot; width=&quot;100&quot; height=&quot;50&quot;&gt;" />
 <button id="btn-update" type="button" class="btn btn-success btn-sm">update</button>
