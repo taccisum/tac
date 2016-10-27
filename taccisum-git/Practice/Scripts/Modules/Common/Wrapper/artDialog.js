@@ -23,13 +23,12 @@ define(["artDialog"], function () {
         }
     };      //预置的按钮
 
-
-    var path = {
-        "y": "/Image/yes_128px_1132501_easyicon.net.png",
-        "n": "/Image/close_128px_1132502_easyicon.net.png",
-        "i": "/Image/information_128px_1132498_easyicon.net.png",
-        "w": "/Image/alert_information_128px_1132500_easyicon.net.png",
-        "q": "/Image/why_help_128px_1132499_easyicon.net.png"
+    var icon = {
+        "y": ["icon-ok-sign", "#87b87f"],
+        "n": ["icon-remove-sign", "#d15b47"],
+        "i": ["icon-info-sign", "#6fb3e0"],
+        "w": ["icon-exclamation-sign", "#ffb752"],
+        "q": ["icon-question-sign", "#428bca"]
     };
 
     function DefConfig() {
@@ -42,8 +41,7 @@ define(["artDialog"], function () {
         this.quickClose = true;     //快速关闭（可通过esc或点击dialog以外的区域关闭）
         this.timer = 3000;      //存在时间
         this.content = "<table style='width:100%; min-width: 220px; max-width:600px;'><tr>" +
-            "<td style='vertical-align:top;'><img style='height:70px; width:70px; margin-right: 20px;' src='@img' class='img-circle'></td>" +
-            "<td class='text-center' style='vertical-align: middle; width:100%; font-size:22px; word-break:break-all'>@msg</td>" +
+            "<td class='text-center msgbox-text' style='vertical-align: middle; width:100%; word-break:break-all; color: gray;'>@msg</td>" +
             "</tr></table>";
     }; //message box默认配置
 
@@ -88,20 +86,23 @@ define(["artDialog"], function () {
             }
 
             var conf = new DefConfig1();
-            
+            conf.button = config.button;
+
             //title
+            conf.title = "<span style='color: @color;'><i class='@icon' style='margin-right: 5px;'></i>";
             if (!isNull(config.title)) {
-                conf.title = config.title;
+                conf.title += config.title + "</span>";
             }
             //timer
             if (!isNull(config.timer)) {
                 conf.timer = config.timer;
             }
             //icon
-            var _path = isNull(path[config.icon]) ? path["i"] : path[config.icon];
+            var _icon = isNull(icon[config.icon]) ? icon["i"] : icon[config.icon];
 
-            //fill content
-            conf.content = conf.content.replace("@img", _path).replace("@msg", config.content);
+            //replace placeholder
+            conf.title = conf.title.replace("@icon", _icon[0]).replace("@color", _icon[1]);
+            conf.content = conf.content.replace("@msg", config.content);
 
             var d = dialog(conf);
             d.show();

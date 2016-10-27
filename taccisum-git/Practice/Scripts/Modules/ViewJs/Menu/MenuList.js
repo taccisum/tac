@@ -1,4 +1,4 @@
-﻿define(["systools", "mockdata"], function (tool, mockdata) {
+﻿define(["systools", "icon_selector", "mockdata"], function (tool, iconselector, mockdata) {
     var Module = function() {
         this.init = function () {
             var table = tool.table("#table_id", {
@@ -63,11 +63,18 @@
                                 var self = this;
                                 self.title("提交中…");
 
+
                                 var params = ko.mapping.toJS(menu_vm);
                                 if ($.isNullOrEmptyString($("#txt-parent_id").val())) {
                                     params.ParentId = "";
                                 } else {
                                     params.ParentId = $("#txt-parent_id").data("val");
+                                }
+
+                                if ($.isNullOrEmptyString($("#txt-icon").val())) {
+                                    params.Icon = "";
+                                } else {
+                                    params.Icon = $("#txt-icon").val();
                                 }
 
 
@@ -97,6 +104,8 @@
                                 }
                             }
                         });
+
+                        iconselector.bind("#txt-icon");
 
                         menu_vm = {
                             Name: ko.observable(""),

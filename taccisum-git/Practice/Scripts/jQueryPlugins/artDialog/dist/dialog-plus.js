@@ -1125,7 +1125,7 @@ $.extend(prototype, {
      * @param    {String}   标题内容
      */
     title: function (text) {
-        this._$('title').text(text);
+        this._$('title').html(text);        //todo:: update by tac, let title support html
         this._$('header')[text ? 'show' : 'hide']();
         return this;
     },

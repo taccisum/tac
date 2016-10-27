@@ -22,6 +22,7 @@
             "systools": common + "systools",
             "systools-plus": common + "systools-plus",
             "auto_tips": common + "auto_tips",
+            "icon_selector": common + "icon_selector",
             "layout-init": "ViewJs/Shared/layout-init",
 
             //private
@@ -34,6 +35,7 @@
             "jq_ext": common + "jq_extend",
             "js_ext": common + "js_extend",
             "global": common + "global",
+            "w_shade": wrapper + "myshade",
             "mockjs": scripts + "MockJS/mock",
             "composite": scripts + "CommonClass/composite",
             "list": scripts + "CommonClass/list",
@@ -45,7 +47,6 @@
             "w_gridster": wrapper + "gridster",
             "w_jcrop": wrapper + "jcrop",
             "w_tipsy": wrapper + "tipsy_wrapper",
-            "w_shade": wrapper + "myshade",
 
             //plugins
             "jq_ui": "../../css/ace/js/jquery-ui-1.10.3.full.min",

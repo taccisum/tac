@@ -43,7 +43,8 @@ namespace Practice
             //系统通用的css
             bundles.Add(new StyleBundle("~/bundles/css/common")
                 .Include("~/css/mystyle.css",
-                    "~/css/commonstyle.css"));
+                    "~/css/commonstyle.css",
+                    "~/css/buttons.css"));
             #endregion
 
             #region js

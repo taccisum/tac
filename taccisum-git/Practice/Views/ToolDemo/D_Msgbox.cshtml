@@ -26,6 +26,10 @@
 
                     , "n", 0, "使用html作为msgbox的内容");
             });
+
+            $("#btn-excpbox").on("click", function() {
+                tool.excpbox("这里展示错误信息，一般是针对非开发人员的友好提示-.-", "这里展示异常信息", 0, "发生异常");
+            });
         })
 </script>
 
@@ -42,10 +46,13 @@
     <button data-icon="y" data-msg="操作成功啦" data-title="box-yes" data-timer="3000" class="btn btn-success btn-sm msgbox">yes(3s)</button>
     <button data-icon="n" data-msg="操作失败~" data-title="box-no" data-timer="5000" class="btn btn-danger btn-sm msgbox">no(5s)</button>
     <button data-icon="i" data-msg="提示信息" data-title="box-info" data-timer="1000" class="btn btn-info btn-sm msgbox">info(1s)</button>
-    <button data-icon="w" data-msg="警告信息" data-title="box-warning" data-timer="1000" class="btn btn-danger btn-sm msgbox">warning(1s)</button>
+    <button data-icon="w" data-msg="警告信息" data-title="box-warning" data-timer="1000" class="btn btn-warning btn-sm msgbox">warning(1s)</button>
     <button data-icon="q" data-msg="帮助信息" data-title="box-question" data-timer="2000" class="btn btn-primary btn-sm msgbox">question(2s)</button>
 </div>
 <br />
 <button id="btn-html" class="btn btn-primary btn-sm msgbox">html</button>
 
-<br /><br />
+<br/><br/>
+
+<span class="bold">Exception box</span><br/>
+<button id="btn-excpbox" class="btn btn-success btn-sm msgbox">exception</button>

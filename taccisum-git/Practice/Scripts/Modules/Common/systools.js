@@ -160,14 +160,14 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy", "w_shade"], functi
          * @param {string} msg 要展示的信息，支持html
          * @param {string} icon 要显示的图片类型：y(yes)、n(no)、i(info)、w(warning)、q(question)
          * @param {number} timer box自动关闭时间，单位ms，小于等于0时不自动关闭
-         * @param {string} title 标题，不支持html
+         * @param {string} title 标题，支持html
          * @returns {object} artDialog实例
          */
         msgbox: function(msg, icon, timer, title) {
             var config = {
                 content: msg,
                 icon: icon,
-                title: title
+                title: title || "系统消息"
             };
             if (timer != null) {
                 if (timer <= 0) {
@@ -185,34 +185,64 @@ define(["w_datatables", "w_jq_ac", "w_art_dialog", "w_tipsy", "w_shade"], functi
          * @desc 弹出一个专用于展示异常信息的消息框
          * @param {string} msg 要展示的信息，支持html
          * @param {string} exception 要显示的异常信息
-         * @param {number} timer box自动关闭时间，单位ms，小于等于0时不自动关闭
-         * @param {string} title 标题，不支持html
+         * @param {number} timer box自动关闭时间，单位ms，null或小于等于0时不自动关闭
+         * @param {string} title 标题，支持html
          * @returns {object} artDialog实例
          */
         excpbox: function(msg, exception, timer, title) {
             if (!msg) {
                 throw new Error("excpbox(): msg is required");
             }
-            var content = "<div class='msgbox-text text-left'><span>" + msg + "</span>";
+            var btns = [{
+                id: "close",
+                value: "<i class='icon-remove'></i>&nbsp;关闭",
+                callback: function () {
+                    return true;
+                },
+                cls: "btn btn-default btn-sm",
+            }];
             if (exception) {
-                content += "<br/><br/><a href='javascript:alert(\"" + exception + "\")' class='red pull-right'>查看异常</a>";
+                btns.push({
+                    id: "excp",
+                    value: "<i class='icon-info-sign'></i>&nbsp;异常",
+                    callback: function() {
+                        alert(exception);
+                        return false;
+                    },
+                    cls: "btn btn-info btn-sm",
+                });
             }
-            return sys.msgbox(content, "n", timer || 0, title || "系统异常");
+            var config = {
+                content: msg,
+                icon: "n",
+                title: title || "系统异常",
+                button: btns
+            };
+            if (timer == null || timer <= 0) {
+                config.timer = 10000000;
+            } else {
+                config.timer = timer;
+            }
+
+
+            return dg.msgbox(config);
         },
 
         /**
-         * 
-         * @param {} selector 
-         * @param {} config
-         * @returns {} 
+         * @author tac
+         * 为指定标签添加trigger(hover/focus/…或其它)时显示tip的效果
+         * @param {} selector jquery selector或jquery对象
+         * @param {} config 参考tipsy的官方文档 http://onehackoranother.com/projects/jquery/tipsy/
+         * @returns {object} 自定义的api
          */
         tip: function(selector, config) {
             return tp.tip(selector, config);
         },
 
         /**
+         * @author tac
          * 创建一个全屏遮罩层
-         * @param {} config 
+         * @param {object} config 参考myshade.js注释部分
          * @returns {} 
          */
         shade: function (config) {
