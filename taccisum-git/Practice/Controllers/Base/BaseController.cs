@@ -8,7 +8,6 @@ using System.Web.Routing;
 using Common.CustomerException;
 using Common.Global;
 using Common.Tool.Extend;
-using Common.Tool.Units;
 using IoC.Manager;
 using log4net;
 using Model.Common;

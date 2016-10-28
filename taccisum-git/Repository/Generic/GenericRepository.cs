@@ -7,7 +7,7 @@ using System.Web;
 using Common.CustomerException;
 using Common.Global;
 using Common.Tool.Extend;
-using Common.Tool.Units;
+using Common.Tool.Utility;
 using Model.Common;
 using Model.Entity;
 using Repository.Context;
@@ -64,7 +64,10 @@ namespace Repository.Generic
         {
             entity.ID = Guid.NewGuid();
             entity.CreatedOn = DateTime.Now;
-            entity.CreatedBy = CheckCurrentUser().ID;
+            if (entity.CreatedBy == Guid.Empty)
+            {
+                entity.CreatedBy = CheckCurrentUser().ID;
+            }
 
             dbSet.Add(entity);
             return entity;
@@ -93,7 +96,10 @@ namespace Repository.Generic
         public void Update(T entity)
         {
             entity.ModifiedOn = DateTime.Now;
-            entity.ModifiedBy = CheckCurrentUser().ID;
+            if (entity.ModifiedBy == Guid.Empty)
+            {
+                entity.ModifiedBy = CheckCurrentUser().ID;
+            }
             db.Entry(entity).State = EntityState.Modified;
         }
 
@@ -105,7 +111,13 @@ namespace Repository.Generic
 
         private SysUser CheckCurrentUser()
         {
-            var userInfo = SessionHelper.Get(GlobalConfig.CURRENT_USER) as CurrentUserInfo;
+            CurrentUserInfo userInfo = null;
+            try
+            {
+                userInfo = SessionHelper.Get(GlobalConfig.CURRENT_USER) as CurrentUserInfo;
+            }
+            catch (NullReferenceException) { }
+             
             if (userInfo == null)
                 throw new CommonException("用户未登陆");
 

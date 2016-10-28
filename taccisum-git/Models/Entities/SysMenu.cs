@@ -13,6 +13,7 @@ namespace Model.Entity
         public int SortNo { get; set; }
         public bool EnabledState { get; set; }
         public string Description { get; set; }
+        public int BrowserTimes { get; set; }
 
         public string ToCacheString()
         {

@@ -107,22 +107,22 @@
     <Compile Include="Extend\Log4Net\PatternConverter\ClientIdPatternConverter.cs" />
     <Compile Include="Extend\Log4Net\PatternConverter\SessionIdPatternConverter.cs" />
     <Compile Include="Extend\Log4Net\PatternConverter\HttpRequestPatternConverter.cs" />
-    <Compile Include="Extend\Log4Net\PatternConverter\UrlReferrerPatternConverter.cs" />
     <Compile Include="Extend\Log4Net\PatternConverter\UrlPatternConverter.cs" />
+    <Compile Include="Extend\Log4Net\PatternConverter\UrlReferrerPatternConverter.cs" />
     <Compile Include="Extend\Log4Net\PatternConverter\UserAgentPatternConverter.cs" />
     <Compile Include="Extend\Log4Net\PatternConverter\BrowserPatternConverter.cs" />
     <Compile Include="Extend\Log4Net\PatternConverter\ClientIpPatternConverter.cs" />
     <Compile Include="Extend\Log4Net\PatternLayout\TacPatternLayout.cs" />
     <Compile Include="Extend\_ICollection`T.cs" />
     <Compile Include="Extend\_Object.cs" />
-    <Compile Include="Units\ConfigHelper .cs" />
-    <Compile Include="Units\CookiesHelper.cs" />
+    <Compile Include="Utility\ConfigHelper .cs" />
+    <Compile Include="Utility\CookiesHelper.cs" />
     <Compile Include="Extend\_String.cs" />
-    <Compile Include="Units\ExcelHepler.cs" />
-    <Compile Include="Units\HttpHelper.cs" />
+    <Compile Include="Utility\ExcelHepler.cs" />
+    <Compile Include="Utility\HttpHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Units\RedisHelper.cs" />
-    <Compile Include="Units\SessionHelper.cs" />
+    <Compile Include="Utility\RedisHelper.cs" />
+    <Compile Include="Utility\SessionHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomerException\Common.CustomerException.csproj">

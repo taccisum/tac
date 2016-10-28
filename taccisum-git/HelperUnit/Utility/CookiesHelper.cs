@@ -2,7 +2,7 @@
 using System.Web;
 using Common.Tool.Extend;
 
-namespace Common.Tool.Units
+namespace Common.Tool.Utility
 {
     public static class CookiesHelper
     {

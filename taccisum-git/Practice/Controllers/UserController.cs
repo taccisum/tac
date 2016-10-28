@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using Common.Global;
 using Common.Tool.Extend;
-using Common.Tool.Units;
 using IoC.Manager;
 using log4net;
 using Model.Common;

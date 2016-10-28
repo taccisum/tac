@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
-using Common.CustomerException;
 using Common.Global;
 using ServiceStack.Redis;
 
-namespace Common.Tool.Units
+namespace Common.Tool.Utility
 {
 
     public static class RedisHelper

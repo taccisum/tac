@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Model.Entity;
 using Model.Models;
 
 namespace Service.Interf.Sys
@@ -33,7 +34,6 @@ namespace Service.Interf.Sys
         /// </summary>
         /// <param name="idList"></param>
         void Disable(IEnumerable<Guid> idList);
-        #region Web
         /// <summary>
         /// 获取供web页面使用的菜单列表
         /// </summary>
@@ -43,6 +43,6 @@ namespace Service.Interf.Sys
 
         List<string> GetRecentlyAdd();
 
-        #endregion
+        SysMenu GetMenuByUrl(string path);
     }
 }

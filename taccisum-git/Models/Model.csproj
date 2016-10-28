@@ -52,6 +52,7 @@
     <Compile Include="Entities\Band.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Entities\PageBrowseHistory.cs" />
     <Compile Include="Entities\DTO.cs">
       <SubType>Code</SubType>
     </Compile>

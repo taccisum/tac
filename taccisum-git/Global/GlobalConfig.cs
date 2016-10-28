@@ -6,6 +6,7 @@
 
         public const string CURRENT_USER = "CURRENT_USER";
 
+        public const string ADMIN_ID = "0F5C4CAF-6851-48C4-A310-0DEA230B88F3";
 
         /// <summary>
         /// 数据槽对象key，可使用以下常量通过CallContext.GetData(key)获取当前线程内唯一的对象实例

@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Job.Jobs;
 using log4net;
 using Practice.App_Start;
 using Practice.DependencySolver;
+using Quartz;
+using Quartz.Impl;
 
 namespace Practice
 {
@@ -49,6 +53,19 @@ namespace Practice
             DependencyResolver.SetResolver(solver);
             log.Info("注册Mef依赖解析完成");
             #endregion
+
+            #region Quartz Config
+            //todo::
+            ISchedulerFactory schf = new StdSchedulerFactory();
+            IScheduler sch = schf.GetScheduler();
+            IJobDetail job = JobBuilder.Create<CalculateMenusBrowseTimesJob>().Build();
+            ISimpleTrigger st = (ISimpleTrigger)TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInSeconds(30).WithRepeatCount(int.MaxValue)).Build();
+            sch.ScheduleJob(job, st);
+            sch.Start();
+
+            log.Info("加载quartz配置完成");
+            #endregion
+
         }
 
     }

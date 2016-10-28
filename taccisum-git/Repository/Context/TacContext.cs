@@ -23,9 +23,10 @@ namespace Repository.Context
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Sku> Skus { get; set; }
         public DbSet<Band> Bands { get; set; }
-
         public DbSet<LayoutModel> LayoutModel { get; set; }
         public DbSet<WidgetModel> WidgetModel { get; set; }
+        public DbSet<PageBrowseHistory> PageBrowserHistory { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

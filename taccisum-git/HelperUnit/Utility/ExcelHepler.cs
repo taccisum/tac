@@ -5,12 +5,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Common.CustomerException;
-using Common.Tool.Extend;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 
-namespace Common.Tool.Units
+namespace Common.Tool.Utility
 {
     public class ExcelHepler
     {

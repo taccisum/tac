@@ -4,6 +4,8 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Linq.Expressions;
 using Common.Tool.Extend;
+using IoC.Manager;
+using Model.Entity;
 using Model.Models;
 using Repository.Dao.Impl.Sys;
 using Repository.Dao.Interf.Sys;
@@ -15,8 +17,7 @@ namespace Service.Impl.Sys
     [Export(typeof(ISysMenuService))]
     public class SysMenuServiceImpl : BaseService, ISysMenuService
     {
-        [Import]
-        protected ISysMenuDao MenuDao { get; set; }
+        protected ISysMenuDao MenuDao = IoCManager.GetInstance().Create().Resolve<ISysMenuDao>();
 
         public IQueryable<Model.Entity.SysMenu> Query()
         {
@@ -103,6 +104,11 @@ namespace Service.Impl.Sys
         public List<string> GetRecentlyAdd()
         {
             return MenuDao.GetRecentMenuCache();
+        }
+
+        public SysMenu GetMenuByUrl(string path)
+        {
+            return MenuDao.Query(m => m.Url.StartsWith(path)).FirstOrDefault();
         }
     }
 }

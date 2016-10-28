@@ -36,6 +36,9 @@
     <Reference Include="Common.Logging.Core">
       <HintPath>..\..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\packages\log4net-1.2.15\bin\net\4.5\release\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Quartz">
       <HintPath>..\..\packages\Quartz.2.4.1\lib\net40\Quartz.dll</HintPath>
     </Reference>
@@ -48,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Jobs\CalculateMenusBrowseTimesJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +59,29 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Global\Common.Global.csproj">
+      <Project>{c2be7b4b-0101-485b-a92d-7acbc42646f8}</Project>
+      <Name>Common.Global</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HelperUnit\Common.Tool.csproj">
+      <Project>{8142b85f-b0c3-49ca-a3f7-fd4e7dae410d}</Project>
+      <Name>Common.Tool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IoC\IoC.Manager.csproj">
+      <Project>{67281155-c47e-4d2c-81af-4b5898fd216f}</Project>
+      <Name>IoC.Manager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Models\Model.csproj">
+      <Project>{7038a79a-4514-4fca-8bb9-a12f1153960b}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repository\Repository.csproj">
+      <Project>{888b2c47-9f19-4e91-872a-7c762aa2c818}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

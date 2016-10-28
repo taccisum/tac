@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 
-namespace Common.Tool.Units
+namespace Common.Tool.Utility
 {
     /// <summary>
     /// HTTP GET/POST相关操作类。

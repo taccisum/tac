@@ -19,7 +19,7 @@ namespace Common.Tool.Extend.Log4Net.PatternConverter
         {
             try
             {
-                if (HttpContext.Current.Session != null)
+                if (HttpContext.Current != null && HttpContext.Current.Session != null)
                 {
                     HttpConvert(writer, loggingEvent, HttpContext.Current);
                 }

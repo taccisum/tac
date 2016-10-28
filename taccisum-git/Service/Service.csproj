@@ -90,6 +90,7 @@
     <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\NonePromotionStrategy.cs" />
     <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\PromotionStrategyCreater.cs" />
     <Compile Include="Impl\ShopCart\Strategy\PromotionStrategy\SinglePromotionStrategy.cs" />
+    <Compile Include="Impl\Sys\PageBrowseHistoryService.cs" />
     <Compile Include="Impl\Sys\SysUserAuthorizationService.cs" />
     <Compile Include="Impl\Sys\SysUserDemoServiceImpl.cs" />
     <Compile Include="Interf\Bands\Product\IProductBandService.cs" />

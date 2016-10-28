@@ -10,12 +10,11 @@ using log4net.Layout.Pattern;
 
 namespace Common.Tool.Extend.Log4Net.PatternConverter
 {
-    public class UrlPatternConverter : HttpRequestPatternConverter
+    public class UrlReferrerPatternConverter : HttpRequestPatternConverter
     {
-
         protected override void HttpConvert(TextWriter writer, LoggingEvent loggingEvent, HttpContext currentContext)
         {
-            writer.Write(currentContext.Request.Url);
+            writer.Write(currentContext.Request.UrlReferrer);
         }
     }
 }

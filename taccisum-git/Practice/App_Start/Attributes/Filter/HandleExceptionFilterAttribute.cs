@@ -14,7 +14,8 @@ namespace Practice.Attributes.Filter
 #if DEBUG
             filterContext.Result = new JsonResult()
             {
-                Data = ApiResult.FailedResult("执行请求的过程中发生了未经处理的异常", filterContext.Exception.Message)
+                Data = ApiResult.FailedResult("执行请求的过程中发生了未经处理的异常", filterContext.Exception.Message),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
 #else
             filterContext.Result = new JsonResult()
@@ -22,6 +23,7 @@ namespace Practice.Attributes.Filter
                 Data = ApiResult.FailedResult("执行请求的过程中发生了未经处理的异常", "详情请查看日志")
             };
 #endif
+            filterContext.ExceptionHandled = true;
         }
     }
 }
