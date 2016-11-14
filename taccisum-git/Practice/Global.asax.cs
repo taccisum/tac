@@ -24,7 +24,7 @@ namespace Practice
 
             #region Log4Net Config
 #if DEBUG
-            var fl = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "log4net.config");
+            var fl = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "log4net-debug.config");
 #else
             var fl = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "log4net-release.config");
 #endif
@@ -56,14 +56,14 @@ namespace Practice
 
             #region Quartz Config
             //todo::
-            ISchedulerFactory schf = new StdSchedulerFactory();
-            IScheduler sch = schf.GetScheduler();
-            IJobDetail job = JobBuilder.Create<CalculateMenusBrowseTimesJob>().Build();
-            ISimpleTrigger st = (ISimpleTrigger)TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInSeconds(30).WithRepeatCount(int.MaxValue)).Build();
-            sch.ScheduleJob(job, st);
-            sch.Start();
+            //ISchedulerFactory schf = new StdSchedulerFactory();
+            //IScheduler sch = schf.GetScheduler();
+            //IJobDetail job = JobBuilder.Create<CalculateMenusBrowseTimesJob>().Build();
+            //ISimpleTrigger st = (ISimpleTrigger)TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInSeconds(30).WithRepeatCount(int.MaxValue)).Build();
+            //sch.ScheduleJob(job, st);
+            //sch.Start();
 
-            log.Info("加载quartz配置完成");
+            //log.Info("加载quartz配置完成");
             #endregion
 
         }

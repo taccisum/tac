@@ -117,6 +117,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="log4net_conn_str.config" />
+    <None Include="web_conn_str.config" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="css\ace\css\ace-skins.min.css" />
     <Content Include="css\ace\css\ace.min.css" />
@@ -487,7 +489,7 @@
     <Content Include="Image\information_128px_1132498_easyicon.net.png" />
     <Content Include="Image\why_help_128px_1132499_easyicon.net.png" />
     <Content Include="Image\yes_128px_1132501_easyicon.net.png" />
-    <Content Include="log4net.config">
+    <Content Include="log4net-debug.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
@@ -513,6 +515,7 @@
     <Content Include="Scripts\jQueryPlugins\gridly\javascripts\jquery.gridly.js.map" />
     <Content Include="Scripts\jQueryPlugins\gridly\stylesheets\jquery.gridly.css.map" />
     <Content Include="quartz.config" />
+    <None Include="Properties\PublishProfiles\westcn_deploy.pubxml" />
     <None Include="Scripts\jQuery\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\CommonClass\composite.js" />
     <Content Include="Scripts\jQueryPlugins\gridly\javascripts\jquery.gridly.js" />
