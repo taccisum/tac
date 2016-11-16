@@ -58,7 +58,6 @@ define(["systools", "composite"], function (tool) {
             root.ForEach(new Visitor(function(node) {
                 var $li = $("<li></li>");
                 var $content = $("<a></a>");
-                var $arrow = $("<b class='arrow'></b>");
 
                 $li.attr("data-id", node.data.ID);
                 $content.attr("href", node.data.Url);
@@ -68,8 +67,7 @@ define(["systools", "composite"], function (tool) {
                 $content.attr("data-rpath", rPath);
 
                 $content.append($("<i></i>").addClass(node.data.Icon))
-                    .append($("<span></span>").addClass("menu-text").text(" " + node.data.Name + " "))
-                    .append($arrow);
+                    .append($("<span></span>").addClass("menu-text").text(" " + node.data.Name + " "));
 
                 $li.append($content);
                 if (node.level == 1) {
@@ -79,8 +77,14 @@ define(["systools", "composite"], function (tool) {
                     //子菜单
                     var $parent = self.GetById(node.data.ParentId);
                     if ($parent.length > 0) {
-                        $($parent.children("a")[0]).attr("href", "#").addClass("dropdown-toggle")
-                            .append($("<b class='arrow icon-angle-down'></b>"));
+                        var $a = $($parent.children("a")[0]);
+                        $a.attr("href", "#").addClass("dropdown-toggle");
+
+                        //防止重复添加arrow
+                        if ($a.find("b.arrow.icon-angle-down").length == 0) {
+                            $a.append($("<b class='arrow icon-angle-down'></b>"));
+                        }
+
                         var $subMenu = $parent.children("ul.submenu");
                         if ($subMenu.length <= 0) {
                             $subMenu = $("<ul class='submenu'></ul>");

@@ -117,8 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="log4net_conn_str.config" />
-    <None Include="web_conn_str.config" />
+    <Content Include="web_conn_str.config" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="css\ace\css\ace-skins.min.css" />
     <Content Include="css\ace\css\ace.min.css" />
@@ -879,6 +878,16 @@
     <Compile Include="App_Start\Attributes\Filter\AuthenticationFilterAttribute.cs" />
     <Compile Include="Controllers\BandController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\Base\PhotoUpload\AbstractContextResolver.cs" />
+    <Compile Include="Controllers\Base\PhotoUpload\AbstractUploadHandler.cs" />
+    <Compile Include="Controllers\Base\PhotoUpload\HandlerFactory.cs" />
+    <Compile Include="Controllers\Base\PhotoUpload\Handler\DefaultHandler.cs" />
+    <Compile Include="Controllers\Base\PhotoUpload\PhotoUploadContext.cs" />
+    <Compile Include="Controllers\Base\PhotoUploadController.cs" />
+    <Compile Include="Controllers\Base\PhotoUpload\PhotoUploadEnum.cs" />
+    <Compile Include="Controllers\Base\PhotoUpload\PhotoUploadResult.cs" />
+    <Compile Include="Controllers\Base\PhotoUpload\ResolverFactory.cs" />
+    <Compile Include="Controllers\Base\PhotoUpload\Resolver\DefaultResolver.cs" />
     <Compile Include="Controllers\TacController.cs" />
     <Compile Include="Controllers\CommonInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -962,6 +971,7 @@
     <Folder Include="Api\" />
     <Folder Include="App_Data\" />
     <Folder Include="uploadfiles\" />
+    <Folder Include="Views\PhotoUpload\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\com.tac.job\Job\Job.csproj">
