@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Jobs\CalculateMenusBrowseTimesJob.cs" />
+    <Compile Include="Jobs\HelloQuartzJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

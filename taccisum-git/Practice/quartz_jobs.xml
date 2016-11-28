@@ -11,11 +11,11 @@
   <schedule>
 
     <!--TestJob测试 任务配置-->
-    <job>
+    <!--<job>
       <name>TestJob</name>
       <group>Test</group>
       <description>TestJob测试</description>
-      <job-type>Job.Jobs.CalculateMenusBrowseTimesJob,Job</job-type>
+      <job-type>Job.Jobs.HelloQuartzJob,Job</job-type>
       <durable>true</durable>
       <recover>false</recover>
     </job>
@@ -27,7 +27,41 @@
         <job-group>Test</job-group>
         <cron-expression>* 0/1 * * * ?</cron-expression>
       </cron>
+    </trigger>-->
+
+    <job>
+      <!--同一个group中多个job的name不能相同，若未设置group则所有未设置group的job为同一个分组-->
+      <name>TestJob</name>
+      <!--任务所属分组，用于标识任务所属分组-->
+      <group>Test</group>
+      <!--任务描述，用于描述任务具体内容-->
+      <description>TestJob测试</description>
+      <!--任务类型，任务的具体类型及所属程序集，格式：实现了IJob接口的包含完整命名空间的类名,程序集名称-->
+      <job-type>Job.Jobs.HelloQuartzJob,Job</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+
+    <!--用于定义使用何种方式出发任务(job)，同一个job可以定义多个trigger ，多个trigger 各自独立的执行调度，
+    每个trigger 中必须且只能定义一种触发器类型(calendar-interval、simple、cron)-->
+    <trigger>
+      <cron>
+        <!--触发器名称，同一个分组中的名称必须不同-->
+        <name>TestJobTrigger</name>
+        <!--触发器组-->
+        <group>Test</group>
+        <!--要调度的任务名称，该job-name必须和对应job节点中的name完全相同，一个trigger只能绑定一个job，
+        一个job可以绑定多个trigger-->
+        <job-name>TestJob</job-name>
+        <!--调度任务(job)所属分组，该值必须和job中的group完全相同-->
+        <job-group>Test</job-group>
+        <!--任务开始执行时间utc时间-->
+        <!--<strat-time></strat-time>-->
+        <!--cron表达式-->
+        <cron-expression>0/1 * * * * ?</cron-expression>
+      </cron>
     </trigger>
 
   </schedule>
+
 </job-scheduling-data>

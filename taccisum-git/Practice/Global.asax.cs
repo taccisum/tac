@@ -56,14 +56,13 @@ namespace Practice
 
             #region Quartz Config
             //todo::
-            //ISchedulerFactory schf = new StdSchedulerFactory();
-            //IScheduler sch = schf.GetScheduler();
-            //IJobDetail job = JobBuilder.Create<CalculateMenusBrowseTimesJob>().Build();
-            //ISimpleTrigger st = (ISimpleTrigger)TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInSeconds(30).WithRepeatCount(int.MaxValue)).Build();
-            //sch.ScheduleJob(job, st);
-            //sch.Start();
+            IScheduler sch = StdSchedulerFactory.GetDefaultScheduler();
+            IJobDetail job = JobBuilder.Create<HelloQuartzJob>().Build();
+            ISimpleTrigger st = (ISimpleTrigger)TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInSeconds(3).WithRepeatCount(10)).Build();
+            sch.ScheduleJob(job, st);
+            sch.Start();
 
-            //log.Info("加载quartz配置完成");
+            log.Info("加载quartz配置完成");
             #endregion
 
         }
