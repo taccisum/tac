@@ -73,7 +73,6 @@
     <Compile Include="Generic\IGenericRepository.cs" />
     <Compile Include="Generic\RepositoryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Dao\Base\BaseRepository.cs" />
     <Compile Include="Dao\Base\ICrud.cs" />
     <Compile Include="Dao\Base\RepositorySupport.cs" />
     <Compile Include="Dao\Impl\Sys\SysMenuDaoImpl.cs" />

@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Entity;
+using Repository.Generic;
 
 namespace Repository.Repository.Base
 {
@@ -13,8 +14,15 @@ namespace Repository.Repository.Base
     /// 如需在子类中操作其它表，请使用BaseRepository中的Repository直接进行操作
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class RepositorySupport<T> : BaseRepository, ICrud<T> where T : DTO, new()
+    public abstract class RepositorySupport<T> : ICrud<T> where T : DTO, new()
     {
+        protected RepositoryFactory RepositoryFactory { get; private set; }
+
+        protected RepositorySupport()
+        {
+            RepositoryFactory = new RepositoryFactory();
+        }
+
         public virtual IQueryable<T> Query(bool isDelete = false)
         {
             return Query(t => true, isDelete);

@@ -62,7 +62,11 @@ namespace Repository.Generic
 
         public T Insert(T entity)
         {
-            entity.ID = Guid.NewGuid();
+            if (entity.ID == Guid.Empty)
+            {
+                entity.ID = Guid.NewGuid();
+            }
+            
             entity.CreatedOn = DateTime.Now;
             if (entity.CreatedBy == Guid.Empty)
             {
@@ -95,11 +99,23 @@ namespace Repository.Generic
 
         public void Update(T entity)
         {
+            var oldEntity = dbSet.Where(t=>t.ID == entity.ID).AsNoTracking().First();       //不从缓存加载
+            entity.CreatedOn = oldEntity.CreatedOn;
+            entity.CreatedBy = oldEntity.CreatedBy;
             entity.ModifiedOn = DateTime.Now;
-            if (entity.ModifiedBy == Guid.Empty)
+#if DEBUG
+            try
             {
                 entity.ModifiedBy = CheckCurrentUser().ID;
             }
+            catch (CommonException)
+            {
+                entity.ModifiedBy = new Guid(GlobalConfig.ADMIN_ID);
+            }
+#else
+            entity.ModifiedBy = CheckCurrentUser().ID;
+#endif
+            
             db.Entry(entity).State = EntityState.Modified;
         }
 

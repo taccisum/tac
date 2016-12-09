@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -21,6 +22,8 @@ namespace Practice
     {
         protected void Application_Start()
         {
+
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
 
             #region Log4Net Config
 #if DEBUG
@@ -57,14 +60,13 @@ namespace Practice
             #region Quartz Config
             //todo::
             IScheduler sch = StdSchedulerFactory.GetDefaultScheduler();
-            IJobDetail job = JobBuilder.Create<HelloQuartzJob>().Build();
-            ISimpleTrigger st = (ISimpleTrigger)TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInSeconds(3).WithRepeatCount(10)).Build();
-            sch.ScheduleJob(job, st);
+            //IJobDetail job = JobBuilder.Create<HelloQuartzJob>().Build();
+            //ISimpleTrigger st = (ISimpleTrigger)TriggerBuilder.Create().WithSimpleSchedule(x => x.WithIntervalInSeconds(3).WithRepeatCount(10)).Build();
+            //sch.ScheduleJob(job, st);
             sch.Start();
 
             log.Info("加载quartz配置完成");
             #endregion
-
         }
 
     }

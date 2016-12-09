@@ -13,12 +13,19 @@ using Service.Interf.Sys;
 
 namespace Practice.Controllers
 {
+    /// <summary>
+    /// 用于获取一些通用信息的Controller
+    /// </summary>
     [Export]
     public class CommonInfoController : BaseController
     {
         [Import]
         protected Lazy<ISysMenuService> LazyMenuService { get; set; }
 
+        /// <summary>
+        /// 获取菜单信息
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Menus()
         {
             return Try(() =>

@@ -5,31 +5,40 @@
 <div class="navbar-header pull-right">
     <ul class="nav ace-nav">
         <li class="orange">
-            <a class="dropdown click" data-toggle="dropdown"><span class="icon-th-large"></span><i class="icon-caret-down"></i></a>
+            <a class="dropdown click auto-tip" data-toggle="dropdown" title="选择风格" data-tip-gravity="n" data-tip-offset="10"><span class="icon-th-large"></span><i class="icon-caret-down"></i></a>
             <ul class="dropdown-navbar dropdown-menu dropdown-caret dropdown-close pull-left" role="menu">
                 <li class="dropdown-header"><i class="icon-th-large"></i>选择你喜欢的风格</li>
-                <li class="click" onclick="javascript: $('body').removeClass('skin-1 skin-2 skin-3 skin-4').addClass('skin-1');">
+                <li class="click auto-tip" title="深蓝" data-tip-gravity="e" data-tip-offset="10" onclick="javascript: $('body').removeClass('skin-1 skin-2 skin-3 skin-4').addClass('skin-1');">
                     <div class="colorpick-div" style="background-color: rgb(44, 106, 160); height: 20px;"></div>
                 </li>
-                <li class="click" onclick="javascript: $('body').removeClass('skin-1 skin-2 skin-3 skin-4').addClass('skin-2');">
+                <li class="click auto-tip" title="五彩" data-tip-gravity="e" data-tip-offset="10" onclick="javascript: $('body').removeClass('skin-1 skin-2 skin-3 skin-4').addClass('skin-2');">
                     <div class="colorpick-div" style="background-color: #C6487E; height: 20px;"></div>
                 </li>
-                <li class="click" onclick="javascript: $('body').removeClass('skin-1 skin-2 skin-3 skin-4').addClass('skin-3');">
+                <li class="click auto-tip" title="纯黑" data-tip-gravity="e" data-tip-offset="10" onclick="javascript: $('body').removeClass('skin-1 skin-2 skin-3 skin-4').addClass('skin-3');">
                     <div class="colorpick-div" style="background-color: #222A2D; height: 20px;"></div>
                 </li>
-                <li class="click" onclick="javascript: $('body').removeClass('skin-1 skin-2 skin-3 skin-4').addClass('skin-4');">
+                <li class="click auto-tip" title="浅蓝" data-tip-gravity="e" data-tip-offset="10" onclick="javascript: $('body').removeClass('skin-1 skin-2 skin-3 skin-4').addClass('skin-4');">
                     <div class="colorpick-div" style="background-color: rgb(67, 142, 185); height: 20px;"></div>
                 </li>
             </ul>
         </li>
 
         <li class="grey">
-            <a class="dropdown click" data-toggle="dropdown"><span class="icon-github-alt"></span><i class="icon-caret-down"></i></a>
+            <a class="dropdown click auto-tip" data-toggle="dropdown" title="快速链接" data-tip-gravity="n" data-tip-offset="10"><span class="icon-link"></span><i class="icon-caret-down"></i></a>
             <ul class="dropdown-navbar dropdown-menu dropdown-caret dropdown-close pull-right" role="menu">
-                <li class="dropdown-header"><i class="icon-github-alt"></i>C#相关</li>
-                <li><a tabindex="-1" href="#">数据库设计</a></li>
-                <li><a tabindex="-1" href="#">页面布局</a></li>
-                <li><a tabindex="-1" href="#">功能迭代</a></li>
+                <li class="dropdown-header"><i class="icon-link"></i>快速链接</li>
+                <li>
+                    <a tabindex="-1" href="#" onclick="window.open('/swagger')">&nbsp;
+                        <span class="label label-success arrowed-right arrowed-in pull-left">Swagger</span>
+                        <span class="pull-right">在线api文档</span>
+                    </a>
+                </li>
+                <li>
+                    <a tabindex="-1" href="#" onclick="window.open('http://pm.4007616616.com:8080/')">&nbsp;
+                        <span class="label label-primary arrowed-right arrowed-in pull-left">Zentao</span>
+                        <span class="pull-right">禅道项目管理系统</span>
+                    </a>
+                </li>
                 <li class="divider"></li>
                 <li><a tabindex="-1" href="#">分离的链接</a></li>
             </ul>
